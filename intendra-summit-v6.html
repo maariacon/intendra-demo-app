@@ -1,0 +1,484 @@
+<title>Intendra — Summit (v6 mock)</title>
+<style>
+/* ============================================================
+   INTENDRA — SUMMIT · v6 mock
+   Applies the review's token system + UX recommendations.
+   ============================================================ */
+:root{
+  /* neutrals — cool-biased, faint retired */
+  --ground:#eef1f4; --surface:#ffffff; --surface-2:#f5f6f8;
+  --ink:#23252b; --body:#3f434b; --muted:#5b606b; --hair:#e0e3e8; --hair-2:#eceef1;
+  /* brand + interaction */
+  --accent:#0f7d51; --accent-ink:#0b6842; --brand:#1bea87;
+  /* semantic pairs */
+  --pos:#0f7d51; --pos-soft:#e7f8ef;
+  --neg:#c03d33; --neg-soft:#faedeb;
+  --att:#9a7d1f; --att-fill:#c9a23f; --att-soft:#f6efdc;
+  --cost:#5f6b82; --cost-soft:#eef0f4;         /* downstream cost — NOT green */
+  --info:#2f6f9f;
+  /* type scale */
+  --t-display:28px; --t-h1:20px; --t-h2:16px; --t-bodyl:14px;
+  --t-body:13px; --t-small:12px; --t-caption:11px; --t-micro:10px;
+  /* radii */
+  --r-sm:4px; --r-md:8px; --r-lg:12px; --r-pill:999px;
+  /* elevation */
+  --lift:0 1px 2px rgba(20,24,30,.05),0 8px 20px rgba(20,24,30,.07);
+  --lift-2:0 2px 4px rgba(20,24,30,.06),0 14px 32px rgba(20,24,30,.10);
+  /* fonts */
+  --serif:Georgia,'Times New Roman',serif;
+  --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --mono:'SFMono-Regular',ui-monospace,Consolas,'Cascadia Mono',monospace;
+  --nav:#1c1f24;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --ground:#111317; --surface:#1b1e23; --surface-2:#222630;
+  --ink:#eef0f3; --body:#c8cbd1; --muted:#9298a2; --hair:#2b3038; --hair-2:#242931;
+  --accent:#37c98a; --accent-ink:#5bd6a0; --brand:#1bea87;
+  --pos:#37c98a; --pos-soft:#12271e;
+  --neg:#e2665b; --neg-soft:#2c1917;
+  --att:#d8bb5a; --att-fill:#c9a23f; --att-soft:#282011;
+  --cost:#95a0b6; --cost-soft:#242a34;
+  --info:#68a8d4;
+  --lift:0 1px 2px rgba(0,0,0,.3),0 8px 20px rgba(0,0,0,.35);
+  --lift-2:0 2px 6px rgba(0,0,0,.4),0 16px 36px rgba(0,0,0,.45);
+  --nav:#0e1013;
+}}
+:root[data-theme="dark"]{
+  --ground:#111317; --surface:#1b1e23; --surface-2:#222630;
+  --ink:#eef0f3; --body:#c8cbd1; --muted:#9298a2; --hair:#2b3038; --hair-2:#242931;
+  --accent:#37c98a; --accent-ink:#5bd6a0; --brand:#1bea87;
+  --pos:#37c98a; --pos-soft:#12271e;
+  --neg:#e2665b; --neg-soft:#2c1917;
+  --att:#d8bb5a; --att-fill:#c9a23f; --att-soft:#282011;
+  --cost:#95a0b6; --cost-soft:#242a34;
+  --info:#68a8d4;
+  --lift:0 1px 2px rgba(0,0,0,.3),0 8px 20px rgba(0,0,0,.35);
+  --lift-2:0 2px 6px rgba(0,0,0,.4),0 16px 36px rgba(0,0,0,.45);
+  --nav:#0e1013;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ground);color:var(--body);
+  font-family:var(--sans);font-size:var(--t-body);line-height:1.5;-webkit-font-smoothing:antialiased}
+h1,h2,h3{margin:0;color:var(--ink)}
+a{color:var(--accent-ink);text-decoration:none}
+.tnum{font-variant-numeric:tabular-nums}
+.eyebrow{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* ---------- top nav ---------- */
+.topbar{position:sticky;top:0;z-index:40;background:var(--nav);color:#d7dade;
+  border-bottom:1px solid rgba(255,255,255,.06)}
+.topbar .row{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:18px;
+  padding:0 22px;height:56px}
+.logo{display:flex;align-items:center;gap:8px;flex:none}
+.logo .mk{width:18px;height:18px;border-radius:5px;
+  background:conic-gradient(from 210deg,var(--brand),var(--accent))}
+.logo b{color:#fff;font-size:15px;font-weight:700;letter-spacing:-.01em}
+.nav{display:flex;align-items:center;gap:2px;flex:1;min-width:0}
+.nav a{position:relative;color:#aeb2b9;padding:8px 11px;border-radius:var(--r-sm);
+  font-size:var(--t-small);white-space:nowrap;transition:color .12s,background .12s}
+.nav a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.nav a[aria-current="page"]{color:#fff;font-weight:600}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:11px;right:11px;bottom:-9px;
+  height:2px;background:var(--brand);border-radius:2px}
+.nav .sep{width:1px;height:20px;background:rgba(255,255,255,.14);margin:0 8px;flex:none}
+.nav .util{color:#8b9099}
+/* hover descriptor */
+.nav a[data-desc]:hover::before{content:attr(data-desc);position:absolute;top:calc(100% + 12px);
+  left:0;background:var(--ink);color:#fff;font-size:var(--t-caption);font-weight:400;
+  padding:6px 9px;border-radius:var(--r-sm);white-space:nowrap;box-shadow:var(--lift);
+  z-index:5;pointer-events:none;letter-spacing:0}
+.ctx{display:flex;align-items:center;gap:8px;flex:none}
+.pill,.selectish{background:rgba(255,255,255,.08);color:#d7dade;border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--r-sm);padding:7px 11px;font-size:var(--t-small);display:flex;align-items:center;gap:7px;
+  cursor:pointer;white-space:nowrap}
+.selectish:hover{background:rgba(255,255,255,.14)}
+.selectish .cv{color:#fff;font-weight:600}
+.selectish svg{opacity:.6}
+.burger{display:none;background:none;border:0;color:#fff;cursor:pointer;padding:6px;margin-left:auto}
+
+/* ---------- page shell ---------- */
+.wrap{max-width:1320px;margin:0 auto;padding:26px 22px 64px}
+.pagehead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:20px}
+.pagehead h1{font-family:var(--serif);font-weight:400;font-size:var(--t-display);letter-spacing:-.01em;
+  line-height:1.08;margin-top:6px}
+.pagehead .meta{font-size:var(--t-small);color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;font-size:var(--t-small);font-weight:600;
+  color:var(--accent-ink);background:var(--pos-soft);border:1px solid transparent;
+  padding:7px 12px;border-radius:var(--r-md);cursor:pointer}
+.btn:hover{border-color:color-mix(in srgb,var(--accent) 40%,transparent)}
+.btn.ghost{background:transparent;border:1px dashed var(--hair);color:var(--muted)}
+.btn.ghost:hover{color:var(--ink);border-color:var(--muted)}
+
+/* ---------- KPI grid ---------- */
+.kpis{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
+@media(max-width:1160px){.kpis{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:720px){.kpis{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:440px){.kpis{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r-lg);padding:15px 15px 14px;
+  position:relative;transition:box-shadow .14s,transform .14s,border-color .14s}
+/* affordance: whole card is a drill-in */
+.card.link{cursor:pointer}
+.card.link:hover{box-shadow:var(--lift-2);transform:translateY(-2px);border-color:var(--hair)}
+.card.link:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.card .chev{position:absolute;top:13px;right:13px;color:var(--muted);opacity:0;transition:opacity .14s}
+.card.link:hover .chev{opacity:1}
+.klabel{font-family:var(--mono);font-size:var(--t-micro);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);font-weight:600;display:block;min-height:24px;padding-right:16px}
+.kval{display:flex;align-items:baseline;gap:8px;margin:6px 0 2px}
+.kval .n{font-size:26px;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+.kval .n.warn{color:var(--neg)}
+.delta{font-size:var(--t-caption);font-weight:600;font-family:var(--mono);display:inline-flex;align-items:center;gap:2px}
+.delta.up{color:var(--pos)} .delta.down{color:var(--neg)} .delta.flat{color:var(--muted)}
+.ksub{font-size:var(--t-caption);color:var(--muted);line-height:1.4;margin-top:8px}
+.flag{display:inline-flex;align-items:center;gap:4px;font-family:var(--mono);font-size:9.5px;font-weight:600;
+  letter-spacing:.04em;padding:2px 6px;border-radius:var(--r-sm);text-transform:uppercase;margin-top:8px}
+.flag.bad{background:var(--neg-soft);color:var(--neg)}
+.flag.ok{background:var(--pos-soft);color:var(--accent-ink)}
+.flag.watch{background:var(--att-soft);color:var(--att)}
+/* meter with target tick + non-color cue */
+.meter{position:relative;height:6px;border-radius:var(--r-pill);background:var(--hair-2);margin:10px 0 0;overflow:visible}
+.meter .fill{position:absolute;top:0;left:0;bottom:0;border-radius:var(--r-pill);background:var(--ink)}
+.meter .fill.bad{background:var(--neg)} .meter .fill.ok{background:var(--pos)}
+.meter .tick{position:absolute;top:-3px;width:2px;height:12px;background:var(--muted);border-radius:2px}
+.meter .tick::after{content:"target";position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:8px;color:var(--muted);white-space:nowrap}
+.spark{margin-top:10px;display:flex;align-items:flex-end;justify-content:space-between}
+.spark .cap{font-family:var(--mono);font-size:9px;color:var(--muted)}
+
+/* ---------- section ---------- */
+.section{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r-lg);
+  padding:18px 18px 8px;margin-top:20px}
+.sec-top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+.sec-top h2{font-size:var(--t-h2);font-weight:700}
+.toggles{display:flex;gap:6px;flex-wrap:wrap}
+.seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--hair);border-radius:var(--r-md);padding:2px}
+.seg button{border:0;background:none;font:inherit;font-size:var(--t-small);color:var(--muted);
+  padding:5px 11px;border-radius:6px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);font-weight:600;box-shadow:var(--lift)}
+/* concentrates rows */
+.crow{display:grid;grid-template-columns:150px 1fr 66px 60px 22px;align-items:center;gap:14px;
+  padding:12px 6px;border-top:1px solid var(--hair-2);cursor:pointer;border-radius:var(--r-sm)}
+.crow:hover{background:var(--surface-2)}
+.crow .ch{font-weight:600;color:var(--ink);font-size:var(--t-body)}
+.crow .ch small{display:block;color:var(--muted);font-weight:400;font-size:var(--t-caption);margin-top:1px}
+.bar{position:relative;height:8px;border-radius:var(--r-pill);background:var(--hair-2);overflow:visible}
+.bar .bf{position:absolute;left:0;top:0;bottom:0;border-radius:var(--r-pill);background:var(--ink)}
+.bar .bf.below{background:var(--neg)}
+.bar .tk{position:absolute;top:-3px;width:2px;height:14px;background:var(--muted);opacity:.7}
+.cval{text-align:right;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;font-size:var(--t-body);
+  display:flex;align-items:center;justify-content:flex-end;gap:5px}
+.cval.below{color:var(--neg)}
+.cval .mk{font-size:9px}
+.crow .chev{color:var(--muted);justify-self:end}
+
+/* ---------- two-column narrative (balanced) ---------- */
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:20px;align-items:start}
+@media(max-width:900px){.duo{grid-template-columns:1fr}}
+.panel{background:var(--surface);border:1px solid var(--hair);border-radius:var(--r-lg);padding:18px}
+.panel h2{font-size:var(--t-h2);font-weight:700;margin-bottom:4px}
+.panel .cap{font-size:var(--t-caption);color:var(--muted)}
+.happen{display:flex;flex-direction:column}
+.hitem{display:grid;grid-template-columns:1fr 74px;gap:14px;align-items:center;
+  padding:15px 0;border-top:1px solid var(--hair-2)}
+.hitem:first-of-type{border-top:0}
+.hitem .tt{font-size:var(--t-bodyl);color:var(--ink);line-height:1.4;font-weight:500}
+.hitem .mm{font-size:var(--t-caption);color:var(--muted);margin-top:5px}
+.hitem .mm a{font-weight:600}
+.act{display:flex;flex-direction:column}
+.aitem{display:grid;grid-template-columns:20px 1fr auto;gap:11px;padding:14px 0;border-top:1px solid var(--hair-2)}
+.aitem:first-of-type{border-top:0}
+.aitem .rk{font-family:var(--mono);font-size:var(--t-body);color:var(--muted);font-weight:600;text-align:center}
+.aitem.top{margin:-2px -8px 0;padding:14px 8px;border-left:3px solid var(--neg);
+  background:var(--neg-soft);border-radius:var(--r-md);border-top:0}
+.aitem .ti{font-weight:600;color:var(--ink);font-size:var(--t-body)}
+.aitem .ds{font-size:var(--t-caption);color:var(--muted);margin-top:3px;line-height:1.45}
+.aitem .val{font-family:var(--mono);font-weight:700;color:var(--ink);font-size:var(--t-small);white-space:nowrap;text-align:right}
+.aitem .lk{margin-top:7px;display:flex;gap:14px;font-size:var(--t-caption);font-weight:600}
+.foot{margin-top:22px;font-size:var(--t-caption);color:var(--muted);text-align:center}
+
+/* ---------- jargon term affordance ---------- */
+.term{border-bottom:1px dotted color-mix(in srgb,var(--muted) 70%,transparent);cursor:help;
+  transition:background .12s}
+body.gloss .term{background:var(--att-soft);border-bottom-color:var(--att-fill);
+  border-radius:2px;box-shadow:0 0 0 2px var(--att-soft)}
+#tip{position:fixed;max-width:280px;background:var(--ink);color:#fff;font-size:var(--t-caption);line-height:1.5;
+  padding:9px 11px;border-radius:var(--r-md);box-shadow:var(--lift-2);z-index:90;pointer-events:none;
+  opacity:0;transform:translateY(4px);transition:opacity .12s,transform .12s;font-family:var(--sans)}
+#tip.on{opacity:1;transform:translateY(0)}
+#tip b{color:var(--brand);display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.08em;
+  text-transform:uppercase;margin-bottom:3px}
+
+/* ---------- floating controls ---------- */
+.fctl{position:fixed;top:66px;right:16px;z-index:50;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.fbtn{font-family:var(--mono);font-size:var(--t-caption);letter-spacing:.03em;background:var(--surface);
+  color:var(--muted);border:1px solid var(--hair);border-radius:var(--r-pill);padding:7px 13px;cursor:pointer;
+  box-shadow:var(--lift)}
+.fbtn:hover{color:var(--ink);border-color:var(--muted)}
+.fbtn[aria-pressed="true"]{background:var(--att-soft);color:var(--att);border-color:var(--att-fill)}
+.fbtn:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+/* ---------- mobile nav ---------- */
+#mnav{display:none}
+@media(max-width:1080px){
+  .nav,.ctx .selectish span.lbl{display:none}
+  .burger{display:block}
+  .ctx{margin-left:auto}
+  #mnav.open{display:block;position:fixed;inset:56px 0 0;background:var(--nav);z-index:39;padding:14px 22px;overflow:auto}
+  #mnav a{display:block;color:#d7dade;padding:13px 8px;border-bottom:1px solid rgba(255,255,255,.07);font-size:15px}
+  #mnav a[aria-current="page"]{color:var(--brand);font-weight:600}
+  #mnav .grp{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+    color:#7e838c;padding:16px 8px 4px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+</style>
+
+<!-- ================= TOP BAR ================= -->
+<header class="topbar">
+  <div class="row">
+    <a class="logo" href="#" aria-label="Intendra home"><span class="mk"></span><b>intendra ai</b></a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#" aria-current="page" data-desc="What happened, and where">Summit</a>
+      <a href="#" data-desc="Why customers reached out — and what it costs">Demand</a>
+      <a href="#" data-desc="How we served — parameter by parameter">Quality</a>
+      <a href="#" data-desc="Who served — partner, team, agent">People</a>
+      <a href="#" data-desc="Who fits what — intent &amp; customer to associate">Fit</a>
+      <a href="#" data-desc="The evidence — every signal to a root cause">Conversations</a>
+      <a href="#" data-desc="What to do — and did it work?">Actions</a>
+      <span class="sep" aria-hidden="true"></span>
+      <a href="#" class="util" data-desc="Every number and its deep dive">Metrics</a>
+      <a href="#" class="util" data-desc="The week and month, ready to send">Reports</a>
+      <a href="#" class="util" data-desc="Where the numbers are governed">Studio</a>
+      <a href="#" class="util" data-desc="Ask anything about your conversations">Ask</a>
+    </nav>
+    <div class="ctx">
+      <button class="selectish"><span class="lbl">Vedara ·</span> <span class="cv">Program</span></button>
+      <button class="selectish">All channels <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></button>
+      <button class="selectish"><span class="cv">Week · Jul 6–12</span> <svg width="10" height="10" viewBox="0 0 10 10"><path d="M2 3.5 5 6.5 8 3.5" stroke="currentColor" stroke-width="1.4" fill="none"/></svg></button>
+    </div>
+    <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22"><path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" stroke-width="1.7"/></svg>
+    </button>
+  </div>
+</header>
+<nav id="mnav" aria-label="Mobile">
+  <div class="grp">The weekly story</div>
+  <a href="#" aria-current="page">Summit</a><a href="#">Demand</a><a href="#">Quality</a>
+  <a href="#">People</a><a href="#">Fit</a><a href="#">Conversations</a><a href="#">Actions</a>
+  <div class="grp">Reference &amp; setup</div>
+  <a href="#">Metrics</a><a href="#">Reports</a><a href="#">Studio</a><a href="#">Ask Intendra</a>
+</nav>
+
+<!-- floating controls -->
+<div class="fctl">
+  <button class="fbtn" id="tgTheme" aria-label="Toggle theme">◐ theme</button>
+  <button class="fbtn" id="tgGloss" aria-pressed="false" title="Highlight the terms that need a definition">❯ terms</button>
+</div>
+
+<!-- ================= PAGE ================= -->
+<main class="wrap">
+  <div class="pagehead">
+    <div>
+      <span class="eyebrow">Program summit</span>
+      <h1>How the week went</h1>
+    </div>
+    <div class="meta">
+      Jul 6–12 · compared with prior week
+      <a href="#">this week as a brief ↗</a>
+      <button class="btn ghost">Ask Intendra</button>
+    </div>
+  </div>
+
+  <!-- KPI CARDS -->
+  <div class="kpis">
+    <!-- Contacts -->
+    <div class="card link" tabindex="0" role="button" aria-label="Contacts analysed 8,470. Open details">
+      <span class="chev">↗</span>
+      <span class="klabel">Contacts analysed</span>
+      <div class="kval"><span class="n tnum">8,470</span><span class="delta up">▲ 3%</span></div>
+      <div class="ksub">+1,730 <span class="term" data-term="Feedback signals" data-def="Customer sentiment captured outside a service contact — surveys, reviews, social — counted for insight but carrying no handle cost.">feedback signals</span></div>
+      <div class="spark"><svg width="90" height="26" viewBox="0 0 90 26" fill="none"><polyline points="0,20 15,19 30,17 45,16 60,13 75,11 90,8" stroke="var(--muted)" stroke-width="1.5"/><circle cx="90" cy="8" r="2.4" fill="var(--accent)"/></svg><span class="cap">12 wk</span></div>
+    </div>
+    <!-- Cost -->
+    <div class="card link" tabindex="0" role="button" aria-label="Total cost to serve $66.9k. Open details">
+      <span class="chev">↗</span>
+      <span class="klabel">Total cost to serve</span>
+      <div class="kval"><span class="n tnum">$66.9k</span><span class="delta down">▲ 3%</span></div>
+      <div class="ksub">$41.2k <span class="term" data-term="Handle cost" data-def="The direct cost of an agent handling the contact.">handling</span> + <span style="color:var(--cost);font-weight:600">$25.7k <span class="term" data-term="Downstream (modeled)" data-def="Estimated cost created after the contact — rework, repeat contacts, refunds — attributed back to the originating intent. Modelled, not booked.">downstream</span></span> · 62% <span class="term" data-term="Avoidable" data-def="Share of cost tied to intents that best practice would eliminate rather than handle.">avoidable</span></div>
+      <div class="spark"><svg width="90" height="26" viewBox="0 0 90 26" fill="none"><polyline points="0,18 15,18 30,16 45,15 60,14 75,11 90,9" stroke="var(--muted)" stroke-width="1.5"/><circle cx="90" cy="9" r="2.4" fill="var(--cost)"/></svg><span class="cap">12 wk</span></div>
+    </div>
+    <!-- FCR -->
+    <div class="card link" tabindex="0" role="button" aria-label="First contact resolution 68 percent, below target. Open details">
+      <span class="chev">↗</span>
+      <span class="klabel"><span class="term" data-term="First contact resolution (FCR)" data-def="Share of contacts resolved in a single interaction, with no repeat within the follow-up window. Repeat-adjusted here to 65.">First contact resolution</span></span>
+      <div class="kval"><span class="n tnum warn">68%</span><span class="delta up">▲ 1pp</span></div>
+      <div class="meter"><span class="fill bad" style="width:68%"></span><span class="tick" style="left:80%"></span></div>
+      <span class="flag bad">▼ 12pp below 80 target</span>
+      <div class="spark"><svg width="90" height="20" viewBox="0 0 90 20" fill="none"><polyline points="0,9 15,10 30,9 45,11 60,10 75,9 90,8" stroke="var(--muted)" stroke-width="1.5"/><circle cx="90" cy="8" r="2.4" fill="var(--neg)"/></svg><span class="cap">12 wk</span></div>
+    </div>
+    <!-- CES -->
+    <div class="card link" tabindex="0" role="button" aria-label="Customer effort 3.9. Open details">
+      <span class="chev">↗</span>
+      <span class="klabel"><span class="term" data-term="Customer effort (CES)" data-def="Customer Effort Score — how hard the customer had to work to get their issue resolved. Scale 1–5, higher is easier.">Customer effort — CES</span></span>
+      <div class="kval"><span class="n tnum">3.9</span><span class="delta up">▲ 0.1</span></div>
+      <div class="meter"><span class="fill ok" style="width:72%"></span><span class="tick" style="left:80%"></span></div>
+      <div class="ksub">Scale 1–5 · higher is easier</div>
+      <div class="spark"><svg width="90" height="20" viewBox="0 0 90 20" fill="none"><polyline points="0,13 15,12 30,12 45,10 60,10 75,9 90,8" stroke="var(--muted)" stroke-width="1.5"/><circle cx="90" cy="8" r="2.4" fill="var(--pos)"/></svg><span class="cap">12 wk</span></div>
+    </div>
+    <!-- Experience movement -->
+    <div class="card link" tabindex="0" role="button" aria-label="Experience movement minus 11. Open details">
+      <span class="chev">↗</span>
+      <span class="klabel"><span class="term" data-term="Experience movement (NEM)" data-def="Net Emotion Margin — positive minus negative emotion across the conversation. Negative means more frustration than satisfaction left at the end.">Experience movement</span></span>
+      <div class="kval"><span class="n tnum">−11</span><span class="delta flat">0</span></div>
+      <span class="flag watch">◆ 22% of journeys worsened</span>
+      <div class="ksub"><span class="term" data-term="Save rate" data-def="Share of at-risk (churn-signalling) customers retained after the contact.">Save rate</span> 45%</div>
+      <div class="spark"><svg width="90" height="20" viewBox="0 0 90 20" fill="none"><polyline points="0,7 15,8 30,9 45,9 60,10 75,10 90,10" stroke="var(--muted)" stroke-width="1.5"/><circle cx="90" cy="10" r="2.4" fill="var(--att-fill)"/></svg><span class="cap">12 wk</span></div>
+    </div>
+    <!-- Quality -->
+    <div class="card link" tabindex="0" role="button" aria-label="Quality score 87, above target. Open details">
+      <span class="chev">↗</span>
+      <span class="klabel"><span class="term" data-term="Quality score" data-def="Weighted rubric score (0–100) across 58 parameters, scored on every contact — not a sample.">Quality score</span></span>
+      <div class="kval"><span class="n tnum">87</span><span class="delta up">▲ 1</span></div>
+      <div class="meter"><span class="fill ok" style="width:87%"></span><span class="tick" style="left:85%"></span></div>
+      <span class="flag bad">7 <span class="term" data-term="Fatal violation" data-def="A compliance-critical failure — e.g. identity not verified before an account change — that auto-zeros the contact's quality score.">fatal violations</span> this week</span>
+      <div class="spark"><svg width="90" height="20" viewBox="0 0 90 20" fill="none"><polyline points="0,11 15,9 30,11 45,8 60,9 75,7 90,7" stroke="var(--muted)" stroke-width="1.5"/><circle cx="90" cy="7" r="2.4" fill="var(--pos)"/></svg><span class="cap">12 wk</span></div>
+    </div>
+  </div>
+
+  <!-- WHERE IT CONCENTRATES -->
+  <section class="section">
+    <div class="sec-top">
+      <h2>Where it concentrates</h2>
+      <div class="toggles">
+        <span class="seg"><button aria-pressed="true">Channels</button><button aria-pressed="false">Partners</button></span>
+        <span class="seg"><button aria-pressed="false">Volume</button><button aria-pressed="true">Resolution</button><button aria-pressed="false">Experience</button><button aria-pressed="false">Cost</button><button aria-pressed="false">Quality</button></span>
+      </div>
+    </div>
+    <p class="cap" style="font-size:var(--t-caption);color:var(--muted);margin:0 0 4px">First contact resolution by channel · tick marks the 80 target · <span style="color:var(--neg)">▼ = below target</span></p>
+
+    <div class="crow"><div class="ch">Field<small>100 contacts</small></div>
+      <div class="bar"><span class="bf" style="width:90%"></span><span class="tk" style="left:80%"></span></div>
+      <div class="cval">90%</div><div class="cval" style="font-weight:400;color:var(--muted);font-size:var(--t-caption)">▲ trend</div><span class="chev">›</span></div>
+
+    <div class="crow"><div class="ch">WhatsApp<small>220 contacts</small></div>
+      <div class="bar"><span class="bf" style="width:82%"></span><span class="tk" style="left:80%"></span></div>
+      <div class="cval">82%</div><div class="cval" style="font-weight:400;color:var(--muted);font-size:var(--t-caption)">▲ trend</div><span class="chev">›</span></div>
+
+    <div class="crow"><div class="ch">Chat<small>1,340 contacts</small></div>
+      <div class="bar"><span class="bf" style="width:81%"></span><span class="tk" style="left:80%"></span></div>
+      <div class="cval">81%</div><div class="cval" style="font-weight:400;color:var(--muted);font-size:var(--t-caption)">– flat</div><span class="chev">›</span></div>
+
+    <div class="crow"><div class="ch">Social<small>60 contacts · low sample</small></div>
+      <div class="bar"><span class="bf below" style="width:71%"></span><span class="tk" style="left:80%"></span></div>
+      <div class="cval below">71% <span class="mk">▼</span></div><div class="cval" style="font-weight:400;color:var(--muted);font-size:var(--t-caption)">– flat</div><span class="chev">›</span></div>
+
+    <div class="crow"><div class="ch">Voice<small>4,950 contacts</small></div>
+      <div class="bar"><span class="bf below" style="width:68%"></span><span class="tk" style="left:80%"></span></div>
+      <div class="cval below">68% <span class="mk">▼</span></div><div class="cval" style="font-weight:400;color:var(--muted);font-size:var(--t-caption)">▲ trend</div><span class="chev">›</span></div>
+
+    <div class="crow"><div class="ch">Email<small>1,800 contacts</small></div>
+      <div class="bar"><span class="bf below" style="width:55%"></span><span class="tk" style="left:80%"></span></div>
+      <div class="cval below">55% <span class="mk">▼</span></div><div class="cval" style="font-weight:400;color:var(--neg);font-size:var(--t-caption)">▼ 4 wks</div><span class="chev">›</span></div>
+    <div style="height:10px"></div>
+  </section>
+
+  <!-- NARRATIVE -->
+  <div class="duo">
+    <div class="panel happen">
+      <h2>What's happening</h2>
+      <p class="cap" style="margin-bottom:6px">The moves worth a human read</p>
+      <div class="hitem">
+        <div><div class="tt"><span class="term" data-term="First contact resolution (FCR)" data-def="Share of contacts resolved in a single interaction, no repeat within the follow-up window.">Email resolution</span> has slid four straight weeks — 61% to 55% — and now drives most of the program gap to target.</div>
+          <div class="mm">Comprehension failures on multi-question emails · 1,800 contacts · <a href="#">See the emails ↗</a></div></div>
+        <svg width="74" height="30" viewBox="0 0 74 30" fill="none"><polyline points="0,8 12,10 24,12 37,15 49,18 61,22 74,24" stroke="var(--neg)" stroke-width="1.6"/><circle cx="74" cy="24" r="2.6" fill="var(--neg)"/></svg>
+      </div>
+      <div class="hitem">
+        <div><div class="tt">Orders held for verification spiked to twenty times baseline; two thirds of those customers left angrier than they arrived.</div>
+          <div class="mm">New trigger, first seen Jul 7 · 328 contacts · <a href="#">See the spike ↗</a></div></div>
+        <svg width="74" height="30" viewBox="0 0 74 30" fill="none"><polyline points="0,22 24,21 40,20 52,16 62,9 74,5" stroke="var(--att-fill)" stroke-width="1.6"/><circle cx="74" cy="5" r="2.6" fill="var(--neg)"/></svg>
+      </div>
+      <div class="hitem">
+        <div><div class="tt">Field keeps recovering deliveries other channels lose — doorstep verification is quietly working.</div>
+          <div class="mm">96% resolution · experience +11 on 100 visits · <a href="#">See what works ↗</a></div></div>
+        <svg width="74" height="30" viewBox="0 0 74 30" fill="none"><polyline points="0,20 15,18 30,19 45,14 60,12 74,8" stroke="var(--pos)" stroke-width="1.6"/><circle cx="74" cy="8" r="2.6" fill="var(--pos)"/></svg>
+      </div>
+    </div>
+
+    <div class="panel act">
+      <h2>What to act on</h2>
+      <p class="cap" style="margin-bottom:6px">Ranked by <span class="term" data-term="Value at stake" data-def="Estimated annual cost or revenue impact if the issue is left unaddressed — used to rank actions by business impact (value–irritant).">value at stake</span></p>
+      <div class="aitem top">
+        <div class="rk">1</div>
+        <div><div class="ti">Churn signals rising after the price change</div>
+          <div class="ds">501 conversations mention leaving, 3.1× baseline, concentrated in subscription cancellations.</div>
+          <div class="lk"><a href="#">Review evidence ↗</a><a href="#">Create <span class="term" data-term="Initiative" data-def="A tracked improvement project with an owner, an expected value, and a measured before/after impact — lives on the Actions page.">initiative</span> ↗</a></div></div>
+        <div class="val">501 convs</div>
+      </div>
+      <div class="aitem"><div class="rk">2</div>
+        <div><div class="ti">Proactive delivery-status notices</div>
+          <div class="ds">Would remove the top intent on two channels — customers who only want an update.</div>
+          <div class="lk"><a href="#">Review evidence ↗</a><a href="#">Create initiative ↗</a></div></div>
+        <div class="val">$340k / yr</div></div>
+      <div class="aitem"><div class="rk">3</div>
+        <div><div class="ti">Enforce carrier transit SLA</div>
+          <div class="ds">One carrier drives 44% of delivery-delay contacts and most of Voice's experience drag.</div>
+          <div class="lk"><a href="#">Review evidence ↗</a><a href="#">Create initiative ↗</a></div></div>
+        <div class="val">$225k / yr</div></div>
+      <div class="aitem"><div class="rk">4</div>
+        <div><div class="ti">Email comprehension coaching at MK</div>
+          <div class="ds">"Addresses every question" fails on a third of MK emails; the rubric tracks this one parameter.</div>
+          <div class="lk"><a href="#">Review evidence ↗</a><a href="#">Create initiative ↗</a></div></div>
+        <div class="val">$144k / yr</div></div>
+    </div>
+  </div>
+
+  <p class="foot"><span class="term" data-term="Coverage" data-def="Share of contacts scored by the intent + quality engine, versus a sampled subset. 100% means every contact is analysed.">Coverage</span> 100% — all 8,470 service contacts scored · 1,730 feedback signals carry no handle cost.</p>
+</main>
+
+<div id="tip" role="tooltip"></div>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  // theme
+  document.getElementById('tgTheme').addEventListener('click',function(){
+    var c=root.getAttribute('data-theme');
+    if(!c){c=window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';}
+    root.setAttribute('data-theme',c==='dark'?'light':'dark');
+  });
+  // glossary highlight
+  var gb=document.getElementById('tgGloss');
+  gb.addEventListener('click',function(){
+    var on=document.body.classList.toggle('gloss');
+    gb.setAttribute('aria-pressed',on?'true':'false');
+  });
+  // burger
+  var bg=document.getElementById('burger'),mn=document.getElementById('mnav');
+  bg.addEventListener('click',function(){
+    var open=mn.classList.toggle('open');
+    bg.setAttribute('aria-expanded',open?'true':'false');
+  });
+  // tooltip for terms
+  var tip=document.getElementById('tip');
+  function show(e){
+    var t=e.currentTarget, def=t.getAttribute('data-def'), lbl=t.getAttribute('data-term')||'';
+    tip.innerHTML='<b>'+lbl+'</b>'+def;
+    tip.classList.add('on');
+    var r=t.getBoundingClientRect();
+    var tw=Math.min(280,tip.offsetWidth);
+    var x=Math.min(Math.max(8,r.left),window.innerWidth-tw-8);
+    var y=r.bottom+8;
+    if(y+tip.offsetHeight>window.innerHeight-8){y=r.top-tip.offsetHeight-8;}
+    tip.style.left=x+'px'; tip.style.top=y+'px';
+  }
+  function hide(){tip.classList.remove('on');}
+  document.querySelectorAll('.term').forEach(function(t){
+    t.addEventListener('mouseenter',show);
+    t.addEventListener('mouseleave',hide);
+    t.addEventListener('focus',show); t.addEventListener('blur',hide);
+    t.setAttribute('tabindex','0');
+  });
+})();
+</script>

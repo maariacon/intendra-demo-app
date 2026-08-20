@@ -1,0 +1,351 @@
+<title>Intendra AI — Design Token Sheet</title>
+<style>
+  :root{
+    --ground:#eef0f3; --surface:#ffffff; --surface-2:#f5f6f8;
+    --ink:#23252b; --body:#3f434b; --muted:#5b606b; --faint:#767b85;
+    --line:#e0e2e7; --line-2:#eceef1;
+    --accent:#0f7d51; --brand:#1bea87;
+    --pos:#0f7d51; --pos-soft:#e7f8ef;
+    --neg:#c03d33; --neg-soft:#faedeb;
+    --att:#9a7d1f; --att-fill:#c9a23f; --att-soft:#f6efdc;
+    --shadow:0 1px 2px rgba(20,24,30,.05),0 6px 18px rgba(20,24,30,.06);
+    --serif:Georgia,'Times New Roman',serif;
+    --sans:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+    --mono:'SFMono-Regular',ui-monospace,Consolas,'Cascadia Mono',monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --ground:#121417; --surface:#1c1f24; --surface-2:#22262c;
+      --ink:#eef0f3; --body:#c8cbd1; --muted:#9298a2; --faint:#7f858f;
+      --line:#2b3037; --line-2:#252a30;
+      --accent:#37c98a; --brand:#1bea87;
+      --pos:#37c98a; --pos-soft:#12271e;
+      --neg:#e2665b; --neg-soft:#2c1917;
+      --att:#d8bb5a; --att-fill:#c9a23f; --att-soft:#282011;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.35);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#121417; --surface:#1c1f24; --surface-2:#22262c;
+    --ink:#eef0f3; --body:#c8cbd1; --muted:#9298a2; --faint:#7f858f;
+    --line:#2b3037; --line-2:#252a30;
+    --accent:#37c98a; --brand:#1bea87;
+    --pos:#37c98a; --pos-soft:#12271e;
+    --neg:#e2665b; --neg-soft:#2c1917;
+    --att:#d8bb5a; --att-fill:#c9a23f; --att-soft:#282011;
+    --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 22px rgba(0,0,0,.35);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--ground);color:var(--body);
+    font-family:var(--sans);font-size:15px;line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .sheet{max-width:1120px;margin:0 auto;padding:40px 28px 72px}
+
+  /* ---- header ---- */
+  .mast{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    padding-bottom:20px;border-bottom:2px solid var(--ink);flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px}
+  .brand .mark{width:22px;height:22px;border-radius:5px;
+    background:conic-gradient(from 210deg,var(--brand),var(--accent));flex:none}
+  .brand .name{font-weight:700;font-size:17px;color:var(--ink);letter-spacing:-.01em}
+  .mast h1{font-family:var(--serif);font-weight:400;color:var(--ink);
+    font-size:30px;line-height:1.1;margin:14px 0 4px;letter-spacing:-.01em;max-width:22ch;text-wrap:balance}
+  .mast .sub{color:var(--muted);font-size:14px;margin:0}
+  .meta{font-family:var(--mono);font-size:11px;color:var(--faint);text-align:right;line-height:1.7}
+  .meta b{color:var(--muted);font-weight:600}
+
+  .legend{display:flex;gap:26px;flex-wrap:wrap;margin:22px 0 4px;
+    font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.02em}
+  .legend span{display:inline-flex;align-items:center;gap:7px}
+  .dot{width:9px;height:9px;border-radius:50%;flex:none}
+
+  /* ---- section ---- */
+  section{margin-top:44px}
+  .sec-head{display:flex;align-items:baseline;gap:12px;margin-bottom:4px}
+  .sec-num{font-family:var(--mono);font-size:12px;color:var(--accent);font-weight:600}
+  .sec-head h2{font-family:var(--serif);font-weight:400;color:var(--ink);font-size:23px;margin:0;letter-spacing:-.01em}
+  .sec-sub{color:var(--muted);font-size:13.5px;margin:0 0 20px;max-width:74ch}
+
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media (max-width:760px){.ba{grid-template-columns:1fr}}
+  .col{background:var(--surface);border:1px solid var(--line);border-radius:12px;
+    padding:18px 18px 20px;box-shadow:var(--shadow)}
+  .col.after{border-color:color-mix(in srgb,var(--accent) 40%,var(--line))}
+  .col-tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:600;display:inline-flex;align-items:center;gap:8px;margin-bottom:16px}
+  .col.before .col-tag{color:var(--neg)}
+  .col.after .col-tag{color:var(--accent)}
+  .col-tag::after{content:"";height:1px;flex:1;min-width:20px;background:var(--line)}
+  .note{font-size:12.5px;color:var(--muted);margin:14px 0 0;line-height:1.5}
+  .note b{color:var(--body)}
+
+  /* ---- colour swatches ---- */
+  .sw-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+  .sw{display:flex;align-items:center;gap:10px;min-width:0}
+  .chip{width:34px;height:34px;border-radius:7px;border:1px solid rgba(20,24,30,.14);flex:none}
+  .sw .tx{min-width:0}
+  .sw .hex{font-family:var(--mono);font-size:11.5px;color:var(--ink);font-weight:600;display:block}
+  .sw .rl{font-size:10.5px;color:var(--faint);display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .fail{color:var(--neg);font-weight:600}
+
+  .pairs{display:flex;flex-direction:column;gap:11px}
+  .pair{display:flex;align-items:stretch;gap:0;border-radius:9px;overflow:hidden;border:1px solid var(--line)}
+  .pair .fill{flex:none;width:88px;display:flex;flex-direction:column;justify-content:center;
+    padding:10px 12px;color:#fff}
+  .pair .soft{flex:1;display:flex;flex-direction:column;justify-content:center;padding:10px 13px;min-width:0}
+  .pair .lab{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;opacity:.85}
+  .pair .val{font-family:var(--mono);font-size:12px;font-weight:600;margin-top:2px}
+  .pair .soft .txt{font-size:12.5px;font-weight:600}
+  .pair .soft .rt{font-family:var(--mono);font-size:10.5px;margin-top:1px}
+  .pass{color:var(--pos)}
+  .brandline{display:flex;align-items:center;gap:12px;margin-top:12px;padding:11px 13px;
+    border:1px dashed color-mix(in srgb,var(--brand) 55%,var(--line));border-radius:9px;background:var(--surface-2)}
+  .brandline .bchip{width:30px;height:30px;border-radius:7px;background:var(--brand);flex:none}
+  .brandline .t{font-size:12px;color:var(--muted)}
+  .brandline .t b{color:var(--ink)}
+
+  /* ---- type ---- */
+  .cloud{display:flex;flex-wrap:wrap;gap:x;column-gap:14px;row-gap:6px;align-items:baseline;color:var(--faint)}
+  .cloud span{font-family:var(--sans)}
+  .scale{display:flex;flex-direction:column;gap:12px}
+  .st{display:flex;align-items:baseline;gap:14px;border-bottom:1px solid var(--line-2);padding-bottom:11px}
+  .st:last-child{border-bottom:0;padding-bottom:0}
+  .st .spec{font-family:var(--mono);font-size:10.5px;color:var(--faint);flex:none;width:96px;line-height:1.35}
+  .st .spec b{color:var(--muted);display:block;font-size:11px}
+  .st .samp{color:var(--ink);min-width:0}
+  .serif{font-family:var(--serif);font-weight:400}
+  .mono{font-family:var(--mono)}
+
+  /* ---- shape ---- */
+  .radii{display:flex;flex-wrap:wrap;gap:14px}
+  .rb{display:flex;flex-direction:column;align-items:center;gap:7px}
+  .rb .box{width:52px;height:52px;background:var(--surface-2);border:1.5px solid var(--muted)}
+  .rb .cap{font-family:var(--mono);font-size:10px;color:var(--faint);text-align:center;line-height:1.3}
+  .rb .cap b{color:var(--muted);display:block;font-size:11px}
+  .radii.after .rb .box{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 8%,var(--surface))}
+  .spacing{display:flex;align-items:flex-end;gap:8px;margin-top:6px}
+  .sp{background:var(--accent);opacity:.8;width:20px;border-radius:2px 2px 0 0}
+  .sp-lab{font-family:var(--mono);font-size:9px;color:var(--faint);text-align:center;margin-top:4px}
+
+  .foot{margin-top:48px;padding-top:18px;border-top:1px solid var(--line);
+    display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    font-size:12px;color:var(--muted)}
+  .foot .mono{font-family:var(--mono);font-size:11px;color:var(--faint)}
+
+  .toggle{position:fixed;top:14px;right:14px;z-index:9;
+    font-family:var(--mono);font-size:11px;letter-spacing:.04em;
+    background:var(--surface);color:var(--muted);border:1px solid var(--line);
+    border-radius:999px;padding:7px 13px;cursor:pointer;box-shadow:var(--shadow)}
+  .toggle:hover{color:var(--ink);border-color:var(--muted)}
+  .toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+  @media print{.toggle{display:none}}
+</style>
+
+<button class="toggle" id="tg" aria-label="Toggle colour theme">◐ theme</button>
+
+<div class="sheet">
+
+  <header class="mast">
+    <div>
+      <div class="brand"><span class="mark" aria-hidden="true"></span><span class="name">intendra ai</span></div>
+      <h1>Design token sheet — before &amp; after</h1>
+      <p class="sub">Colour, type &amp; shape, rationalised from the values in the v5 mockup.</p>
+    </div>
+    <div class="meta">
+      <b>COMPANION TO</b><br>UX &amp; Journey-Management Review<br>
+      <b>SOURCE</b> intendra-app-v5.html<br>
+      <b>DATE</b> 13 Aug 2026
+    </div>
+  </header>
+
+  <div class="legend">
+    <span><span class="dot" style="background:var(--neg)"></span>Before — as built in v5</span>
+    <span><span class="dot" style="background:var(--accent)"></span>After — proposed token</span>
+    <span><span class="mono">contrast measured vs page / card · WCAG&nbsp;AA = 4.5:1</span></span>
+  </div>
+
+  <!-- ============ COLOUR ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Colour</h2></div>
+    <p class="sec-sub">Fourteen loose variables become four semantic pairs plus a reserved brand mark. Green stops meaning two things at once.</p>
+    <div class="ba">
+
+      <div class="col before">
+        <div class="col-tag">Before · 14 loose tokens</div>
+        <div class="sw-grid">
+          <div class="sw"><span class="chip" style="background:#1bea87"></span><span class="tx"><span class="hex">#1bea87</span><span class="rl fail">brand · also fills “cost”</span></span></div>
+          <div class="sw"><span class="chip" style="background:#0f7d51"></span><span class="tx"><span class="hex">#0f7d51</span><span class="rl">accent / positive</span></span></div>
+          <div class="sw"><span class="chip" style="background:#c03d33"></span><span class="tx"><span class="hex">#c03d33</span><span class="rl">red / negative</span></span></div>
+          <div class="sw"><span class="chip" style="background:#c9a23f"></span><span class="tx"><span class="hex">#c9a23f</span><span class="rl fail">gold · used as text</span></span></div>
+          <div class="sw"><span class="chip" style="background:#28282d"></span><span class="tx"><span class="hex">#28282d</span><span class="rl">ink</span></span></div>
+          <div class="sw"><span class="chip" style="background:#3f434b"></span><span class="tx"><span class="hex">#3f434b</span><span class="rl">body</span></span></div>
+          <div class="sw"><span class="chip" style="background:#6d717b"></span><span class="tx"><span class="hex">#6d717b</span><span class="rl">muted · 4.5:1</span></span></div>
+          <div class="sw"><span class="chip" style="background:#767b85"></span><span class="tx"><span class="hex">#767b85</span><span class="rl fail">faint · 3.9:1 fails</span></span></div>
+          <div class="sw"><span class="chip" style="background:#e7f8ef"></span><span class="tx"><span class="hex">#e7f8ef</span><span class="rl">accent-soft</span></span></div>
+          <div class="sw"><span class="chip" style="background:#faedeb"></span><span class="tx"><span class="hex">#faedeb</span><span class="rl">red-soft</span></span></div>
+          <div class="sw"><span class="chip" style="background:#f6efdc"></span><span class="tx"><span class="hex">#f6efdc</span><span class="rl">hl-soft</span></span></div>
+          <div class="sw"><span class="chip" style="background:#e4e5e9"></span><span class="tx"><span class="hex">#e4e5e9</span><span class="rl">line</span></span></div>
+        </div>
+        <p class="note"><b>Two problems.</b> Mint <span class="mono">#1bea87</span> is the brand <em>and</em> the fill for downstream cost — a negative rendered as “good.” <span class="mono">#767b85</span> and the two accent hues are used as small text below AA.</p>
+      </div>
+
+      <div class="col after">
+        <div class="col-tag">After · 4 semantic pairs + brand</div>
+        <div class="pairs">
+          <div class="pair">
+            <div class="fill" style="background:#0f7d51"><span class="lab">Positive</span><span class="val">#0f7d51</span></div>
+            <div class="soft" style="background:var(--pos-soft)"><span class="txt" style="color:#0f7d51">Resolved · on target</span><span class="rt pass">text 4.8:1 · pass</span></div>
+          </div>
+          <div class="pair">
+            <div class="fill" style="background:#c03d33"><span class="lab">Negative</span><span class="val">#c03d33</span></div>
+            <div class="soft" style="background:var(--neg-soft)"><span class="txt" style="color:#c03d33">Fatal · below target</span><span class="rt pass">text 4.9:1 · pass</span></div>
+          </div>
+          <div class="pair">
+            <div class="fill" style="background:#9a7d1f"><span class="lab">Attention</span><span class="val">#9a7d1f</span></div>
+            <div class="soft" style="background:var(--att-soft)"><span class="txt" style="color:#9a7d1f">Watch · drifting</span><span class="rt pass">text-safe gold · fill #c9a23f</span></div>
+          </div>
+          <div class="pair">
+            <div class="fill" style="background:#5b606b"><span class="lab">Neutral</span><span class="val">#5b606b</span></div>
+            <div class="soft" style="background:var(--surface-2)"><span class="txt" style="color:var(--muted)">Secondary text · darkened</span><span class="rt pass" style="color:var(--muted)">5.5:1 · pass (was 3.9)</span></div>
+          </div>
+        </div>
+        <div class="brandline">
+          <span class="bchip" aria-hidden="true"></span>
+          <span class="t"><b>Brand mint #1bea87 — identity only.</b> Logo, energy, large fills. Never text, thin lines or status (1.6:1).</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Typography</h2></div>
+    <p class="sec-sub">Keep the three families — Georgia serif display, system sans UI, monospace labels. Replace ~29 ad-hoc sizes with one 8-step scale.</p>
+    <div class="ba">
+
+      <div class="col before">
+        <div class="col-tag">Before · ~29 sizes, no rhythm</div>
+        <div class="cloud" style="row-gap:8px">
+          <span style="font-size:34px">34</span>
+          <span style="font-size:28px">28</span>
+          <span style="font-size:26px">26</span>
+          <span style="font-size:24px">24</span>
+          <span style="font-size:22px">22</span>
+          <span style="font-size:21px">21</span>
+          <span style="font-size:20px">20</span>
+          <span style="font-size:19px">19</span>
+          <span style="font-size:18px">18</span>
+          <span style="font-size:17px">17</span>
+          <span style="font-size:16px">16</span>
+          <span style="font-size:15.5px">15.5</span>
+          <span style="font-size:15px">15</span>
+          <span style="font-size:14.5px">14.5</span>
+          <span style="font-size:14px">14</span>
+          <span style="font-size:13.5px">13.5</span>
+          <span style="font-size:13px">13</span>
+          <span style="font-size:12.5px">12.5</span>
+          <span style="font-size:12px">12</span>
+          <span style="font-size:11.5px">11.5</span>
+          <span style="font-size:11px">11</span>
+          <span style="font-size:10.5px">10.5</span>
+          <span style="font-size:10px">10</span>
+          <span style="font-size:9.5px">9.5</span>
+          <span style="font-size:9px">9</span>
+          <span style="font-size:8.5px">8.5</span>
+          <span style="font-size:8px">8</span>
+          <span style="font-size:7.5px">7.5</span>
+        </div>
+        <p class="note"><b>Half-pixel drift.</b> Values like 12.5 / 11.5 / 9.5&nbsp;px sit a hair apart, so components never quite line up. Body base 12.5&nbsp;px is small for long reading.</p>
+      </div>
+
+      <div class="col after">
+        <div class="col-tag">After · 8-step scale</div>
+        <div class="scale">
+          <div class="st"><span class="spec"><b>Display 28</b>Georgia serif</span><span class="samp serif" style="font-size:28px;line-height:1.05">How the week went</span></div>
+          <div class="st"><span class="spec"><b>H1 · 20</b>Sans bold</span><span class="samp" style="font-size:20px;font-weight:700">Section header</span></div>
+          <div class="st"><span class="spec"><b>H2 · 16</b>Sans bold</span><span class="samp" style="font-size:16px;font-weight:700">Card title</span></div>
+          <div class="st"><span class="spec"><b>Body-L · 14</b>Sans</span><span class="samp" style="font-size:14px">Lead sentence &amp; emphasis</span></div>
+          <div class="st"><span class="spec"><b>Body · 13</b>Sans</span><span class="samp" style="font-size:13px">Default body text — up from 12.5</span></div>
+          <div class="st"><span class="spec"><b>Small · 12</b>Sans</span><span class="samp" style="font-size:12px">Secondary &amp; table meta</span></div>
+          <div class="st"><span class="spec"><b>Caption · 11</b>Sans</span><span class="samp" style="font-size:11px;color:var(--muted)">Captions, with darkened grey</span></div>
+          <div class="st"><span class="spec"><b>Micro · 10</b>Mono +.1em</span><span class="samp mono" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)">Uppercase label</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ SHAPE ============ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Shape &amp; spacing</h2></div>
+    <p class="sec-sub">Thirteen corner radii collapse to three tokens plus pill and circle. Spacing snaps to a 4-px grid.</p>
+    <div class="ba">
+
+      <div class="col before">
+        <div class="col-tag">Before · 13 radii</div>
+        <div class="radii">
+          <div class="rb"><span class="box" style="border-radius:2px"></span><span class="cap">2</span></div>
+          <div class="rb"><span class="box" style="border-radius:3px"></span><span class="cap">3</span></div>
+          <div class="rb"><span class="box" style="border-radius:4px"></span><span class="cap">4</span></div>
+          <div class="rb"><span class="box" style="border-radius:5px"></span><span class="cap">5</span></div>
+          <div class="rb"><span class="box" style="border-radius:6px"></span><span class="cap">6</span></div>
+          <div class="rb"><span class="box" style="border-radius:7px"></span><span class="cap">7</span></div>
+          <div class="rb"><span class="box" style="border-radius:8px"></span><span class="cap">8</span></div>
+          <div class="rb"><span class="box" style="border-radius:9px"></span><span class="cap">9</span></div>
+          <div class="rb"><span class="box" style="border-radius:10px"></span><span class="cap">10</span></div>
+          <div class="rb"><span class="box" style="border-radius:12px"></span><span class="cap">12</span></div>
+          <div class="rb"><span class="box" style="border-radius:14px"></span><span class="cap">14</span></div>
+        </div>
+        <p class="note"><b>Cards alone appear at 6, 8, 10 and 12&nbsp;px.</b> The eye reads the inconsistency as sloppiness in an otherwise controlled design.</p>
+      </div>
+
+      <div class="col after">
+        <div class="col-tag">After · 3 radii + pill + circle</div>
+        <div class="radii after">
+          <div class="rb"><span class="box" style="border-radius:4px"></span><span class="cap"><b>sm · 4</b>tags, inputs</span></div>
+          <div class="rb"><span class="box" style="border-radius:8px"></span><span class="cap"><b>md · 8</b>buttons, wrappers</span></div>
+          <div class="rb"><span class="box" style="border-radius:12px"></span><span class="cap"><b>lg · 12</b>cards, panels</span></div>
+          <div class="rb"><span class="box" style="border-radius:999px;width:72px"></span><span class="cap"><b>pill</b>status, toggles</span></div>
+          <div class="rb"><span class="box" style="border-radius:50%"></span><span class="cap"><b>circle</b>dots, avatars</span></div>
+        </div>
+        <p class="note" style="margin-bottom:4px"><b>4-px spacing grid</b> — removes the ad-hoc gaps behind the stranded empty bands.</p>
+        <div class="spacing">
+          <div><div class="sp" style="height:8px"></div><div class="sp-lab">4</div></div>
+          <div><div class="sp" style="height:14px"></div><div class="sp-lab">8</div></div>
+          <div><div class="sp" style="height:20px"></div><div class="sp-lab">12</div></div>
+          <div><div class="sp" style="height:26px"></div><div class="sp-lab">16</div></div>
+          <div><div class="sp" style="height:38px"></div><div class="sp-lab">24</div></div>
+          <div><div class="sp" style="height:50px"></div><div class="sp-lab">32</div></div>
+          <div><div class="sp" style="height:72px"></div><div class="sp-lab">48</div></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>Keep the one deliberate exception — the asymmetric chat bubble <span class="mono">(12/12/3/12)</span> — since it signals “message.”</span>
+    <span class="mono">Intendra AI · token sheet v1 · advisory</span>
+  </footer>
+
+</div>
+
+<script>
+  (function(){
+    var b=document.getElementById('tg');
+    b.addEventListener('click',function(){
+      var r=document.documentElement;
+      var cur=r.getAttribute('data-theme');
+      if(!cur){ // system — flip to opposite of what's showing
+        var dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+        r.setAttribute('data-theme',dark?'light':'dark');
+      }else{
+        r.setAttribute('data-theme',cur==='dark'?'light':'dark');
+      }
+    });
+  })();
+</script>
