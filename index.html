@@ -13,7 +13,7 @@
 :root{--bg:#f5f6f8;--card:#ffffff;--ink:#28282d;--body:#3f434b;--muted:#4e525b;--faint:#5f6570;--line:#dcdee2;--line2:#eef0f2;--accent:#0f7d51;--accent-soft:#e7f8ef;--red:#c03d33;--red-soft:#faedeb;--pos:#0f7d51;--neg:#c03d33;--neu:#e0e0e0;--mono:'IBM Plex Mono','SFMono-Regular',Consolas,'Cascadia Mono',monospace;--serif:'Hanken Grotesk',Georgia,'Times New Roman',serif;--sans:'Hanken Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Inter,Arial,sans-serif;--hl:#f6efdc;--hlb:#c9a23f;--brand:#1bea87;--brand-soft:rgba(27,234,135,.12);--cost:#5f6b82;--cost-soft:#eef0f4;--att:#9a7d1f;--att-fill:#c9a23f;--att-soft:#f6efdc;--cta:#1bea87;--cta-hover:#17c973;--cta-active:#13ad62}
 *{box-sizing:border-box;margin:0;padding:0}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
-.shellbar a:focus-visible,.shellbar select:focus-visible,.shellbar button:focus-visible{outline-color:var(--brand)}
+.sidebar a:focus-visible,.topframe select:focus-visible,.topframe button:focus-visible{outline-color:var(--brand)}
 body{background:var(--bg);color:var(--body);font-family:var(--sans);font-size:13.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
 .num{font-variant-numeric:tabular-nums}
 .wrap{max-width:1280px;margin:0 auto;padding:0 32px 72px}
@@ -891,7 +891,181 @@ body.nomarks [data-page="conversations"] .vmark{display:none}
 [data-page="actions"] .evr .col span{font-size:9px;color:var(--faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em}
 /* — metrics — */
 [data-page="metrics"] .pagehead{display:flex;align-items:baseline;gap:14px;margin-bottom:18px}
-[data-page="metrics"] h5.sec{font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:18px 0 8px}
+[data-page="metrics"] h5.sec{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:500;margin:26px 0 9px}
+[data-page="metrics"] h5.sec::before{content:"";width:15px;height:2px;border-radius:2px;background:var(--accent);opacity:.75}
+/* v6 — metrics scorecard (rows) */
+[data-page="metrics"] .mtbl{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 1px 2px rgba(20,24,31,.04),0 8px 24px -14px rgba(20,24,31,.14)}
+[data-page="metrics"] .mtr{position:relative;display:grid;grid-template-columns:1.7fr 168px 210px 20px;gap:16px;align-items:center;padding:15px 20px;border-top:1px solid var(--line2);transition:background .12s ease}
+[data-page="metrics"] .mtr.hd{border-top:0;padding:10px 20px 8px;background:linear-gradient(180deg,#fafbfc,#f4f6f8)}
+[data-page="metrics"] .mtr.hd span{font-family:var(--mono);font-size:9.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}
+[data-page="metrics"] .mtr:not(.hd)::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent}
+[data-page="metrics"] .mtr.st-ok::before{background:linear-gradient(180deg,#25c07d,#0f7d51)}
+[data-page="metrics"] .mtr.st-below::before{background:linear-gradient(180deg,#e06a5f,#c03d33)}
+[data-page="metrics"] .mtr:not(.hd):not(.noclick){cursor:pointer}
+[data-page="metrics"] .mtr:not(.hd):hover{background:#f7f9fa}
+[data-page="metrics"] .mtr:not(.hd):hover .mgo{color:var(--accent);transform:translateX(2px)}
+[data-page="metrics"] .mtr.mut{opacity:.68}
+[data-page="metrics"] .mtr .mname{font-size:14px;font-weight:650;color:var(--ink);min-width:0;letter-spacing:-.01em}
+[data-page="metrics"] .mtr .mname .msub{display:block;font-size:11px;color:var(--faint);font-weight:400;letter-spacing:0;margin-top:3px;overflow:hidden;text-overflow:ellipsis}
+[data-page="metrics"] .mtr .mnow{display:flex;flex-direction:column;gap:5px;align-items:flex-start}
+[data-page="metrics"] .mtr .mnow .big{font-size:21px;font-weight:680;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em;line-height:1}
+[data-page="metrics"] .mtr .mnow .big.alert{color:var(--red)}
+[data-page="metrics"] .mstat{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:8.5px;letter-spacing:.04em;text-transform:uppercase;font-weight:700;padding:2px 7px 2px 6px;border-radius:20px;white-space:nowrap;border:1px solid transparent}
+[data-page="metrics"] .mstat i{width:5px;height:5px;border-radius:50%;flex:none}
+[data-page="metrics"] .mstat.ok{color:#0c6f43;background:#e2f4ea;border-color:#c6e8d5}
+[data-page="metrics"] .mstat.ok i{background:#0f7d51}
+[data-page="metrics"] .mstat.below{color:#a5352b;background:#fae7e4;border-color:#f0cec9}
+[data-page="metrics"] .mstat.below i{background:#c03d33}
+[data-page="metrics"] .mtr .mtrend{display:flex;align-items:center;gap:14px}
+[data-page="metrics"] .lspark{width:120px;height:34px;flex:none}
+[data-page="metrics"] .lspark .tref{stroke:var(--faint);stroke-width:1;stroke-dasharray:2 2;opacity:.5}
+[data-page="metrics"] .nser{font-size:11px;font-style:italic}
+[data-page="metrics"] .mdelta{font-size:11.5px;font-weight:650;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+[data-page="metrics"] .mdelta.good{color:#0f7d51}
+[data-page="metrics"] .mdelta.bad{color:#c03d33}
+[data-page="metrics"] .mdelta.neu{color:var(--faint);font-weight:600}
+[data-page="metrics"] .mtr .mgo{color:var(--faint);font-size:18px;text-align:right;transition:color .12s ease,transform .12s ease}
+/* ===== Compass ===== */
+[data-page="compass"] .cmp-state{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+[data-page="compass"] .cst{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:13px 16px;box-shadow:0 1px 2px rgba(20,24,31,.04)}
+[data-page="compass"] .cst .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+[data-page="compass"] .cst .big{font-size:23px;font-weight:700;color:var(--ink);letter-spacing:-.02em;margin:5px 0 3px}
+[data-page="compass"] .cst .sub{font-size:11.5px;color:var(--muted)}
+[data-page="compass"] .cmp-viewbar{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+[data-page="compass"] .cmp-flow{font-size:12px;color:var(--faint);font-style:italic}
+[data-page="compass"] .cmp-secthead{display:flex;align-items:baseline;gap:14px;margin:4px 0 14px}
+[data-page="compass"] .cmp-secthead h2{margin:0;font-size:17px;font-weight:750;letter-spacing:-.01em}
+[data-page="compass"] .cmp-secthead span{font-size:12px;color:var(--faint)}
+[data-page="compass"] .lev-tag{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 8px;border-radius:20px;background:#f1f2f4;color:var(--ink)}
+[data-page="compass"] .lev-tag i{width:6px;height:6px;border-radius:50%}
+[data-page="compass"] .dest{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 7px;border-radius:20px;border:1px solid var(--line)}
+[data-page="compass"] .dest.init{color:#5b616b;background:#f3f4f6}
+[data-page="compass"] .dest.prof{color:#0c6f43;background:#e2f4ea;border-color:#c6e8d5}
+/* VI 2×2 */
+[data-page="compass"] .vi-grid{display:grid;grid-template-columns:26px 1fr;grid-template-rows:1fr 22px;gap:8px}
+[data-page="compass"] .vi-yaxis{grid-column:1;grid-row:1;display:flex;align-items:center;justify-content:center}
+[data-page="compass"] .vi-yaxis span{writing-mode:vertical-rl;transform:rotate(180deg);font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+[data-page="compass"] .vi-xaxis{grid-column:2;grid-row:2;display:flex;align-items:center;justify-content:space-between;padding:0 4px}
+[data-page="compass"] .vi-xaxis span{font-family:var(--mono);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--faint)}
+[data-page="compass"] .t-auto i{background:#2f6f9f}
+[data-page="compass"] .t-simp i{background:#9a7d1f}
+[data-page="compass"] .vi-lane .lev-tag i{background:#fff}
+[data-page="compass"] .vi-cells{grid-column:2;grid-row:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:12px}
+[data-page="compass"] .vi-lane{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--lc);border-radius:12px;padding:13px 15px;display:flex;flex-direction:column;box-shadow:0 1px 2px rgba(20,24,31,.04)}
+[data-page="compass"] .vi-lh{display:flex;align-items:center;gap:8px}
+[data-page="compass"] .vi-lane .lev-tag{color:#fff;background:var(--lc)}
+[data-page="compass"] .vi-lane .lev-tag i{background:#fff}
+[data-page="compass"] .vi-blurb{font-size:12px;color:var(--muted);margin:7px 0 3px}
+[data-page="compass"] .vi-mini{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;font-size:11px;color:var(--faint);margin-bottom:10px;padding-bottom:10px;border-bottom:1px solid var(--line2)}
+[data-page="compass"] .vi-mini .vpc b{color:var(--ink);font-size:13px;font-variant-numeric:tabular-nums}
+[data-page="compass"] .vi-mini .vpc-w{margin-left:auto}
+[data-page="compass"] .vi-mini .vpc-w b{color:var(--lc)}
+[data-page="compass"] .vi-list{display:flex;flex-direction:column;gap:1px}
+[data-page="compass"] .vi-int{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:7px 8px;border-radius:8px;cursor:pointer;transition:background .1s}
+[data-page="compass"] .vi-int:hover{background:#f7f9fa}
+[data-page="compass"] .vi-int .nm{font-size:13px;font-weight:600;color:var(--ink)}
+[data-page="compass"] .vi-int .wr{font-size:12.5px;font-weight:700;color:var(--accent);text-align:right;font-variant-numeric:tabular-nums}
+[data-page="compass"] .vi-int .mx{grid-column:1;font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums}
+[data-page="compass"] .vi-foot{font-size:11.5px;color:var(--muted);margin-top:14px;padding-top:12px;border-top:1px solid var(--line2)}
+[data-page="compass"] .vi-foot b{color:var(--ink)}
+/* Root-cause ledger */
+[data-page="compass"] .rc-list{display:flex;flex-direction:column;gap:12px}
+[data-page="compass"] .rc-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:15px 18px;cursor:pointer;transition:box-shadow .12s,border-color .12s;box-shadow:0 1px 2px rgba(20,24,31,.04)}
+[data-page="compass"] .rc-card:hover{border-color:#c7cace;box-shadow:0 6px 20px -12px rgba(20,24,31,.25)}
+[data-page="compass"] .rc-top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+[data-page="compass"] .rc-name{font-size:15.5px;font-weight:700;color:var(--ink);letter-spacing:-.01em;display:flex;align-items:center;gap:9px}
+[data-page="compass"] .common{font-family:var(--mono);font-size:8.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:#8a5a00;background:#f6efdc;padding:2px 7px;border-radius:20px}
+[data-page="compass"] .rc-owner{font-size:12px;color:var(--muted);margin-top:4px;display:flex;align-items:center;gap:6px}
+[data-page="compass"] .own-dot{width:7px;height:7px;border-radius:50%;background:var(--accent)}
+[data-page="compass"] .own-none{color:#b06a2a}
+[data-page="compass"] .rc-worth{display:flex;gap:24px;flex:none;text-align:right}
+[data-page="compass"] .rc-worth .rc-stat .num{font-size:21px;font-weight:750;color:var(--ink);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+[data-page="compass"] .rc-worth .rc-stat:nth-child(2) .num{color:var(--body);font-weight:700}
+[data-page="compass"] .rc-worth .rc-stat .lab{font-size:10px;color:var(--faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+[data-page="compass"] .rc-drives{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+[data-page="compass"] .drv{font-size:11.5px;color:var(--body);background:#f3f4f6;border:1px solid var(--line2);padding:2px 9px;border-radius:20px}
+[data-page="compass"] .drv b{color:var(--ink)}
+[data-page="compass"] .rc-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+[data-page="compass"] .rc-num{font-size:11.5px;color:var(--faint);font-variant-numeric:tabular-nums}
+[data-page="compass"] .rc-open{margin-left:auto;font-size:12px;font-weight:650;color:var(--accent)}
+[data-page="compass"] .emo-chip{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;padding:2px 7px;border-radius:20px}
+[data-page="compass"] .emo-chip.em-bad{color:#a5352b;background:#fae7e4}
+[data-page="compass"] .emo-chip.em-flat{color:#5b616b;background:#f1f2f4}
+[data-page="compass"] .emo-chip.em-good{color:#0c6f43;background:#e2f4ea}
+[data-page="compass"] .emo-line{display:flex;gap:11px;align-items:flex-start;margin-top:14px;padding:12px 15px;background:#fdf1ef;border:1px solid #f3d3cd;border-radius:11px;font-size:13px;color:var(--body);line-height:1.5}
+[data-page="compass"] .emo-line .emo-ic{color:#c03d33;font-size:14px;line-height:1.4;flex:none}
+[data-page="compass"] .emo-line b{color:var(--ink)}
+[data-page="compass"] .emo-line .emo-why{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:#a5352b;margin-bottom:5px}
+[data-page="compass"] .emo-line .term-i{font-style:italic;color:var(--muted)}
+/* Workspace */
+[data-page="compass"] .wk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-top:18px;box-shadow:0 8px 30px -18px rgba(20,24,31,.3)}
+[data-page="compass"] .wk-head{margin-bottom:8px}
+[data-page="compass"] .wk-title{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding-bottom:14px;border-bottom:1px solid var(--line2)}
+[data-page="compass"] .wk-title h2{margin:0 0 8px;font-size:22px;font-weight:780;letter-spacing:-.02em}
+[data-page="compass"] .wk-sub{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+[data-page="compass"] .conf{font-size:11px;color:var(--faint)}
+[data-page="compass"] .wk-worth{display:flex;gap:28px;flex:none;text-align:right}
+[data-page="compass"] .wk-worth .rc-stat .num{font-size:26px;font-weight:780;letter-spacing:-.02em;color:var(--ink);font-variant-numeric:tabular-nums}
+[data-page="compass"] .wk-worth .rc-stat:nth-child(2) .num{color:var(--body);font-weight:700}
+[data-page="compass"] .wk-worth .rc-stat .lab{font-size:10px;color:var(--faint);font-family:var(--mono);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+[data-page="compass"] .wk-cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+[data-page="compass"] .wk-card{background:#fafbfc;border:1px solid var(--line2);border-radius:11px;padding:14px 16px;margin-top:14px}
+[data-page="compass"] .wk-cols .wk-card{margin-top:0}
+[data-page="compass"] .wk-card h4{margin:0 0 10px;font-size:11px;font-family:var(--mono);letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600}
+[data-page="compass"] .wd-list{display:flex;flex-direction:column;gap:8px}
+[data-page="compass"] .wd-int{display:grid;grid-template-columns:1fr auto;gap:2px 10px;padding:8px 10px;background:var(--card);border:1px solid var(--line2);border-radius:9px}
+[data-page="compass"] .wd-int .nm{font-size:13px;font-weight:650;color:var(--ink)}
+[data-page="compass"] .wd-int .sh{font-size:11px;color:var(--accent);font-weight:650;text-align:right}
+[data-page="compass"] .wd-int .mx{grid-column:1;font-size:11px;color:var(--faint);font-variant-numeric:tabular-nums}
+[data-page="compass"] .brk-bar{display:flex;height:16px;border-radius:8px;overflow:hidden;margin-bottom:12px}
+[data-page="compass"] .brk-bar i{height:100%}
+[data-page="compass"] .brk-leg{display:flex;flex-wrap:wrap;gap:6px 14px}
+[data-page="compass"] .brk-leg .lg{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:6px}
+[data-page="compass"] .brk-leg .lg i{width:9px;height:9px;border-radius:2px}
+[data-page="compass"] .brk-leg .lg b{color:var(--ink)}
+[data-page="compass"] .wk-note{font-size:11px;color:var(--faint);margin-top:4px}
+[data-page="compass"] .wk-owner{display:flex;align-items:center;gap:7px;font-size:13.5px;color:var(--body)}
+[data-page="compass"] .act-box{border-radius:11px;padding:14px 16px;border:1px solid}
+[data-page="compass"] .act-box.init{background:#f4f6f8;border-color:var(--line)}
+[data-page="compass"] .act-box.prof{background:#e9f7f0;border-color:#c6e8d5}
+[data-page="compass"] .ab-h{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+[data-page="compass"] .ab-dest{font-size:12.5px;font-weight:700;color:var(--ink)}
+[data-page="compass"] .act-box p{margin:0 0 12px;font-size:13px;color:var(--body);line-height:1.5}
+[data-page="compass"] .ab-btns{display:flex;gap:9px;flex-wrap:wrap}
+[data-page="compass"] .ab-btns .cta{font-size:12.5px;padding:8px 14px;border-radius:9px;border:0;background:var(--ink);color:#fff;font-weight:650;cursor:pointer}
+[data-page="compass"] .ab-btns .cta.ghost{background:#fff;color:var(--ink);border:1px solid var(--line)}
+[data-page="demand"] .cmp-xlink{display:flex;align-items:center;gap:16px;justify-content:space-between;background:linear-gradient(180deg,#fafbfc,#f4f6f8);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin:2px 0 16px}
+[data-page="demand"] .cmp-xlink>div{font-size:12.5px;color:var(--muted);line-height:1.5}
+[data-page="demand"] .cmp-xlink b{color:var(--ink)}
+[data-page="demand"] .cmp-xk{font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-right:4px}
+[data-page="demand"] .cmp-xlink .cta-lite{flex:none;font-size:12.5px;font-weight:650;padding:8px 14px;border-radius:9px;background:var(--ink);color:#fff;text-decoration:none;white-space:nowrap}
+[data-page="demand"] .estrip .emo-conseq{margin-top:12px;padding:11px 14px;background:#fdf1ef;border:1px solid #f3d3cd;border-radius:10px;font-size:13px;color:var(--body);line-height:1.5}
+[data-page="demand"] .estrip .emo-conseq b{color:var(--ink)}
+[data-page="demand"] .estrip .estrip-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+[data-page="demand"] .estrip .ehsub{font-size:11.5px;color:var(--faint)}
+[data-page="demand"] .emo-tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+[data-page="demand"] .emo-tile{border:1px solid var(--line);border-radius:11px;padding:14px 16px;background:var(--card)}
+[data-page="demand"] .emo-tile .etp{font-size:27px;font-weight:750;letter-spacing:-.02em;line-height:1;font-variant-numeric:tabular-nums}
+[data-page="demand"] .emo-tile .etl{font-size:13px;font-weight:650;color:var(--ink);margin-top:6px}
+[data-page="demand"] .emo-tile .etc{font-size:11px;color:var(--faint);margin-top:3px;font-variant-numeric:tabular-nums}
+[data-page="demand"] .emo-tile.better{border-top:3px solid #1f9d63}
+[data-page="demand"] .emo-tile.better .etp{color:#1f9d63}
+[data-page="demand"] .emo-tile.same{border-top:3px solid #b9bec6}
+[data-page="demand"] .emo-tile.same .etp{color:var(--muted)}
+[data-page="demand"] .emo-tile.worse{border-top:3px solid #c03d33;background:#fdf3f1}
+[data-page="demand"] .emo-tile.worse .etp{color:#c03d33}
+[data-page="demand"] .estrip .split.slim{height:8px;border-radius:5px;margin:12px 0 2px}
+[data-page="summit"] .act .levpill{font-family:var(--mono);font-size:8px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;padding:2px 6px;border-radius:20px;color:#fff}
+[data-page="summit"] .act .levpill.lev-eliminate{background:#c03d33}
+[data-page="summit"] .act .levpill.lev-digitize{background:#2f6f9f}
+[data-page="summit"] .act .levpill.lev-simplify{background:#9a7d1f}
+[data-page="summit"] .act .levpill.lev-leverage{background:#0f7d51}
+[data-page="summit"] .act[onclick]:hover{background:#f7f9fa}
+@media(max-width:1000px){
+[data-page="compass"] .cmp-state{grid-template-columns:repeat(2,1fr)}
+[data-page="compass"] .vi-cells{grid-template-columns:1fr;grid-template-rows:none}
+[data-page="compass"] .wk-cols{grid-template-columns:1fr}
+}
 [data-page="metrics"] .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:1000px){
 [data-page="metrics"] .grid{grid-template-columns:repeat(2,1fr)}
@@ -1420,36 +1594,56 @@ body.nomarks [data-page="conversations"] .vmark{display:none}
 .drawer .dquote i{display:block;font-style:normal;font-family:var(--sans);font-size:10.5px;color:var(--faint);margin-top:5px}
 .drawer .dmore{padding:14px 0;font-size:12px;color:var(--faint)}
 /* — shell — */
-.shellbar{position:sticky;top:0;z-index:80;background:rgba(250,249,247,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.shellwrap{max-width:1400px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px;height:52px}
+.app{display:flex;align-items:flex-start;min-height:100vh}
+.sidebar{position:sticky;top:0;height:100vh;width:212px;flex:none;display:flex;flex-direction:column;background:rgba(250,249,247,.94);backdrop-filter:blur(8px);border-right:1px solid var(--line);padding:18px 14px;overflow-y:auto;z-index:80}
+.sidebar .brand{padding:6px 8px 0;margin-bottom:22px}
+.content{flex:1;min-width:0;display:flex;flex-direction:column}
+.topframe{position:sticky;top:0;z-index:70;background:rgba(250,249,247,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:flex-end;gap:12px;height:52px;padding:0 24px}
 .scopechip{display:inline-block;font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:2px 8px;vertical-align:2px;cursor:default}
 .scopechip.ch{color:var(--accent);border-color:#bfe7d4;background:#f2fbf6}
-.chain{display:flex;align-items:center;gap:2px;flex:1;min-width:0}
-.chain a{color:var(--muted);text-decoration:none;font-size:12.5px;padding:16px 7px 15px;position:relative;white-space:nowrap}
-.chain a:hover{color:var(--ink)}
-.chain a.on{color:var(--ink);font-weight:600}
-.chain a.on::after{content:'';position:absolute;left:7px;right:7px;bottom:0;height:2px;background:var(--accent)}
-.chain .div{width:1px;height:16px;background:var(--line);margin:0 7px}
+.chain{display:flex;flex-direction:column;align-items:stretch;gap:1px}
+.chain a{color:var(--muted);text-decoration:none;font-size:13px;padding:8px 12px;border-radius:8px;position:relative;white-space:nowrap;display:block;line-height:1.25}
+.chain a:hover{color:var(--ink);background:rgba(0,0,0,.035)}
+.chain a.on{color:var(--ink);font-weight:600;background:var(--accent-soft)}
+.chain a.on::after{content:'';position:absolute;left:0;top:6px;bottom:6px;width:3px;border-radius:0 3px 3px 0;background:var(--accent)}
+.chain .div{width:auto;height:1px;background:var(--line);margin:9px 12px}
+.chain .navgrp{display:flex;flex-direction:column}
+.chain .navparent{display:flex;align-items:center;justify-content:space-between;gap:8px;width:100%;background:none;border:0;cursor:pointer;color:var(--muted);font-family:inherit;font-size:13px;padding:8px 12px;border-radius:8px;text-align:left;line-height:1.25}
+.chain .navparent:hover{color:var(--ink);background:rgba(0,0,0,.035)}
+.chain .navparent.on{color:var(--ink);font-weight:600}
+.chain .navparent .caret{font-size:9px;color:var(--brand);background:rgba(27,234,135,.16);border-radius:5px;padding:3px 6px;line-height:1;transition:transform .15s ease}
+.chain .navgrp.open .navparent .caret{transform:rotate(180deg)}
+.chain .navsub{display:none;flex-direction:column;gap:1px;margin:1px 0 3px}
+.chain .navgrp.open .navsub{display:flex}
+.chain .navsub a{padding-left:26px;font-size:12.5px}
 .frame{display:flex;gap:8px;align-items:center;white-space:nowrap}
 .stage .wrap{padding-top:24px}
 .spkrow{display:flex;align-items:flex-end;gap:6px}
 .spklab{font-family:var(--mono);font-size:8px;color:var(--faint);letter-spacing:.05em;white-space:nowrap;padding-bottom:2px;cursor:default}
 @media print{
-  .shellbar,.drawer{display:none!important}
+  .sidebar,.topframe,.drawer{display:none!important}
+  .app{display:block}
   .stage .wrap{padding-top:0}
   body{background:#fff}
 }
-/* two-row header at all widths: brand + global filters on row 1, nav on its own scrollable row — 11 nav items + 4 filters never fit one row, so this prevents overlap everywhere */
-@media all{
-  .shellwrap{flex-wrap:wrap;height:auto;padding-top:10px;padding-bottom:0;column-gap:12px;row-gap:2px}
-  .frame{margin-left:auto;flex-wrap:wrap;justify-content:flex-end}
-  .chain{order:3;flex-basis:100%;min-width:100%;overflow-x:auto;gap:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-  .chain::-webkit-scrollbar{display:none}
-  .chain a{padding:10px 8px 11px}
+/* narrow screens: sidebar collapses to a scrollable top bar */
+@media(max-width:820px){
+  .app{flex-direction:column}
+  .sidebar{position:sticky;top:0;height:auto;width:100%;flex-direction:row;align-items:center;gap:10px;padding:8px 16px;border-right:0;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+  .sidebar::-webkit-scrollbar{display:none}
+  .sidebar .brand{margin-bottom:0;padding:0;flex:none}
+  .chain{flex-direction:row;align-items:center;gap:2px}
+  .chain a{padding:8px 9px;border-radius:6px}
+  .chain a.on{background:transparent}
+  .chain a.on::after{left:9px;right:9px;top:auto;bottom:0;width:auto;height:2px;border-radius:0}
+  .chain .div{width:1px;height:16px;margin:0 6px}
+  .chain .navgrp{flex-direction:row;align-items:center}
+  .chain .navparent{display:none}
+  .chain .navsub{display:flex!important;flex-direction:row;gap:2px;margin:0}
+  .chain .navsub a{padding:8px 9px}
+  .topframe{justify-content:flex-start;flex-wrap:wrap;height:auto;padding:8px 16px}
 }
 @media(max-width:560px){
-  .shellwrap{padding-left:16px;padding-right:16px}
-  .frame{width:100%;justify-content:flex-start;margin-left:0;margin-top:2px}
   .brand .bword{height:12px}
 }
 
@@ -1529,27 +1723,41 @@ select.pill:hover{border-color:var(--line2)}
 .askdoor{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);text-decoration:none;border:1px dashed var(--accent);border-radius:6px;padding:3px 8px;white-space:nowrap}
 .askdoor:hover{background:var(--accent-soft)}
 
-/* — brand shell — */
-.shellbar{background:rgba(40,40,45,.97);border-bottom:1px solid #303036}
-.shellbar .chain a{color:#b9bcc4}
-.shellbar .chain a:hover{color:#fff}
-.shellbar .chain a.on{color:#fff}
-.shellbar .chain a.on::after{background:var(--brand)}
-.shellbar .chain .div{background:#3d3d44}
-.shellbar .pill{background:rgba(255,255,255,.07);border-color:#3d3d44;color:#c6c9d0}
-.shellbar select.pill{background:rgba(255,255,255,.07) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23989da7'/%3E%3C/svg%3E") no-repeat right 10px center;border-color:#3d3d44;color:#e9ebef}
-.shellbar select.pill:hover{border-color:#55555e}
-.shellbar select.pill option{color:#28282d;background:#fff}
+/* — brand shell (Obsidian sidebar + topframe) — */
+.sidebar,.topframe{background:rgba(40,40,45,.97);backdrop-filter:blur(8px)}
+.sidebar{border-right:1px solid #303036}
+.topframe{border-bottom:1px solid #303036}
+.sidebar .brand{border-bottom:1px solid #303036;padding-bottom:16px}
+.sidebar .chain a{color:#b9bcc4}
+.sidebar .chain a:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar .chain a.on{color:#fff;background:rgba(255,255,255,.08)}
+.sidebar .chain a.on::after{background:var(--brand)}
+.sidebar .chain .div{background:#3d3d44}
+.sidebar .chain a[href="#/ask"]{color:var(--brand);font-weight:700;font-size:15.5px;padding-top:10px;padding-bottom:10px;letter-spacing:-.01em}
+.sidebar .chain a[href="#/ask"]:hover{color:var(--cta-hover);background:rgba(27,234,135,.1)}
+.sidebar .chain a[href="#/ask"].on{color:var(--brand)}
+.sidebar .chain a[href="#/ask"].on::after{background:var(--brand)}
+.sidebar .chain .navparent{color:#b9bcc4}
+.sidebar .chain .navparent:hover{color:#fff;background:rgba(255,255,255,.06)}
+.sidebar .chain .navparent.on{color:#fff}
+.sidebar .chain .navparent .caret{color:var(--brand)}
+.topframe .pill{background:rgba(255,255,255,.07);border-color:#3d3d44;color:#c6c9d0}
+.topframe select.pill{background:rgba(255,255,255,.07) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5'%3E%3Cpath d='M0 0l4 5 4-5z' fill='%23989da7'/%3E%3C/svg%3E") no-repeat right 10px center;border-color:#3d3d44;color:#e9ebef}
+.topframe select.pill:hover{border-color:#55555e}
+.topframe select.pill option{color:#28282d;background:#fff}
 /* v6 — make "Ask Intendra" pop in the top toolbar */
 .shellbar .chain a[href="#/ask"]{color:var(--brand);font-weight:700}
 .shellbar .chain a[href="#/ask"]:hover{color:#4af5ab}
 </style>
 </head>
 <body>
-<header class="shellbar">
-  <div class="shellwrap">
+<div class="app">
+  <aside class="sidebar">
     <div class="brand" aria-label="intendra ai" title="intendra ai"><svg class="bsym" viewBox="0 0 466.67 700" aria-hidden="true"><g fill="#1bea87"><path d="M28.73,262.96v117.57h272.73c10.44,0,18.9,8.46,18.9,18.9v272.73h117.56v-409.2H28.73Z"/><path d="M437.93,145.4h-117.56V27.84h77.63c22.05,0,39.93,17.88,39.93,39.93v77.63Z"/></g></svg><svg class="bword" viewBox="0 0 2000 303.03" role="img" aria-label="intendra ai"><g fill="#1bea87"><path d="M1406.66,93.41l-52.15,52.17v123.47h112.8l27.32-27.32v27.32h35.52V93.41h-123.48ZM1480.54,233.53h-90.51v-90.51c0-7.77,6.32-14.09,14.09-14.09h90.51v90.51c0,7.77-6.32,14.09-14.09,14.09Z"/><path d="M111.12,269.05h-33.97l-52.15-52.17v-123.47h35.52v126.03c0,7.77,6.32,14.09,14.09,14.09h36.52v35.52Z"/><path d="M60.52,69.48H25v-35.52h35.52v35.52Z"/><path d="M943.11,269.05h-35.52v-140.12h-90.51c-7.77,0-14.09,6.32-14.09,14.09v126.03h-35.52v-123.48l52.17-52.15h123.47v175.64Z"/><path d="M317.42,269.05h-35.52v-140.12h-90.52c-7.77,0-14.09,6.32-14.09,14.09v126.03h-35.52v-123.48l52.17-52.15h123.47v175.64Z"/><path d="M1974.83,269.05h-33.97l-52.15-52.17v-123.47h35.52v126.03c0,7.77,6.32,14.09,14.09,14.09h36.52v35.52Z"/><path d="M1924.23,69.48h-35.52v-35.52h35.52v35.52Z"/><path d="M526.23,269.05h-93.76l-52.15-52.17v-87.95h-29.72v-35.52h29.72v-59.44h35.52v59.44h110.4v35.52h-110.4v90.51c0,7.77,6.32,14.09,14.09,14.09h96.31v35.52Z"/><path d="M1102.62,269.05h-123.47v-123.47l52.15-52.17h87.97v-59.44h35.52v182.91l-52.17,52.17ZM1014.67,233.53h90.51c7.77,0,14.09-6.32,14.09-14.09v-90.51h-90.51c-7.77,0-14.09,6.32-14.09,14.09v90.51Z"/><path d="M1226.33,269.05h-35.52v-123.47l52.15-52.17h94.35v35.52h-96.9c-7.77,0-14.09,6.32-14.09,14.09v126.03Z"/><path d="M731.42,269.05h-123.48l-52.15-52.17v-71.3l52.15-52.17h71.33l52.15,52.17v53.41h-140.12v20.46c0,7.77,6.32,14.09,14.09,14.09h126.03v35.52ZM591.3,163.47h104.6v-20.46c0-7.77-6.32-14.09-14.09-14.09h-76.43c-7.77,0-14.09,6.32-14.09,14.09v20.46Z"/><path d="M1729.21,93.41l-52.15,52.17v123.47h112.8l27.32-27.32v27.32h35.52V93.41h-123.48ZM1803.09,233.53h-90.51v-90.51c0-7.77,6.32-14.09,14.09-14.09h90.51v90.51c0,7.77-6.32,14.09-14.09,14.09Z"/></g></svg></div>
     <nav class="chain" id="nav"></nav>
+  </aside>
+  <div class="content">
+    <div class="topframe">
     <div class="frame">
       <div class="pill" title="Global frame — program, scope, channel and period travel with every link.">Vedara · Program</div>
       <select class="pill" id="channelSel" onchange="setChannel(this.value)" aria-label="Filter by channel" title="Channel filter. Every surface re-cuts to the selected channel where the cut applies; surfaces that keep program scope say so on the page.">
@@ -1574,9 +1782,10 @@ select.pill:hover{border-color:var(--line2)}
         <option value="custom">vs custom range…</option>
       </select>
     </div>
+    </div>
+    <main class="stage" id="stage"></main>
   </div>
-</header>
-<main class="stage" id="stage"></main>
+</div>
 <aside class="drawer" id="evdrawer" aria-label="Evidence">
   <div class="dhead"><h5 id="evTitle"></h5><span class="dn num" id="evMeta"></span><button class="x" onclick="closeEvidence()" aria-label="Close evidence">×</button></div>
   <div class="dbody" id="evBody"></div>
@@ -1602,7 +1811,7 @@ select.pill:hover{border-color:var(--line2)}
       <div id="insights"></div>
     </div>
     <div class="panelc">
-      <div class="secthead" style="margin-bottom:4px"><h2>What to act on</h2><div class="sp"></div><span style="font-size:11.5px;color:var(--faint)">ranked by <span class="term" data-def="Estimated annual cost or revenue impact if the issue is left unaddressed — used to rank actions by business impact (value–irritant).">value at stake</span></span></div>
+      <div class="secthead" style="margin-bottom:4px"><h2>What to act on</h2><div class="sp"></div><span style="font-size:11.5px;color:var(--faint)">top root causes from <a class="quiet" href="#/compass?view=rc">Compass ↗</a> · by <span class="term" data-def="Estimated annual cost or revenue impact if the issue is left unaddressed — used to rank actions by business impact (value–irritant).">value at stake</span></span></div>
       <div id="acts"></div>
     </div>
   </div>
@@ -1685,27 +1894,17 @@ select.pill:hover{border-color:var(--line2)}
     </div>
 
     <div class="vwbar" id="vwSegWrap">
-      <span class="vwbar-lab">Every intent, two ways:</span>
-      <div class="seg vwseg" id="vwSeg">
-        <button data-v="list" onclick="vqSetView('list')">Ranked list</button>
-        <button class="on" data-v="quad" onclick="vqSetView('quad')">Value–Irritant Quadrant</button>
-      </div>
-      <span class="vwbar-hint">same intents — switch anytime</span>
+      <span class="vwbar-lab">Every intent, ranked</span>
+      <span style="flex:1"></span>
+      <span class="vwbar-hint">value &amp; cost per intent</span>
     </div>
 
-    <div class="list" id="list" style="display:none"></div>
-
-    <div class="vq-wrap" id="vquad">
-      <div class="secthead" style="margin-bottom:12px"><h2>Value–Irritant Quadrant</h2><div class="sp"></div><span style="font-size:11.5px;color:var(--faint)">every intent placed by value to the company × value to the customer — the play follows the quadrant</span></div>
-      <div class="vq-rail">
-        <div class="seg" id="vqProjSeg"><button class="on" data-p="vi" onclick="vqSetProj('vi')">VI quadrant</button><button data-p="xy" onclick="vqSetProj('xy')" title="The same intents by weekly cost × value if the play ships.">Cost × value</button></div>
-        <span class="vq-chip" id="vqPre" onclick="vqTogglePre()" title="Demand that never needs to arrive — proactive delivery and refund-status notices, order-status and return-tracking flows.">◤ Pre-empt overlay</span>
-        <span class="cap" id="vqCap"></span>
-      </div>
-      <span class="vq-chip vq-back" id="vqBack" onclick="vqBack()">← All quadrants</span>
-      <div class="vq-svg" id="vqSvg"></div>
-      <div class="vq-note" id="vqNote"></div>
+    <div class="cmp-xlink">
+      <div><span class="cmp-xk">▸ Compass</span> <b>Value–Irritant classification, root causes and action plans</b> now live in Compass — the same intents, placed by value to the company × value to the customer, then turned into owned actions.</div>
+      <a class="cta-lite" href="#/compass">Open Compass →</a>
     </div>
+
+    <div class="list" id="list"></div>
   </div>
 
   <div id="detail"></div>
@@ -1716,6 +1915,27 @@ select.pill:hover{border-color:var(--line2)}
   <div class="dbody" id="drBody"></div>
 </div>
 
+</template>
+<template id="tpl-compass">
+<div class="wrap">
+  <div class="pagehead">
+    <div>
+      <div class="kicker">Compass</div>
+      <h1>Turn demand into action</h1>
+    </div>
+    <div class="when">Value–irritant framework + root-cause identification · Jul 6 – 12 <a class="quiet" href="#/demand" style="margin-left:12px">Demand inventory ↗</a></div>
+  </div>
+
+  <div class="cmp-state" id="cmpState"></div>
+
+  <div class="cmp-viewbar">
+    <span class="cmp-flow" id="cmpFlow">classify demand → find the cause → assign an owner → act</span>
+  </div>
+
+  <div id="cmpVI"></div>
+  <div id="cmpRC" style="display:none"></div>
+  <div id="cmpWork"></div>
+</div>
 </template>
 <template id="tpl-quality">
 <div class="wrap">
@@ -2666,10 +2886,9 @@ const T = {
     {h:'Field keeps recovering deliveries other channels lose — doorstep verification is quietly working.', c:'96% resolution · experience +11 on 100 visits', spark:[79,81,82,85,84,87,86,88,87,89,89,90], link:'See what works', evk:'field'}
   ],
   acts: [
-    {t:'Churn signals rising after the price change', d:'501 conversations mention leaving, 3.1× baseline, concentrated in subscription cancellations.', w:'501 convs', risk:true, links:['Review evidence','Create initiative']},
-    {t:'Proactive delivery-status notices', d:'Would remove the top intent on two channels — customers who only want an update.', w:'$340k / yr', links:['Review evidence','Create initiative']},
-    {t:'Enforce carrier transit SLA', d:'One carrier drives 44% of delivery-delay contacts and most of Voice’s experience drag.', w:'$225k / yr', links:['Review evidence','Create initiative']},
-    {t:'Email comprehension coaching at MK', d:'“Addresses every question” fails on a third of MK emails; the slide tracks this one parameter.', w:'$144k / yr', links:['Review evidence','Create initiative']}
+    {t:'Missed transit SLA', d:'One carrier drives delivery-update, delay, cancel and find-order demand — 2,600 contacts across 4 intents.', w:'$305k / yr', lev:'Eliminate', cause:'sla'},
+    {t:'Tracking feed gap', d:'Carrier scans go quiet mid-route — drives Find my order and repeat delivery-update contacts.', w:'$86k / yr', lev:'Digitize', cause:'track'},
+    {t:'Damaged in transit', d:'Packaging and carrier handling — feeds refunds and damaged-item reports.', w:'$63k / yr', lev:'Simplify', cause:'damage'}
   ]
 };
 
@@ -3020,12 +3239,12 @@ el('insights').innerHTML = T.insights.map(i=>`
     <div title="Weekly, trailing 12 weeks — ends ${PEND}.">${spark(i.spark,96,34,'#b5b8bd',i.dot)}</div>
   </div>`).join('');
 el('acts').innerHTML = T.acts.map((a,ix)=>`
-  <div class="act ${a.risk?'risk':''}">
+  <div class="act ${a.risk?'risk':''}"${a.cause?` style="cursor:pointer" onclick="go('#/compass?cause=${a.cause}')"`:''}>
     <div class="rk num">${ix+1}</div>
     <div style="flex:1">
-      <div style="display:flex;align-items:baseline"><span class="at">${a.t}</span><span class="aw num">${a.w}</span></div>
+      <div style="display:flex;align-items:baseline;gap:8px"><span class="at">${a.t}</span>${a.lev?`<span class="levpill lev-${a.lev.toLowerCase()}">${a.lev}</span>`:''}<span class="aw num">${a.w}</span></div>
       <div class="ad">${a.d}</div>
-      ${a.links.map(l=>l==='Create initiative'?`<a class="quiet" href="#/actions?new=1" style="margin-right:14px">${l} ↗</a>`:`<a class="quiet" href="#" onclick="evd('act',${ix});return false" style="margin-right:14px">${l} ↗</a>`).join('')}
+      ${a.cause?`<a class="quiet" href="#/compass?cause=${a.cause}" style="margin-right:14px">Open in Compass ↗</a>`:(a.links||[]).map(l=>l==='Create initiative'?`<a class="quiet" href="#/actions?new=1" style="margin-right:14px">${l} ↗</a>`:`<a class="quiet" href="#" onclick="evd('act',${ix});return false" style="margin-right:14px">${l} ↗</a>`).join('')}
     </div>
   </div>`).join('');
 
@@ -3566,23 +3785,28 @@ function refreshChain(){ if(curDetail) el('chainSlot').innerHTML=chainHtml(DETAI
 
 function emoStrip(D){
   const e=D.emo;
-  return '<div class="panelc estrip"><div style="display:flex;align-items:baseline;gap:14px">'
-    +'<h4 style="margin:0">How it felt</h4>'
-    +'<span style="font-size:11.5px;color:var(--faint)">emotion transitions on these conversations</span>'
+  var worse=e.split[2];
+  var topline=(e.topline||'').replace(/^Net emotion[^.]*\.\s*/i,'').replace(/Deteriorations:/g,'What worsened:').replace(/Recoveries:/g,'What recovered:');
+  return '<div class="panelc estrip"><div class="estrip-head">'
+    +'<h4 style="margin:0">How customers felt</h4>'
+    +'<span class="ehsub">did each conversation end better or worse than it began?</span>'
     +'<span style="flex:1"></span>'
+    +'<a class="quiet" href="#/compass?view=rc">What’s driving this — Compass ↗</a>'
     +'</div>'
-    +'<div class="split">'
-    +'<i style="width:'+e.split[0]+'%;background:#93dfba" title="improved"></i>'
-    +'<i style="width:'+e.split[1]+'%;background:#d4d6da" title="flat"></i>'
-    +'<i style="width:'+e.split[2]+'%;background:#dba49d" title="worsened"></i></div>'
-    +'<div class="legend"><span>improved '+e.split[0]+'% · '+e.nImp+'</span><span>flat '+e.split[1]+'% · '+e.nFlat+'</span><span>worsened '+e.split[2]+'% · '+e.nWor+'</span></div>'
-    +'<div class="stats"><span>save rate <b class="num">'+e.save+'</b></span><span>worsened by us <b class="num">'+e.wbu+'</b> of worsened</span>'
+    +'<div class="emo-tiles">'
+      +'<div class="emo-tile better"><div class="etp num">'+e.split[0]+'%</div><div class="etl">left better</div><div class="etc num">'+e.nImp.toLocaleString()+' customers</div></div>'
+      +'<div class="emo-tile same"><div class="etp num">'+e.split[1]+'%</div><div class="etl">stayed the same</div><div class="etc num">'+e.nFlat.toLocaleString()+' customers</div></div>'
+      +'<div class="emo-tile worse"><div class="etp num">'+e.split[2]+'%</div><div class="etl">left worse</div><div class="etc num">'+e.nWor.toLocaleString()+' customers</div></div>'
+    +'</div>'
+    +'<div class="split slim"><i style="width:'+e.split[0]+'%;background:#3fae7a"></i><i style="width:'+e.split[1]+'%;background:#c8ccd2"></i><i style="width:'+e.split[2]+'%;background:#cf5a4e"></i></div>'
+    +'<div class="emo-conseq"><b>'+worse+'% left worse than they arrived.</b> A bad ending compounds — these customers come back ~<b>1.6×</b> and cancel ~<b>2×</b>, the repeat-and-churn tail behind this intent’s downstream cost.</div>'
+    +'<div class="stats"><span>we turned around <b class="num">'+e.save+'</b> of at-risk conversations</span><span><b class="num">'+e.wbu+'</b> of worse endings were within our control — <a class="quiet" href="#/people">coachable ↗</a></span>'
     +'<span style="flex:1"></span>'
-    +'<a class="quiet" href="#" onclick="toggleAtt();return false" id="attLink">'+(attOpen?'Hide attribution':'What moved it — attribution')+'</a></div>'
-    +'<div style="font-size:12.5px;color:var(--muted);margin-top:10px">'+e.topline+'</div>'
+    +'<a class="quiet" href="#" onclick="toggleAtt();return false" id="attLink">'+(attOpen?'Hide what moved it':'What moved it ↓')+'</a></div>'
+    +'<div style="font-size:12.5px;color:var(--muted);margin-top:10px">'+topline+'</div>'
     +'<div class="attx'+(attOpen?' open':'')+'" id="attx"><div class="cols">'
-      +'<div><h5>Drove deteriorations</h5>'+e.det.map(a=>'<div class="arow"><span>'+a[0]+'</span><div class="ab"><i style="width:'+a[1]+'%;background:#dba49d"></i></div><span class="av2 num">'+a[1]+'%</span></div>').join('')+'</div>'
-      +'<div><h5>Drove recoveries</h5>'+e.rec.map(a=>'<div class="arow"><span>'+a[0]+'</span><div class="ab"><i style="width:'+a[1]+'%;background:#93dfba"></i></div><span class="av2 num">'+a[1]+'%</span></div>').join('')+'</div>'
+      +'<div><h5>What made it worse</h5>'+e.det.map(a=>'<div class="arow"><span>'+a[0]+'</span><div class="ab"><i style="width:'+a[1]+'%;background:#dba49d"></i></div><span class="av2 num">'+a[1]+'%</span></div>').join('')+'</div>'
+      +'<div><h5>What turned it around</h5>'+e.rec.map(a=>'<div class="arow"><span>'+a[0]+'</span><div class="ab"><i style="width:'+a[1]+'%;background:#93dfba"></i></div><span class="av2 num">'+a[1]+'%</span></div>').join('')+'</div>'
     +'</div><div class="pnote">'+e.cov+'</div></div></div>';
 }
 function toggleAtt(){ attOpen=!attOpen; if(curDetail){ el('emoSlot').innerHTML=emoStrip(DETAILS[curDetail]); } }
@@ -3636,8 +3860,8 @@ function openDetail(key,nm){
       +'<div class="plays">'+D.action.plays.join('<br>')+'</div>'
       +'<button class="cta" onclick="go(\'#/actions?new=1\')">Create initiative →</button></div></div>'
     +'<div id="wdslot">'+watchFormHTML('wd',D.title+(D.kicker.indexOf('Reason')===0?' · reason':' · intent'),["Volume spikes above 2× baseline","Volume drifts up 3 straight weeks","Cost rises 20% vs the 4-week average","Resolution falls 5+ points"])+'</div>'
-    +'<div id="volSlot">'+volPanel(D)+'</div>'
     +'<div class="sentence">'+D.sentence+'</div>'
+    +'<div id="volSlot">'+volPanel(D)+'</div>'
     +'<div id="chainSlot">'+chainHtml(D)+'</div>'
     +'<div id="emoSlot">'+emoStrip(D)+'</div>'
     +(key==='update'?pathsPanel():'');
@@ -4047,7 +4271,7 @@ function evPaths(){
 
 
 /* ---------- Value-Irritant quadrant view (asks lens) ---------- */
-var vqState={on:true,proj:'vi',pre:false,zoom:'',sel:'',expand:{}};
+var vqState={on:false,proj:'vi',pre:false,zoom:'',sel:'',expand:{}}; /* quadrant moved to Compass; list is Demand's only view */
 var VQ_PRE={'Get a delivery update':1,'Get a refund':1,'Check order status':1,'Track a return':1};
 var VQ_Q={A:{nm:'DIGITIZE',sub:'customer can self-serve it — remove the manual step',corner:'br',col:'#2f6f9f'},
           L:{nm:'LEVERAGE',sub:'valuable to both — serve it premium, grow from it',corner:'tr',col:'#0f7d51'},
@@ -4166,6 +4390,7 @@ function renderVQLanes(R,byQ){
   el('vqBack').classList.remove('show');
 }
 function renderVQ(){
+  if(!el('vqSvg')) return; /* quadrant moved to Compass */
   var R=vqRows(), byQ={A:[],L:[],E:[],S:[]};
   R.forEach(function(x){byQ[x.cls].push(x)});
   Object.keys(byQ).forEach(function(k){byQ[k].sort(function(a,b){return vqVal(b)-vqVal(a)})});
@@ -4308,6 +4533,252 @@ vqSync();
   var wh=document.querySelector('.stage .pagehead .when');
   if(wh && window.baselineLabel) wh.textContent='Jul 6 – 12 · compared with '+window.baselineLabel()+' · three lenses';
 })();
+</script>
+<script type="text/plain" class="pagejs" data-page="compass">
+var el=function(id){return document.getElementById(id)};
+var enc=encodeURIComponent;
+
+/* ---- levers (value–irritant) ---- */
+/* colors, positions and copy match the Value–Irritant matrix on Demand (VQ_Q) */
+var LEV={
+  eliminate:{lab:'Eliminate', cls:'t-elim', col:'#c03d33', blurb:'valuable to no one — remove the need', dest:'initiative'},
+  simplify :{lab:'Simplify',  cls:'t-simp', col:'#9a7d1f', blurb:'the company needs it · make it painless for the customer', dest:'initiative'},
+  leverage :{lab:'Leverage',  cls:'t-lev',  col:'#0f7d51', blurb:'valuable to both — serve it premium, grow from it', dest:'profile'},
+  digitize :{lab:'Digitize',  cls:'t-auto', col:'#2f6f9f', blurb:'customer can self-serve it — remove the manual step', dest:'initiative'}
+};
+/* grid: top-left, top-right, bottom-left, bottom-right — same as Demand (S,L,E,A) */
+var CELLS=[['simplify','leverage'],['eliminate','digitize']];
+
+/* ---- intents, classified + metrics (from Pulse) ---- */
+var INT=[
+ {nm:'Get a delivery update', lev:'digitize', vol:2034, cost:9906, fcr:58, ces:2.4, nps:-6, worth:340},
+ {nm:'Get a refund', lev:'eliminate', vol:732, cost:3565, fcr:79, ces:2.4, nps:2, worth:63},
+ {nm:'Cancel my order', lev:'leverage', vol:680, cost:3312, fcr:71, ces:2.6, nps:-3, worth:115},
+ {nm:'Find my order', lev:'simplify', vol:651, cost:3170, fcr:65, ces:2.8, nps:-8, worth:86},
+ {nm:'Check product availability', lev:'digitize', vol:467, cost:2274, fcr:88, ces:1.9, nps:5, worth:46},
+ {nm:'Get product information', lev:'digitize', vol:421, cost:2050, fcr:90, ces:1.8, nps:8, worth:40},
+ {nm:'Get a reshipment', lev:'leverage', vol:398, cost:1938, fcr:68, ces:2.5, nps:-2, worth:46},
+ {nm:'Substitute a product', lev:'digitize', vol:305, cost:1485, fcr:56, ces:2.7, nps:0, worth:58},
+ {nm:'Speed up my delivery', lev:'leverage', vol:179, cost:872, fcr:49, ces:3.0, nps:-10, worth:17},
+ {nm:'Report a damaged item', lev:'simplify', vol:127, cost:618, fcr:76, ces:2.5, nps:-4, worth:17},
+ {nm:'Investigate a delivery issue', lev:'eliminate', vol:105, cost:511, fcr:41, ces:3.2, nps:-14, worth:27},
+ {nm:'Escalate an issue', lev:'eliminate', vol:58, cost:282, fcr:35, ces:3.4, nps:-20, worth:15},
+ {nm:'Resolve a login issue', lev:'eliminate', vol:35, cost:170, fcr:55, ces:2.9, nps:-9, worth:9},
+ {nm:'Start a return', lev:'digitize', vol:357, cost:1739, fcr:85, ces:2.0, nps:3, worth:35},
+ {nm:'Understand duties and taxes', lev:'digitize', vol:219, cost:1067, fcr:94, ces:1.7, nps:1, worth:40},
+ {nm:'Place my order', lev:'leverage', vol:121, cost:589, fcr:94, ces:1.5, nps:14, worth:0, rev:true}
+];
+var DOWN={'Get a delivery update':2972,'Get a refund':3565,'Cancel my order':0,'Find my order':7925,'Check product availability':1137,'Get product information':1025,'Get a reshipment':1938,'Substitute a product':743,'Speed up my delivery':610,'Report a damaged item':1236,'Investigate a delivery issue':1533,'Escalate an issue':705,'Resolve a login issue':425,'Start a return':0,'Understand duties and taxes':0,'Place my order':0};
+function tcost(i){ return i.cost + (DOWN[i.nm]||0); } /* total cost to serve = handling + downstream (modeled) */
+var TOTV=INT.reduce(function(s,i){return s+i.vol},0), TOTC=INT.reduce(function(s,i){return s+tcost(i)},0);
+
+/* ---- root causes (aggregated across intents) ---- */
+var CAUSES=[
+ {id:'sla', cause:'Missed transit SLA', cat:'Carrier', owner:'A. Rao', role:'Carrier program', lev:'eliminate',
+   drives:[['Get a delivery update',44],['Delivery delayed',44],['Cancel my order',24],['Find my order',27]],
+   contacts:2600, cost:19800, down:24000, worth:305, emo:'worse', conf:'High', emoWorse:45, emoRepeat:1.6, emoCancel:2.0, emoCost:38,
+   breakdown:[['Carrier · transit SLA',58],['External · customs',18],['Fulfilment · dispatch',14],['Undetermined',10]],
+   plan:'Enforce the carrier SLA on the BLR→North-East lane, and fire proactive delay notices — they pre-empt the 67% who only want an update.'},
+ {id:'track', cause:'Tracking feed gap', cat:'Carrier', owner:'A. Rao', role:'Carrier program', lev:'digitize',
+   drives:[['Find my order',41],['Get a delivery update',13]],
+   contacts:690, cost:4200, down:9000, worth:86, emo:'worse', conf:'Medium', emoWorse:38, emoRepeat:1.5, emoCancel:1.4, emoCost:14,
+   breakdown:[['Carrier · scan gaps',52],['Process · case handling',30],['Undetermined',18]],
+   plan:'Close the carrier scan gaps and add a self-serve Locate-Missing-Shipment flow with delivery photo and geo-stamp.'},
+ {id:'damage', cause:'Damaged in transit', cat:'Carrier / packaging', owner:'A. Shah', role:'Payments', lev:'simplify',
+   drives:[['Get a refund',29],['Report a damaged item',45]],
+   contacts:440, cost:2100, down:6500, worth:63, emo:'worse', conf:'High', emoWorse:40, emoRepeat:1.4, emoCancel:1.6, emoCost:12,
+   breakdown:[['Carrier · handling',49],['Product · packaging',27],['Process · refund speed',16],['Undetermined',8]],
+   plan:'Tighten the packaging spec and review carrier handling; a one-tap damage refund cuts effort on the demand that remains.'},
+ {id:'listing', cause:'Listing accuracy gap', cat:'Catalogue', owner:'K. Iyer', role:'Procurement', lev:'digitize',
+   drives:[['Get a refund',22],['Get product information',39],['Check product availability',18]],
+   contacts:520, cost:2500, down:3200, worth:52, emo:'flat', conf:'Medium',
+   breakdown:[['Catalogue · detail gaps',61],['Product · description',24],['Undetermined',15]],
+   plan:'Enrich listing detail at the source (specs, dimensions, duties) — deflects pre-purchase questions and cuts refund demand downstream.'},
+ {id:'customs', cause:'Customs clearance hold', cat:'External', owner:'S. Kumar', role:'Billing', lev:'digitize',
+   drives:[['Understand duties and taxes',66],['Waive my charges',71]],
+   contacts:430, cost:2100, down:0, worth:40, emo:'flat', conf:'Medium',
+   breakdown:[['External · customs',63],['Process · disclosure',22],['Undetermined',15]],
+   plan:'Show duties upfront at checkout and send a proactive customs-status notice — it removes the surprise that drives the contact.'},
+ {id:'dispatch', cause:'Dispatch delay', cat:'Fulfilment', owner:'D. Kapoor', role:'Logistics PMO', lev:'eliminate',
+   drives:[['Check product availability',29],['Substitute a product',57],['Check order status',37]],
+   contacts:410, cost:2000, down:1500, worth:58, emo:'flat', conf:'Medium',
+   breakdown:[['Fulfilment · dispatch',56],['Catalogue · stock sync',30],['Undetermined',14]],
+   plan:'Fix stock-sync and dispatch cutoffs in the warehouse; the demand disappears upstream before a customer ever calls.'},
+ {id:'handling', cause:'Agent handling on complex cases', cat:'People', owner:'Pod A lead', role:'Profile', lev:'leverage',
+   drives:[['Escalate an issue',71],['Get a refund',7],['Cancel my order',6]],
+   contacts:320, cost:1800, down:0, worth:44, emo:'worse', conf:'High', toProfile:true, emoWorse:40, emoRepeat:1.6, emoCancel:2.0, emoCost:9, emoRecover:71,
+   breakdown:[['People · handling',62],['Process · fast path',22],['Policy · goodwill',9],['Undetermined',7]],
+   plan:'This is a performance fix, not a demand fix. Coach the handlers and route these to best-fit associates — people recover 71% of soured conversations.'}
+];
+
+var cmpView='vi', curCause=null;
+
+function fmtK(n){ return n>=1000? '$'+Math.round(n/1000)+'k' : '$'+n; }
+function levTag(k){ var L=LEV[k]; return '<span class="lev-tag '+L.cls+'"><i></i>'+L.lab+'</span>'; }
+function destBadge(k){ return LEV[k].dest==='profile'
+  ? '<span class="dest prof">→ Profile</span>'
+  : '<span class="dest init">→ Initiative</span>'; }
+function emoChip(c){ /* material only — a consequence signal, not a gauge */
+  if(c.emo==='better') return '<span class="emo-chip em-good">▲ ends better</span>';
+  if(c.emo!=='worse') return '';
+  return '<span class="emo-chip em-bad" title="'+(c.emoWorse||'')+'% of conversations from this cause end worse — repeat + churn '+(c.emoCost?fmtK(c.emoCost*1000)+'/yr':'')+'">▼ worse endings'+(c.emoCost?' · '+fmtK(c.emoCost*1000)+'/yr':'')+'</span>';
+}
+function emoLine(c){ /* consequence-linked line for the workspace — states WHY emotion belongs on a cause */
+  if(c.emo!=='worse') return '';
+  var money=c.emoCost?(', ≈ <b>'+fmtK(c.emoCost*1000)+'/yr</b> in repeat contacts and churn beyond handling'):'';
+  var lever=c.emoRecover
+    ? ' And the split shows the lever: <b>'+c.emoRecover+'%</b> is recoverable by better handling — a <b>Profile</b> fix — the rest lifts only when the cause is removed.'
+    : ' And it points to the lever: this emotion lifts mainly by <b>removing the cause</b>, not by handling the contact better.';
+  return '<div class="emo-line"><span class="emo-ic">▼</span><div>'
+    +'<div class="emo-why">Why emotion matters here</div>'
+    +'<b>'+c.emoWorse+'% of conversations from this cause end worse than they started.</b> That is a cost <span class="term-i">value at stake</span> doesn\'t capture — a bad ending compounds: these customers come back <b>'+c.emoRepeat+'×</b> and cancel <b>'+c.emoCancel+'×</b>'+money+'.'+lever
+    +'</div></div>';
+}
+
+/* ---------- state strip ---------- */
+function renderState(){
+  var totWorth=CAUSES.reduce(function(s,c){return s+c.worth},0);
+  var owned=CAUSES.filter(function(c){return c.owner}).length;
+  var planned=CAUSES.filter(function(c){return c.plan}).length;
+  var tiles=[
+    ['Value at stake', fmtK(totWorth*1000)+' / yr', 'across '+CAUSES.length+' root causes'],
+    ['Intents classified', INT.length, 'placed in the value–irritant matrix'],
+    ['Root causes', CAUSES.length, owned+' have an owner'],
+    ['Action plans', planned+' / '+CAUSES.length, 'ready to launch or route']
+  ];
+  el('cmpState').innerHTML=tiles.map(function(t){
+    return '<div class="cst"><div class="lab">'+t[0]+'</div><div class="big num">'+t[1]+'</div><div class="sub">'+t[2]+'</div></div>';
+  }).join('');
+}
+
+/* ---------- Value–Irritant (2×2 lanes) ---------- */
+function laneCard(k){
+  var L=LEV[k];
+  var items=INT.filter(function(i){return i.lev===k}).sort(function(a,b){return (b.worth||0)-(a.worth||0)||b.cost-a.cost});
+  var vol=items.reduce(function(s,i){return s+i.vol},0);
+  var cst=items.reduce(function(s,i){return s+tcost(i)},0);
+  var worth=items.reduce(function(s,i){return s+(i.worth||0)},0);
+  var pv=Math.round(vol/TOTV*100), pc=Math.round(cst/TOTC*100);
+  var rows=items.map(function(i){
+    return '<div class="vi-int" onclick="cmpIntent(\''+i.nm.replace(/'/g,"\\'")+'\')" title="Open this intent on Demand">'
+      +'<span class="nm">'+i.nm+'</span>'
+      +'<span class="mx"><b>'+i.vol.toLocaleString()+'</b> vol · '+fmtK(i.cost)+' · FCR '+i.fcr+'%</span>'
+      +'<span class="wr">'+(i.rev?'+ rev':(i.worth?fmtK(i.worth*1000):'—'))+'</span></div>';
+  }).join('');
+  return '<div class="vi-lane '+L.cls+'" style="--lc:'+L.col+'">'
+    +'<div class="vi-lh"><span class="lev-tag '+L.cls+'"><i></i>'+L.lab+'</span>'+destBadge(k)+'</div>'
+    +'<div class="vi-blurb">'+L.blurb+'</div>'
+    +'<div class="vi-mini"><span class="vpc"><b>'+pv+'%</b> of volume</span><span class="vpc" title="Share of total cost to serve — handling + downstream (modeled)."><b>'+pc+'%</b> of cost to serve</span><span class="vpc">'+items.length+' intents</span><span class="vpc vpc-w"><b>'+(worth?fmtK(worth*1000)+'/yr':'+ rev')+'</b> at stake</span></div>'
+    +'<div class="vi-list">'+rows+'</div></div>';
+}
+function renderVI(){
+  var grid='<div class="vi-grid">'
+    + '<div class="vi-yaxis"><span>value to the company →</span></div>'
+    + '<div class="vi-cells">'
+      + CELLS.map(function(row){ return row.map(laneCard).join(''); }).join('')
+    + '</div>'
+    + '<div class="vi-xaxis"><span>← lower value to the customer</span><span>higher value to the customer →</span></div>';
+  grid+='</div>';
+  el('cmpVI').innerHTML=
+     '<div class="cmp-secthead"><h2>Value–Irritant</h2><span>every intent placed by value to the company × value to the customer — the lane sets the play</span></div>'
+    + grid
+    + '<div class="vi-foot">Eliminate · Simplify · Digitize become <b>initiatives</b>. Leverage is a <b>serve-it-better</b> move — it routes into <b>Profile</b> (coach &amp; route). Classified from Pulse · <a class="quiet" href="#/demand">full demand inventory ↗</a></div>';
+}
+
+/* ---------- Root-cause ledger ---------- */
+function causeCard(c){
+  var chips=c.drives.map(function(d){return '<span class="drv">'+d[0]+' <b>'+d[1]+'%</b></span>';}).join('');
+  var common=c.drives.length>=2? '<span class="common">common cause · '+c.drives.length+' intents</span>':'';
+  return '<div class="rc-card" onclick="openCause(\''+c.id+'\')">'
+    +'<div class="rc-top">'
+      +'<div class="rc-id"><div class="rc-name">'+c.cause+' '+common+'</div>'
+        +'<div class="rc-owner">'+(c.owner?('<span class="own-dot"></span>'+c.owner+' · '+c.role):'<span class="own-none">● unassigned</span>')+'</div></div>'
+      +'<div class="rc-worth">'
+        +'<div class="rc-stat"><div class="num">'+fmtK(c.worth*1000)+'</div><div class="lab">/ yr value at stake</div></div>'
+        +'<div class="rc-stat"><div class="num">'+c.contacts.toLocaleString()+'</div><div class="lab">volume at stake</div></div>'
+      +'</div>'
+    +'</div>'
+    +'<div class="rc-drives">'+chips+'</div>'
+    +'<div class="rc-meta">'+levTag(c.lev)+destBadge(c.lev)+'<span class="rc-num">'+fmtK(c.cost+c.down)+' total cost to serve</span>'+emoChip(c)+'<span class="rc-open">Open workspace ›</span></div>'
+    +'</div>';
+}
+function renderRC(){
+  var ranked=CAUSES.slice().sort(function(a,b){return b.worth-a.worth});
+  el('cmpRC').innerHTML=
+     '<div class="cmp-secthead"><h2>Root causes</h2><span>causes aggregated across intents, ranked by value at stake — fix the cause, not each intent</span></div>'
+    + '<div class="rc-list">'+ranked.map(causeCard).join('')+'</div>';
+}
+
+/* ---------- Cause workspace ---------- */
+function barBreak(arr){
+  var pal={'Carrier':'#c98a3a','External':'#8a73ba','Fulfilment':'#3f7bd6','Process':'#6b7280','Catalogue':'#3fbcb9','Product':'#c98a3a','People':'#0f7d51','Policy':'#b48a2a','Undetermined':'#c9ccd1'};
+  function colOf(lab){ var key=lab.split(' · ')[0]; return pal[key]||'#9198a3'; }
+  var seg=arr.map(function(a){return '<i style="width:'+a[1]+'%;background:'+colOf(a[0])+'" title="'+a[0]+' '+a[1]+'%"></i>';}).join('');
+  var leg=arr.map(function(a){return '<span class="lg"><i style="background:'+colOf(a[0])+'"></i>'+a[0]+' <b>'+a[1]+'%</b></span>';}).join('');
+  return '<div class="brk-bar">'+seg+'</div><div class="brk-leg">'+leg+'</div>';
+}
+function actionBox(c){
+  var L=LEV[c.lev];
+  if(c.toProfile || L.dest==='profile'){
+    return '<div class="act-box prof">'
+      +'<div class="ab-h">'+levTag(c.lev)+'<span class="ab-dest">Serve it better → Profile</span></div>'
+      +'<p>'+c.plan+'</p>'
+      +'<div class="ab-btns"><button class="cta ghost" onclick="go(\'#/people?pq='+enc(c.owner)+'\')">Coach in People ↗</button>'
+      +'<button class="cta ghost" onclick="go(\'#/fit\')">Re-route via Fit ↗</button>'
+      +'<button class="cta ghost" onclick="go(\'#/quality\')">Set the Quality bar ↗</button></div></div>';
+  }
+  return '<div class="act-box init">'
+    +'<div class="ab-h">'+levTag(c.lev)+'<span class="ab-dest">Reduce the demand → Initiative</span></div>'
+    +'<p>'+c.plan+'</p>'
+    +'<div class="ab-btns"><button class="cta" onclick="go(\'#/actions?new=1\')">Create initiative →</button>'
+    +'<button class="cta ghost" onclick="go(\'#/actions\')">See initiatives in flight ↗</button></div></div>';
+}
+function renderWork(){
+  if(!curCause){ el('cmpWork').innerHTML=''; return; }
+  var c=CAUSES.find(function(x){return x.id===curCause}); if(!c){ el('cmpWork').innerHTML=''; return; }
+  var drives=c.drives.map(function(d){
+    var i=INT.find(function(x){return x.nm===d[0]});
+    var mx=i?('<span class="mx">'+i.vol.toLocaleString()+' vol · '+fmtK(i.cost)+' · FCR '+i.fcr+'% · CES '+i.ces+' · NPS '+i.nps+'</span>'):'<span class="mx">contributing intent</span>';
+    return '<div class="wd-int"'+(i?' onclick="cmpIntent(\''+d[0].replace(/'/g,"\\'")+'\')" style="cursor:pointer"':'')+'><span class="nm">'+d[0]+'</span>'+mx+'<span class="sh">'+d[1]+'% from this cause</span></div>';
+  }).join('');
+  el('cmpWork').innerHTML=
+   '<div class="wk" id="wk">'
+   +'<div class="wk-head"><a class="quiet" href="#" onclick="closeCause();return false">← All root causes</a></div>'
+   +'<div class="wk-title"><div><h2>'+c.cause+'</h2><div class="wk-sub">'+levTag(c.lev)+destBadge(c.lev)+emoChip(c)+'<span class="conf">confidence: '+c.conf+'</span></div></div>'
+     +'<div class="wk-worth">'
+       +'<div class="rc-stat"><div class="num">'+fmtK(c.worth*1000)+'</div><div class="lab">/ yr value at stake</div></div>'
+       +'<div class="rc-stat"><div class="num">'+c.contacts.toLocaleString()+'</div><div class="lab">volume at stake</div></div>'
+     +'</div></div>'
+   +emoLine(c)
+   +'<div class="wk-cols">'
+     +'<div class="wk-card"><h4>What it drives</h4><div class="wd-list">'+drives+'</div></div>'
+     +'<div class="wk-card"><h4>Why it happens</h4>'+barBreak(c.breakdown)+'<div class="wk-note">One representative cause per conversation · undetermined left honest, never guessed.</div></div>'
+   +'</div>'
+   +'<div class="wk-card"><h4>Owner</h4><div class="wk-owner"><span class="own-dot"></span><b>'+c.owner+'</b> · '+c.role+' <a class="quiet" href="#" onclick="return false" style="margin-left:10px">Reassign</a></div></div>'
+   +'<div class="wk-card"><h4>Action plan</h4>'+actionBox(c)+'</div>'
+   +'</div>';
+  var w=el('wk'); if(w) w.scrollIntoView({block:'start',behavior:'smooth'});
+}
+
+/* ---------- controls ---------- */
+function cmpSetView(v){
+  cmpView=v; curCause=null; renderWork();
+  el('cmpVI').style.display = v==='vi'?'':'none';
+  el('cmpRC').style.display = v==='rc'?'':'none';
+  var seg=el('cmpSeg'); if(seg) [].forEach.call(seg.querySelectorAll('button'),function(b){ b.classList.toggle('on', b.getAttribute('data-v')===v); });
+}
+function openCause(id){ curCause=id; if(cmpView!=='rc') cmpSetView('rc'); renderWork(); }
+function closeCause(){ curCause=null; renderWork(); }
+function cmpIntent(nm){ go('#/demand?ask='+enc(nm)); }
+window.cmpSetView=cmpSetView; window.openCause=openCause; window.closeCause=closeCause; window.cmpIntent=cmpIntent;
+
+renderState(); renderVI(); renderRC();
+/* deep link ?view=vi|rc or ?cause=ID */
+if(window.__params){
+  var _v=window.__params.view || (window.__params.cause?'rc':'vi');
+  cmpSetView(_v);
+  if(window.__params.cause) openCause(window.__params.cause);
+}
 </script>
 <script type="text/plain" class="pagejs" data-page="quality">
 /* ---------- KPI tiles ---------- */
@@ -6128,21 +6599,74 @@ const OTHERS=[
  {lab:'eNPS', big:'+12', side:'quarterly · reported at team grain', spark:null, note:'imported from HRIS — anonymous, no conversation-derived trace to open', mut:true, tag:'imported'},
  {lab:'Snowball melting', big:'62', side:'tenant charter metric', spark:S14, fmt:v=>String(v), note:'defined in Studio · trends on People scorecards', door:'Studio ↗', dhref:'#/studio', tag:'custom'}
 ];
-function card(m){
-  return `<div class="mc ${m.mut?'mut':''}">
-    <div class="lab">${m.lab}${m.tag?` <span class="tag">${m.tag}</span>`:''}</div>
-    <div class="row"><span class="big num ${m.alert?'alert':''}">${m.big}</span><span class="side num">${m.side}</span></div>
-    ${m.spark?`<div class="spkrow" title="Weekly, trailing 12 weeks — ends ${P.end}."><div class="spark" style="flex:1">${spark(pSlice(m.spark),m.sparkB?pSlice(m.sparkB):null,m)}</div><span class="spklab">12 wk</span></div>`:`<div class="spark"></div>`}
-    <div class="foot"><span class="note">${m.note}</span>${m.door?`<a class="quiet door" href="${m.dhref}">${m.door}</a>`:''}</div>
+// v6 scorecard — one row per metric: name · now(+status) · line trend(+Δ) · deep-dive
+// higher-is-better direction per metric (1 up-good, -1 down-good, 0 neutral)
+const TONECOL={good:'#0f7d51',bad:'#c03d33',neu:'#9198a3'};
+function goodDir(m){
+  const l=m.lab||'';
+  if(/Cost|Handle time/.test(l)) return -1;
+  if(/FCR|Quality|CSAT|NPS|CES|Effort|Sentiment|NEM|eNPS|Snowball/.test(l)) return 1;
+  return 0; // Volume, Journeys — neutral (context, not good/bad)
+}
+function toneOf(m,a){
+  const dir=goodDir(m);
+  if(!a||a.length<2||!dir) return 'neu';
+  const d=a[a.length-1]-a[0];
+  if(Math.abs(d)<1e-9) return 'neu';
+  return (d*dir>0)?'good':'bad';
+}
+var __spk=0;
+function lineSpark(a,t,m){
+  if(!a||a.length<2) return '';
+  const w=120,h=34,pad=4, col=TONECOL[t]||TONECOL.neu, gid='spg'+(__spk++);
+  const mn=Math.min.apply(null,a),mx=Math.max.apply(null,a),rng=(mx-mn)||1;
+  const X=i=>pad+i/(a.length-1)*(w-2*pad), Y=v=>h-pad-((v-mn)/rng)*(h-2*pad);
+  const P=a.map((v,i)=>[X(i),Y(v)]);
+  const line=P.map(p=>p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+  const area='M'+P[0][0].toFixed(1)+','+(h-pad).toFixed(1)+' L'+line.replace(/ /g,' L')+' L'+P[P.length-1][0].toFixed(1)+','+(h-pad).toFixed(1)+' Z';
+  const lx=P[P.length-1][0].toFixed(1), ly=P[P.length-1][1].toFixed(1);
+  // target reference line where a target exists and sits in range
+  let tRef='';
+  if(m&&m.target!=null&&m.target>=mn&&m.target<=mx){ const ty=Y(m.target).toFixed(1); tRef=`<line x1="${pad}" x2="${w-pad}" y1="${ty}" y2="${ty}" class="tref"/>`; }
+  return `<svg class="lspark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><defs><linearGradient id="${gid}" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${col}" stop-opacity=".20"/><stop offset="1" stop-color="${col}" stop-opacity="0"/></linearGradient></defs><path d="${area}" fill="url(#${gid})"/>${tRef}<polyline points="${line}" fill="none" stroke="${col}" stroke-width="1.7" vector-effect="non-scaling-stroke"/><circle cx="${lx}" cy="${ly}" r="2.4" fill="${col}"/></svg>`;
+}
+function statusOf(m){
+  if(m.target==null) return '';
+  const v=parseFloat(String(m.big).replace(/[^0-9.\-−]/g,'').replace('−','-'))||0;
+  const ok=v>=m.target;
+  return `<span class="mstat ${ok?'ok':'below'}"><i></i>${ok?'on target':'below '+m.target}</span>`;
+}
+function deltaOf(m,a,t){
+  if(!a||a.length<2) return '';
+  const d=a[a.length-1]-a[0], f=m.fmt||(v=>v);
+  if(Math.abs(d)<1e-9) return `<span class="mdelta neu">— no change</span>`;
+  return `<span class="mdelta ${t}" title="12-week change">${d>0?'▲':'▼'} ${f(Math.round(Math.abs(d)*10)/10)}</span>`;
+}
+function row(m){
+  const a=m.spark?pSlice(m.spark):null;
+  const t=toneOf(m,a);
+  const st=m.target!=null?(parseFloat(String(m.big).replace(/[^0-9.\-−]/g,'').replace('−','-'))>=m.target?' st-ok':' st-below'):'';
+  const clk=m.dhref?` onclick="go('${m.dhref}')"`:'';
+  const note=(m.note||'').replace(/<[^>]+>/g,'').replace(/"/g,'&quot;');
+  return `<div class="mtr${m.mut?' mut':''}${m.dhref?'':' noclick'}${st}"${clk} title="${note}">
+    <div class="mname">${m.lab}${m.tag?` <span class="tag">${m.tag}</span>`:''}<span class="msub">${m.side}</span></div>
+    <div class="mnow"><span class="big num ${m.alert?'alert':''}">${m.big}</span>${statusOf(m)}</div>
+    <div class="mtrend">${a?lineSpark(a,t,m):'<span class="msub nser">no trend series</span>'}${deltaOf(m,a,t)}</div>
+    <div class="mgo">${m.dhref?'›':''}</div>
   </div>`;
 }
-el('rooms').innerHTML=ROOMS.map(card).join('');
-el('pairs').innerHTML=PAIRS.map(card).join('');
-el('others').innerHTML=OTHERS.map(card).join('');
+function renderTable(id,arr){
+  const n=el(id); if(!n) return;
+  n.className='mtbl';
+  n.innerHTML=`<div class="mtr hd"><span>Metric</span><span>Now</span><span>12-week trend</span><span></span></div>`+arr.map(row).join('');
+}
+renderTable('rooms',ROOMS);
+renderTable('pairs',PAIRS);
+renderTable('others',OTHERS);
 const JOUR=[
  {lab:'Journeys', big:chN(pN(6509)).toLocaleString(), side:'85% of contacts linked · 1.11 contacts per journey', spark:J14, lab2:'switch rate', fmt:v=>v+'%', note:'switch-rate series · 41% of follow-up contacts', door:'Open the deep dive ↗', dhref:'#/room-journeys'}
 ];
-el('jour').innerHTML=JOUR.map(card).join('');
+renderTable('jour',JOUR);
 if(!Vv.all){ var wh=document.querySelector('#stage .pagehead .when');
   if(wh && wh.textContent.indexOf('· '+Vv.scope)===-1) wh.insertAdjacentHTML('beforeend',' · '+Vv.scope); }
 
@@ -8330,9 +8854,15 @@ window.applyCmpPicker=function(){
   document.addEventListener('DOMContentLoaded',function(){});
   setTimeout(function(){ try{ ob.observe(document.getElementById('stage'),{childList:true,subtree:true,characterData:true}); }catch(e){} },0);
 })();
-const NAV1=[["ask","Ask Intendra","Ask anything about your conversations"],["summit","Summit","What happened, and where"],["demand","Demand","Why customers reached out"],["metrics","Metrics","Every number and its deep dive"]],
+const NAV_TOP=[["ask","Ask Intendra","Ask anything about your conversations"],["summit","Summit","How the week went"]],
+      NAV_PULSE=[["demand","Demand","Why customers reached out"],["metrics","Metrics","Every number and its deep dive"]],
       NAV2=[["quality","Quality","How we served"],["people","People","Who served"],["fit","Fit","Who fits what — intent & customer to associate"]],
       NAV3=[["actions","Actions","What to do — and did it work?"],["reports","Reports","The week and the month, ready to send"],["conversations","Conversations","The evidence"],["studio","Studio","Where the numbers are governed"]];
+const COMPASS_SUB=[
+  {href:'#/compass?view=vi', view:'vi', label:'Value–Irritant Matrix', t:'Classify demand into the four action lanes'},
+  {href:'#/compass?view=rc', view:'rc', label:'Root causes', t:'Causes aggregated across intents — fix the cause'}
+];
+var pulseOpen=false, compassOpen=false, navActive='summit';
 const ROOMS=new Set(['room-fcr','room-cost','room-ces','room-aht','room-journeys']);
 const stage=document.getElementById('stage'), nav=document.getElementById('nav');
 window.go=function(h){ if(!h) return; if(h[0]==='#') h=h.slice(1); if(location.hash.slice(1)===h){ route(); } else location.hash=h; };
@@ -8343,11 +8873,32 @@ function parse(){
   if(q[1]) for(const kv of q[1].split('&')){ const p=kv.split('='); params[decodeURIComponent(p[0])]=decodeURIComponent((p[1]||'').replace(/\+/g,' ')); }
   return {page, params};
 }
-function renderNav(active){
-  const on=k=> (active===k)||(k==='metrics'&&ROOMS.has(active))||(k==='reports'&&active.indexOf('report-')===0);
-  const grp=arr=>arr.map(([k,l,t])=>'<a href="#/'+k+'" title="'+t+'" class="'+(on(k)?'on':'')+'">'+l+'</a>').join('');
-  nav.innerHTML = grp(NAV1)+'<span class="div"></span>'+grp(NAV2)+'<span class="div"></span>'+grp(NAV3);
+function navDrop(label,open,active,onclick,title,subHtml){
+  return '<div class="navgrp'+(open?' open':'')+'">'
+    +'<button type="button" class="navparent'+(active?' on':'')+'" onclick="'+onclick+'" title="'+title+'"><span>'+label+'</span><span class="caret">▾</span></button>'
+    +'<div class="navsub">'+subHtml+'</div></div>';
 }
+function renderNav(active){
+  const changed=(active!==navActive);
+  const view=(window.__params&&window.__params.view) || ((window.__params&&window.__params.cause)?'rc':'vi');
+  const on=k=> (active===k)||(k==='metrics'&&ROOMS.has(active))||(k==='reports'&&active.indexOf('report-')===0);
+  const link=([k,l,t])=>'<a href="#/'+k+'" title="'+t+'" class="'+(on(k)?'on':'')+'">'+l+'</a>';
+  const grp=arr=>arr.map(link).join('');
+  const pulseActive=NAV_PULSE.some(([k])=>on(k));
+  const compassActive=(active==='compass');
+  /* auto-open only when navigating INTO the group, so a manual collapse sticks */
+  if(changed){ if(pulseActive) pulseOpen=true; if(compassActive) compassOpen=true; }
+  navActive=active;
+  const pulseGrp=navDrop('Pulse',pulseOpen,pulseActive,'togglePulse()','Pulse — analysis: demand and metrics',NAV_PULSE.map(link).join(''));
+  const csub=COMPASS_SUB.map(function(s){
+    var a=compassActive && s.view===view;
+    return '<a href="'+s.href+'" title="'+s.t+'" class="'+(a?'on':'')+'">'+s.label+'</a>';
+  }).join('');
+  const compassGrp=navDrop('Compass',compassOpen,compassActive,'toggleCompass()','Compass — value-irritant & root cause',csub);
+  nav.innerHTML = grp(NAV_TOP)+pulseGrp+compassGrp+'<span class="div"></span>'+grp(NAV2)+'<span class="div"></span>'+grp(NAV3);
+}
+window.togglePulse=function(){ pulseOpen=!pulseOpen; renderNav(navActive); };
+window.toggleCompass=function(){ compassOpen=!compassOpen; renderNav(navActive); };
 window.watchFormHTML=function(id, what, conditions){
   return '<div class="watchform" id="'+id+'">'
    +'<h6>Watch — '+what+'</h6>'
@@ -8399,7 +8950,7 @@ function route(){
   var ps=document.getElementById('periodSel'); if(ps&&window.__P) ps.value=window.__P.key;
   var cs2=document.getElementById('channelSel'); if(cs2) cs2.value=window.__CH?window.__CH.key:'';
   if(window.renderBaselineOptions) window.renderBaselineOptions();
-  document.title='Intendra — '+({"summit":"Summit","demand":"Demand","quality":"Quality","people":"People","fit":"Fit","conversations":"Conversations","actions":"Actions & Initiatives","metrics":"Metrics","reports":"Reports","report-weekly":"Weekly brief","report-monthly":"Monthly report","room-fcr":"Deep dive · FCR","room-cost":"Deep dive · Cost","room-ces":"Deep dive · Effort","room-aht":"Deep dive · Handle time","room-journeys":"Deep dive · Journeys","studio":"Studio","ask":"Ask Intendra"})[page];
+  document.title='Intendra — '+({"summit":"Summit","demand":"Demand","compass":"Compass","quality":"Quality","people":"People","fit":"Fit","conversations":"Conversations","actions":"Actions & Initiatives","metrics":"Metrics","reports":"Reports","report-weekly":"Weekly brief","report-monthly":"Monthly report","room-fcr":"Deep dive · FCR","room-cost":"Deep dive · Cost","room-ces":"Deep dive · Effort","room-aht":"Deep dive · Handle time","room-journeys":"Deep dive · Journeys","studio":"Studio","ask":"Ask Intendra"})[page];
   const js=document.querySelector('.pagejs[data-page="'+page+'"]');
   try{ new Function(js.textContent)(); }catch(e){ console.error('[page '+page+']', e); }
   window.scrollTo(0,0);
