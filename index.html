@@ -1858,12 +1858,12 @@ select.pill:hover{border-color:var(--line2)}
     </div>
 
     <div class="tiles" style="grid-template-columns:repeat(6,1fr)">
-      <div class="tile" title="8,470 service contacts ÷ 49,200 orders shipped = 172 per 1,000."><div class="lab">Service contacts</div><div class="big num" id="tContacts">8,470</div><div class="sub num" id="tPer1k">172 per 1k orders shipped</div></div>
+      <div class="tile" title="8,470 service contacts ÷ 49,200 orders shipped = 172 per 1,000."><div class="lab">Service contacts</div><div class="big num" id="tContacts">8,470</div><div class="sub num" id="tPer1K">172 per 1K orders shipped</div></div>
       <div class="tile"><div class="lab">Feedback signals</div><div class="big num" id="tSignals">1,730</div><div class="sub">no handle cost · corroborate reasons</div></div>
-      <div class="tile" style="cursor:pointer" onclick="go('#/room-cost')" title="Handle cost of the week’s service contacts. Opens the cost deep dive."><div class="lab">Cost to serve</div><div class="big num" id="tCost">$41.2k</div><div class="sub num">$4.87 per contact</div></div>
-      <div class="tile" style="cursor:pointer" onclick="go('#/room-cost')" title="Cost sitting in eliminate-rated reasons. Opens the cost deep dive."><div class="lab">Avoidable</div><div class="big num alert" id="tAvoid">$25.6k</div><div class="sub">62% sits in eliminate-rated reasons</div></div>
-      <div class="tile" style="cursor:pointer" onclick="go('#/room-cost')" title="Handling + downstream (modeled). Downstream — refunds, reshipments, concessions, escalations — is attributed to each intent as a governed ratio of its handling cost. Opens the cost deep dive."><div class="lab">Total cost to serve</div><div class="big num" id="tDS">$66.9k</div><div class="sub num" id="tDSsub">$41.2k handling + $25.7k downstream (modeled)</div></div>
-      <div class="tile" style="cursor:pointer" onclick="go('#/actions')" title="Annualized value of the top three demand-side actions. Opens Actions."><div class="lab">If top three fixes ship</div><div class="big num good">$680k</div><div class="sub">annualized · notices, carrier SLA, opt-in</div></div>
+      <div class="tile" style="cursor:pointer" onclick="go('#/room-cost')" title="Handle cost of the week’s service contacts. Opens the cost deep dive."><div class="lab">Cost to serve</div><div class="big num" id="tCost">$41.2K</div><div class="sub num">$4.87 per contact</div></div>
+      <div class="tile" style="cursor:pointer" onclick="go('#/room-cost')" title="Cost sitting in eliminate-rated reasons. Opens the cost deep dive."><div class="lab">Avoidable</div><div class="big num alert" id="tAvoid">$25.6K</div><div class="sub">62% sits in eliminate-rated reasons</div></div>
+      <div class="tile" style="cursor:pointer" onclick="go('#/room-cost')" title="Handling + downstream (modeled). Downstream — refunds, reshipments, concessions, escalations — is attributed to each intent as a governed ratio of its handling cost. Opens the cost deep dive."><div class="lab">Total cost to serve</div><div class="big num" id="tDS">$66.9K</div><div class="sub num" id="tDSsub">$41.2K handling + $25.7K downstream (modeled)</div></div>
+      <div class="tile" style="cursor:pointer" onclick="go('#/actions')" title="Annualized value of the top three demand-side actions. Opens Actions."><div class="lab">If top three fixes ship</div><div class="big num good">$680K</div><div class="sub">annualized · notices, carrier SLA, opt-in</div></div>
     </div>
 
     <div class="lensbar">
@@ -1886,7 +1886,7 @@ select.pill:hover{border-color:var(--line2)}
         <div class="seg" id="metricSeg">
           <button data-m="n">Contacts</button>
           <button class="on" data-m="cost">Cost</button>
-          <button data-m="cpx" title="Contacts per 1,000 orders shipped — 49,200 this week. One denominator, so ranking matches Contacts.">Per 1k orders</button>
+          <button data-m="cpx" title="Contacts per 1,000 orders shipped — 49,200 this week. One denominator, so ranking matches Contacts.">Per 1K orders</button>
         </div>
       </div>
       <div id="pChart"></div>
@@ -2187,7 +2187,7 @@ select.pill:hover{border-color:var(--line2)}
     <div class="rcard">
       <h3>Weekly brief</h3>
       <div class="meta num">Week of Jul 6 – 12 · vs prior week</div>
-      <div class="cover">The six outcomes, the two biggest movers with their drivers, this week's signals, fatal violations, and where actions stand — one page, every figure linked back into the product.</div>
+      <div class="cover">The six outcomes, the two biggest movers with their drivers, this week's signals, fatal errors, and where actions stand — one page, every figure linked back into the product.</div>
       <div class="foot"><span class="sched">Mondays 08:00</span><span style="flex:1"></span><a class="quiet" href="#/report-weekly">Open the brief ↗</a></div>
     </div>
     <div class="rcard">
@@ -2205,7 +2205,7 @@ select.pill:hover{border-color:var(--line2)}
 
     <div class="warow"><div class="wn">Fatal violations<span>Program</span></div><div class="wc">every occurrence</div><div class="wl">As it happens · email</div><div class="wl num">Sat Jul 11</div><div><a class="quiet" href="#" onclick="document.getElementById('wp1').classList.toggle('open');return false">Preview ▾</a></div></div>
     <div class="wprev" id="wp1">
-      <div class="wt">Alert — fatal violation detected</div>
+      <div class="wt">Alert — fatal error detected</div>
       <div class="wb">Identity not verified before account change on call #4239 — Voice · In-house Pod B · Sat Jul 11. The audit auto-zeroed. This is the fourth identity-verification fatal this week.</div>
       <div class="wm">fired Sat Jul 11, 21:40 · <a class="quiet" href="#/conversations?id=4239">Review the call ↗</a> · <a class="quiet" href="#/quality">Quality ↗</a></div>
     </div>
@@ -2235,7 +2235,7 @@ select.pill:hover{border-color:var(--line2)}
     <div class="when">vs prior week · prepared Mon Jul 13 · <a class="quiet pbtn" href="#" onclick="window.print();return false" title="Prints this brief as a PDF-ready page.">Download PDF ↗</a></div>
   </div>
 
-  <div class="lede">8,470 service contacts carried $66,902 in total cost to serve this week — $41,249 handling + $25,653 downstream (modeled). First contact resolution rose a point to 68 against a target of 80 — +0.6 from rate, +0.4 from mix; quality held at 87 with 7 fatal violations; experience held at −11. Volume is the mover — contacts grew 3% on the prior week and cost rose $1,364. Two initiatives are live worth $565k expected; two breaching movers remain uncovered.</div>
+  <div class="lede">8,470 service contacts carried $66,902 in total cost to serve this week — $41,249 handling + $25,653 downstream (modeled). First contact resolution rose a point to 68 against a target of 80 — +0.6 from rate, +0.4 from mix; quality held at 87 with 7 fatal errors; experience held at −11. Volume is the mover — contacts grew 3% on the prior week and cost rose $1,364. Two initiatives are live worth $565K expected; two breaching movers remain uncovered.</div>
 
   <div class="six" id="six"></div>
 
@@ -2251,13 +2251,13 @@ select.pill:hover{border-color:var(--line2)}
   </div>
 
   <div class="panelc"><h4>Quality watch</h4>
-    <div class="li"><span><b>7 fatal violations</b> — identity verification 4 · vertical classification 2 · disclosure 1</span><a class="quiet rt bad" href="#/quality">Quality ↗</a></div>
+    <div class="li"><span><b>7 fatal errors</b> — identity verification 4 · vertical classification 2 · disclosure 1</span><a class="quiet rt bad" href="#/quality">Quality ↗</a></div>
     <div class="li"><span><b>Addresses every question</b> failing at 34% and rising · MK — Email team at 41%</span><a class="quiet rt" href="#/quality">Parameter ↗</a></div>
   </div>
 
   <div class="panelc"><h4>Actions</h4>
-    <div class="li"><span><b>2 live initiatives</b> · $565k expected — INIT-07 on track, INIT-08 needs support (contract sign-off, 4 days)</span><a class="quiet rt" href="#/actions">Register ↗</a></div>
-    <div class="li"><span><b>2 movers uncovered</b> · $259k on the shelf unadopted — expires with the week</span><a class="quiet rt" href="#/actions">Shelf ↗</a></div>
+    <div class="li"><span><b>2 live initiatives</b> · $565K expected — INIT-07 on track, INIT-08 needs support (contract sign-off, 4 days)</span><a class="quiet rt" href="#/actions">Register ↗</a></div>
+    <div class="li"><span><b>2 movers uncovered</b> · $259K on the shelf unadopted — expires with the week</span><a class="quiet rt" href="#/actions">Shelf ↗</a></div>
   </div>
 
   <div class="footnote">Every figure above links to its page. Delivery schedule and recipients are governed in <a class="quiet" href="#/studio">Studio ↗</a>.</div>
@@ -2275,7 +2275,7 @@ select.pill:hover{border-color:var(--line2)}
     <div class="when">vs May · prepared Jul 1 · <a class="quiet pbtn" href="#" onclick="window.print();return false" title="Prints this report as a PDF-ready page.">Download PDF ↗</a></div>
   </div>
 
-  <div class="lede">June carried roughly 34,320 service contacts at $61,614 a week in total cost to serve — $37,986 handling + $23,628 downstream (modeled). Resolution rose three points to 65, still fifteen points from target. Quality rose to 86 with fatal violations falling from 36 to 26. The negative emotion margin narrowed from −14 to −12, and delivery-update contacts grew 23% on May. One initiative shipped in May is realizing $38k a year against $32k expected; two more went live in the last week of June.</div>
+  <div class="lede">June carried roughly 34,320 service contacts at $61,614 a week in total cost to serve — $37,986 handling + $23,628 downstream (modeled). Resolution rose three points to 65, still fifteen points from target. Quality rose to 86 with fatal errors falling from 36 to 26. The negative emotion margin narrowed from −14 to −12, and delivery-update contacts grew 23% on May. One initiative shipped in May is realizing $38K a year against $32K expected; two more went live in the last week of June.</div>
 
   <div class="panelc"><h4>The six outcomes — June vs May</h4><div id="mtable"></div></div>
 
@@ -2415,12 +2415,12 @@ select.pill:hover{border-color:var(--line2)}
     <div class="d"><b class="num" id="cdel">+$2,212</b> <span id="cprev">vs prior week</span><br><span class="num" id="cn">8,470 contacts · no target set</span></div>
     <div class="sub"><div class="k">Per contact — handling</div><div class="n num">$4.87 <small>blended · Field $6.80</small></div></div>
     <div class="sub"><div class="k" title="Share of handling cost sitting in eliminate-rated reasons.">Avoidable</div><div class="n num" id="cav">62% <small>· $25,574</small></div></div>
-    <div class="sub"><div class="k" title="Period handling cost ÷ orders shipped, per 1,000.">Per 1k orders</div><div class="n num" id="cper">$838 <small>49,200 orders shipped</small></div></div>
-    <div class="sub" style="flex-basis:100%"><div class="k" title="Total cost to serve = handling + downstream (modeled). Channel, partner, per-contact and per-1k figures on this page are handling only.">Components</div><div class="n num" id="cod">Handling $41,249 + <span title="Downstream (modeled) — refunds, reshipments, concessions and escalations attributed to the intent; per-intent ratio of handling cost, governed in Studio.">Downstream (modeled) $25,653</span> = <b title="Handling $41,249 + downstream (modeled) $25,653.">$66,902</b> <small>/wk</small></div></div>
+    <div class="sub"><div class="k" title="Period handling cost ÷ orders shipped, per 1,000.">Per 1K orders</div><div class="n num" id="cper">$838 <small>49,200 orders shipped</small></div></div>
+    <div class="sub" style="flex-basis:100%"><div class="k" title="Total cost to serve = handling + downstream (modeled). Channel, partner, per-contact and per-1K figures on this page are handling only.">Components</div><div class="n num" id="cod">Handling $41,249 + <span title="Downstream (modeled) — refunds, reshipments, concessions and escalations attributed to the intent; per-intent ratio of handling cost, governed in Studio.">Downstream (modeled) $25,653</span> = <b title="Handling $41,249 + downstream (modeled) $25,653.">$66,902</b> <small>/wk</small></div></div>
     <div class="spark" id="idspark" title="Weekly, trailing 12 weeks — ends Jul 12."></div><span class="spklab">12 wk</span>
     <div class="chips">
-      <a class="ichip" href="#/actions?focus=INIT-07" title="Proactive delivery-status notices — expected $340k annualized."><i></i>INIT-07</a>
-      <a class="ichip" href="#/actions?focus=INIT-08" title="Enforce carrier transit SLA — expected $225k annualized."><i></i>INIT-08</a>
+      <a class="ichip" href="#/actions?focus=INIT-07" title="Proactive delivery-status notices — expected $340K annualized."><i></i>INIT-07</a>
+      <a class="ichip" href="#/actions?focus=INIT-08" title="Enforce carrier transit SLA — expected $225K annualized."><i></i>INIT-08</a>
       <a class="quiet" href="#/actions">Actions ↗</a>
       <a class="quiet" href="#" onclick="toggleWatch('wf');return false" title="Get told when this moves — condition, cadence and delivery are yours. Personal, no approval needed.">Watch</a>
     </div>
@@ -2550,7 +2550,7 @@ select.pill:hover{border-color:var(--line2)}
     <div class="spark" id="idspark" title="Weekly, trailing 12 weeks — ends Jul 12."></div><span class="spklab">12 wk</span>
     <div class="chips">
       <span class="nochip">no live initiative targets handle time · <a class="quiet" href="#/actions">shelf ↗</a></span>
-      <a class="quiet" href="#/room-cost" id="acost" title="Cost = contacts × handle time × loaded rate · $4.87 blended per contact.">rolls into handling — $41.2k of $66.9k total to serve this week ↗</a>
+      <a class="quiet" href="#/room-cost" id="acost" title="Cost = contacts × handle time × loaded rate · $4.87 blended per contact.">rolls into handling — $41.2K of $66.9K total to serve this week ↗</a>
       <a class="quiet" href="#" onclick="toggleWatch('wf');return false" title="Get told when this moves — condition, cadence and delivery are yours. Personal, no approval needed.">Watch</a>
     </div>
   </div>
@@ -2813,7 +2813,7 @@ select.pill:hover{border-color:var(--line2)}
       <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Taxonomy updated</b> · 4 intents wired from the V-I sheet — 38 active · action class “Automate” renamed “Digitize” · noun “ask” retired for “intent”</span><span class="v">Studio admin</span></div>
       <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Customer identity connected</b> · order system API · match rate 85% · journey surfaces enabled</span><span class="v">Studio admin</span></div>
       <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Export policy set</b> · table exports role-gated · transcripts excluded · every export logged</span><span class="v">Studio admin</span></div>
-      <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Program score corrections published</b> · CQ 89→88 · partner NEM weights · orders per-1k basis</span><span class="v">Studio admin</span></div>
+      <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Program score corrections published</b> · CQ 89→88 · partner NEM weights · orders per-1K basis</span><span class="v">Studio admin</span></div>
       <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Repeat window set to 7 days</b> · repeat attribution buckets added</span><span class="v">Studio admin</span></div>
       <div class="r"><span class="d num">Jul 18</span><span class="k"><b>Action classes split</b> · EASL scoped to demand-side; Coaching / Process fix added</span><span class="v">Studio admin</span></div>
       <div class="r"><span class="d num">Jul 17</span><span class="k"><b>Vocabulary</b> · “quality parameter” adopted · MK team names unified</span><span class="v">Studio admin</span></div>
@@ -2836,11 +2836,11 @@ const AVSPAN='62% <span class="term" data-def="Share of handling cost sitting in
 const T = {
   tiles: [
     {lab:'Contacts analysed', big:'8,470', delta:'+3%', dcls:'', sub:sigSub(1730), spark:[6380,6660,6860,7120,6940,7270,7530,7810,7670,8060,8190,8470], type:'plain', href:'#/demand', tip:'Service conversations scored this period — every contact, all channels. Feedback signals are counted separately.'},
-    {lab:'Total cost to serve', big:'$66.9k', delta:'+3%', dcls:'', sub:'<span class="num">$41.2k handling + <span style="color:var(--cost)"><span class="term" data-def="Estimated cost created after the contact — rework, repeat contacts, refunds, escalations — attributed back to the originating intent. Modelled, not booked; shown in slate, not green.">$25.7k downstream (modeled)</span></span></span> · '+AVSPAN, spark:[50.4,52.6,54.2,56.3,54.8,57.4,59.5,61.6,60.7,63.7,64.7,66.9], type:'plain', href:'#/room-cost', tip:'Handling + downstream (modeled). Handling = contacts × handle time × loaded rate; downstream = refunds, reshipments, concessions and escalations attributed per intent at governed ratios. Avoidable = 62% of handling sits in eliminate-rated reasons. Opens the cost deep dive.'},
+    {lab:'Total cost to serve', big:'$66.9K', delta:'+3%', dcls:'', sub:'<span class="num">$41.2K handling + <span style="color:var(--cost)"><span class="term" data-def="Estimated cost created after the contact — rework, repeat contacts, refunds, escalations — attributed back to the originating intent. Modelled, not booked; shown in slate, not green.">$25.7K downstream (modeled)</span></span></span> · '+AVSPAN, spark:[50.4,52.6,54.2,56.3,54.8,57.4,59.5,61.6,60.7,63.7,64.7,66.9], type:'plain', href:'#/room-cost', tip:'Handling + downstream (modeled). Handling = contacts × handle time × loaded rate; downstream = refunds, reshipments, concessions and escalations attributed per intent at governed ratios. Avoidable = 62% of handling sits in eliminate-rated reasons. Opens the cost deep dive.'},
     {lab:'First contact resolution', term:'Share of contacts resolved in a single interaction, with no repeat within the follow-up window. Repeat-adjusted here to 65.', big:'68%', delta:'+1pp', dcls:'up', sub:'', spark:[59,58,60,61,63,62,64,65,66,66,67,68], type:'bullet', v:68, tgt:80, alert:true, href:'#/room-fcr', tip:'Resolved on first contact ÷ service contacts, against target 80. Opens the FCR deep dive.'},
     {lab:'Customer effort — CES', term:'Customer Effort Score — how hard the customer had to work to get their issue resolved. Scale 1–5, higher is easier.', big:'3.9', delta:'+0.1', dcls:'up', sub:'scale 1–5 · higher is easier', spark:[3.6,3.6,3.6,3.7,3.7,3.7,3.8,3.8,3.8,3.8,3.8,3.9], type:'bullet', v:78, tgt:80, href:'#/room-ces', tip:'Modeled 1–5 from friction events on every contact — repeats, holds, transfers, unanswered questions. Higher is easier — friction pulls the score down. Survey CES sits beside it in the deep dive.'},
     {lab:'Customer emotion', term:'Net Emotion Margin — positive minus negative emotion across the conversation. Negative means more customers ended frustrated than satisfied.', big:'−11', delta:'0', dcls:'', sub:'<span class="term" data-def="Share of scored journeys whose final emotional state was worse than their first.">1 in 5 customers left unhappier than they arrived</span> · <span class="term" data-def="Cancel-intent contacts retained after an accepted save offer ÷ cancel-intent contacts where an offer was made.">we win back 45%</span>', spark:[-18,-17,-16,-16,-15,-14,-14,-13,-12,-12,-11,-11], type:'diverge', v:-11, href:'#/metrics', tip:'Journeys that ended better minus journeys that ended worse, as a share of scored journeys. Negative = more worsened than improved.'},
-    {lab:'Quality score', term:'Weighted rubric score (0–100) across 58 parameters, scored on every contact — not a sample.', big:'87', delta:'+1', dcls:'up', sub:'7 <span class="term" data-def="A compliance-critical failure — e.g. identity not verified before an account change — that auto-zeros the contact\'s quality score.">fatal violations</span> this week', spark:[85,86,86,85,86,87,86,87,87,87,86,87], type:'bullet', v:87, tgt:85, href:'#/quality', tip:'100 × (1 − violation weight ÷ applicable weight), averaged over all scored contacts. A fatal parameter zeroes that contact\'s audit.'}
+    {lab:'Quality score', term:'Weighted rubric score (0–100) across 58 parameters, scored on every contact — not a sample.', big:'87', delta:'+1', dcls:'up', sub:'7 <span class="term" data-def="A compliance-critical failure — e.g. identity not verified before an account change — that auto-zeros the contact\'s quality score.">fatal errors</span> this week', spark:[85,86,86,85,86,87,86,87,87,87,86,87], type:'bullet', v:87, tgt:85, href:'#/quality', tip:'100 × (1 − violation weight ÷ applicable weight), averaged over all scored contacts. A fatal parameter zeroes that contact\'s audit.'}
   ],
   channels: [
     {name:'Field', n:100, fcr:90, res:96, nem:11, cq:87, cost:680, cpc:6.80, mix:[15,57,28],
@@ -2877,7 +2877,7 @@ const T = {
     vol:{lab:'Volume', get:c=>c.n, fmt:v=>v.toLocaleString(), noWorst:true},
     fcr:{lab:'Resolution', get:c=>c.fcr, fmt:v=>v+'%', tgt:80, max:100, worstLow:true},
     nem:{lab:'Experience', get:c=>c.nem, fmt:v=>(v>0?'+':'')+v, tgt:0, max:35, diverge:true, worstLow:true},
-    cost:{lab:'Cost', get:c=>c.cost, fmt:v=>'$'+(v>=1000?(v/1000).toFixed(1)+'k':v), max:25000, worstLow:false},
+    cost:{lab:'Cost', get:c=>c.cost, fmt:v=>'$'+(v>=1000?(v/1000).toFixed(1)+'K':v), max:25000, worstLow:false},
     cq:{lab:'Quality', get:c=>c.cq, fmt:v=>v, tgt:85, max:100, worstLow:true}
   },
   insights: [
@@ -2886,9 +2886,9 @@ const T = {
     {h:'Field keeps recovering deliveries other channels lose — doorstep verification is quietly working.', c:'96% resolution · experience +11 on 100 visits', spark:[79,81,82,85,84,87,86,88,87,89,89,90], link:'See what works', evk:'field'}
   ],
   acts: [
-    {t:'Missed transit SLA', d:'One carrier drives delivery-update, delay, cancel and find-order demand — 2,600 contacts across 4 intents.', w:'$305k / yr', lev:'Eliminate', cause:'sla'},
-    {t:'Tracking feed gap', d:'Carrier scans go quiet mid-route — drives Find my order and repeat delivery-update contacts.', w:'$86k / yr', lev:'Digitize', cause:'track'},
-    {t:'Damaged in transit', d:'Packaging and carrier handling — feeds refunds and damaged-item reports.', w:'$63k / yr', lev:'Simplify', cause:'damage'}
+    {t:'Missed transit SLA', d:'One carrier drives delivery-update, delay, cancel and find-order demand — 2,600 contacts across 4 intents.', w:'$305K / yr', lev:'Eliminate', cause:'sla'},
+    {t:'Tracking feed gap', d:'Carrier scans go quiet mid-route — drives Find my order and repeat delivery-update contacts.', w:'$86K / yr', lev:'Digitize', cause:'track'},
+    {t:'Damaged in transit', d:'Packaging and carrier handling — feeds refunds and damaged-item reports.', w:'$63K / yr', lev:'Simplify', cause:'damage'}
   ]
 };
 
@@ -2920,12 +2920,12 @@ const PEND=(window.__P&&window.__P.end)||'Jul 12';
   var pct=function(s){ var p=Math.round(100*(s[11]-s[10])/Math.abs(s[10]||1)); return (p<0?'−':'+')+Math.abs(p)+'%'; };
   var stp=function(s,dec){ var v=s[11]-s[10]; return dec?Math.round(v*10)/10:v; };
   t[0].big=P.contacts.toLocaleString('en-US'); t[0].delta=M?'+8%':pct(t[0].spark); t[0].sub=sigSub(P.signals);
-  t[1].big='$'+((window.__V?window.__V.tcs:P.cost)/1000).toFixed(1)+'k'; t[1].delta=M?'+8%':pct(t[1].spark); t[1].sub='<span class="num">$'+(P.cost/1000).toFixed(1)+'k handling + $'+(Math.round(25653*P.factor)/1000).toFixed(1)+'k downstream (modeled)</span> · '+AVSPAN;
+  t[1].big='$'+((window.__V?window.__V.tcs:P.cost)/1000).toFixed(1)+'K'; t[1].delta=M?'+8%':pct(t[1].spark); t[1].sub='<span class="num">$'+(P.cost/1000).toFixed(1)+'K handling + $'+(Math.round(25653*P.factor)/1000).toFixed(1)+'K downstream (modeled)</span> · '+AVSPAN;
   var f=68+d.fcr, fd=M?3:stp(t[2].spark); t[2].big=f+'%'; t[2].v=f; t[2].delta=sgn(fd,'pp'); t[2].dcls=fd>0?'up':'';
   var e=Math.round((3.9+d.ces)*10)/10, ed=M?0.1:stp(t[3].spark,1); t[3].big=e.toFixed(1); t[3].v=Math.round(e/5*100); t[3].delta=sgn(ed,'',true); t[3].dcls=ed>0?'up':'';
   var nv=-11+d.nem, nd=M?2:stp(t[4].spark); t[4].big=(nv<0?'−':'+')+Math.abs(nv); t[4].v=nv; t[4].delta=sgn(nd); t[4].dcls=nd>0?'up':'';
   var q=87+d.cq, qd=M?1:stp(t[5].spark); t[5].big=String(q); t[5].v=q; t[5].delta=sgn(qd); t[5].dcls=qd>0?'up':'';
-  t[5].sub=P.fatals+' fatal violations this '+(M?'month':'week');
+  t[5].sub=P.fatals+' fatal errors this '+(M?'month':'week');
   T.insights.forEach(function(i){ i.spark=ext(i.spark); });
   /* page copy — coverage line and comparison label */
   var fn=document.querySelector('.wrap .footnote');
@@ -2945,14 +2945,14 @@ const PEND=(window.__P&&window.__P.end)||'Jul 12';
   t[0].big=V.contacts.toLocaleString('en-US');
   t[0].sub=sigSub(V.signals)+' <span class="scopechip">Program · all channels</span>';
   t[0].spark=t[0].spark.map(function(v){ return chN(v); });
-  t[1].big='$'+(V.tcs/1000).toFixed(1)+'k';
-  t[1].sub='<span class="num">$'+(V.cost/1000).toFixed(1)+'k handling + $'+(V.ds/1000).toFixed(1)+'k downstream (modeled)</span> · $'+V.cpc.toFixed(2)+' per contact';
+  t[1].big='$'+(V.tcs/1000).toFixed(1)+'K';
+  t[1].sub='<span class="num">$'+(V.cost/1000).toFixed(1)+'K handling + $'+(V.ds/1000).toFixed(1)+'K downstream (modeled)</span> · $'+V.cpc.toFixed(2)+' per contact';
   t[1].spark=t[1].spark.map(function(v){ return Math.round(v*(V.tcs/66902)*10)/10; });
   t[2].big=V.fcr+'%'; t[2].v=V.fcr; t[2].alert=V.fcr<80; t[2].spark=shift(t[2].spark,d.fcr,2,96);
   t[3].big=V.ces.toFixed(1); t[3].v=Math.round(V.ces/5*100); t[3].spark=shift(t[3].spark,d.ces,1,5,true);
   t[4].big=(V.nem<0?'−':'+')+Math.abs(V.nem); t[4].v=V.nem; t[4].spark=shift(t[4].spark,d.nem,-60,40);
   t[5].big=String(V.cq); t[5].v=V.cq; t[5].spark=shift(t[5].spark,d.cq,2,98);
-  t[5].sub=V.fatals+' fatal violations this '+(M?'month':'week');
+  t[5].sub=V.fatals+' fatal errors this '+(M?'month':'week');
   if(V.lowN) [t[2],t[3],t[4],t[5]].forEach(function(x){ x.mut=true; x.alert=false; x.sub=(x.sub?x.sub+' · ':'')+'low n'; });
   /* where it concentrates — partner split within the channel; partner rates shift by the channel delta, clamped */
   var ds=document.getElementById('dimSeg');
@@ -3015,7 +3015,7 @@ var TMETA = {
 };
 function fmtBig(lab, v){
   if(lab==='Contacts analysed') return Math.round(v).toLocaleString('en-US');
-  if(lab==='Total cost to serve') return '$'+v.toFixed(1)+'k';
+  if(lab==='Total cost to serve') return '$'+v.toFixed(1)+'K';
   if(lab==='First contact resolution') return Math.round(v)+'%';
   if(lab==='Customer effort — CES') return v.toFixed(1);
   if(lab==='Customer emotion') return (v<0?'−':'+')+Math.abs(Math.round(v));
@@ -3316,53 +3316,53 @@ function evd(kind,key){
 /* Intendra — Demand page logic + weekly dataset (Jul 6–12, Vedara demo) */
 const ORDERS_K = (window.__P? window.__P.orders : 49200)/1000;
 const ASKS = [
- {nm:'Get a delivery update', cat:'Shipping', n:2034, cost:9906, fcr:58, why:'<b>Delivery delayed</b> · 55%', tag:['t-auto','Digitize'], worth:'$340k / yr', owner:'RM', ownerT:'R. Mehta · CX automation', detail:'update', ds:2972, dsr:0.3, pre:1},
- {nm:'Get a refund', cat:'Payments', n:732, cost:3565, fcr:79, why:'<b>Damaged item received</b> · 31%', tag:['t-elim','Eliminate'], worth:'$63k / yr', owner:'AS', ownerT:'A. Shah · Payments', detail:'refund', ds:3565, dsr:1, pre:1},
- {nm:'Cancel my order', cat:'Orders', n:680, cost:3312, fcr:71, why:'<b>Delivery delayed</b> · 38% — save opportunity', tag:['t-lev','Leverage'], worth:'$115k / yr', detail:'cancel', ds:0, dsr:0},
- {nm:'Find my order', cat:'Shipping', n:651, cost:3170, fcr:65, why:'<b>Marked delivered, not received</b> · 44%', tag:['t-simp','Simplify'], worth:'$86k / yr', owner:'RM', ownerT:'R. Mehta · CX automation', detail:'findorder', ds:7925, dsr:2.5},
- {nm:'Check product availability', cat:'Catalogue', n:467, cost:2274, fcr:88, why:'<b>Stockout after listing</b> · 47%', tag:['t-auto','Digitize'], worth:'$46k / yr', owner:'KI', ownerT:'K. Iyer · Procurement', ds:1137, dsr:0.5},
- {nm:'Get product information', cat:'Catalogue', n:421, cost:2050, fcr:90, why:'<b>Listing detail gaps</b> · 39%', tag:['t-auto','Digitize'], worth:'$40k / yr', ds:1025, dsr:0.5},
- {nm:'Get a reshipment', cat:'Shipping', n:398, cost:1938, fcr:68, why:'<b>Marked delivered, not received</b> · 52%', tag:['t-lev','Leverage'], worth:'$46k / yr', ds:1938, dsr:1},
- {nm:'Start a return', cat:'Returns', n:357, cost:1739, fcr:85, why:'<b>Size or fit issue</b> · 33%', tag:['t-auto','Digitize'], worth:'$35k / yr', ds:0, dsr:0},
- {nm:'Substitute a product', cat:'Orders', n:305, cost:1485, fcr:56, why:'<b>Seller stockout</b> · 57%', tag:['t-auto','Digitize'], worth:'$58k / yr', owner:'KI', ownerT:'K. Iyer · Procurement', ds:743, dsr:0.5},
- {nm:'Change my shipping address', cat:'Shipping', n:248, cost:1208, fcr:60, why:'<b>Address window too short</b> · 61%', tag:['t-auto','Digitize'], worth:'$35k / yr', ds:0, dsr:0},
- {nm:'Apply a discount', cat:'Loyalty', n:236, cost:1149, fcr:90, why:'<b>Code failed at checkout</b> · 48%', tag:['t-auto','Digitize'], worth:'$23k / yr', ds:1149, dsr:1},
- {nm:'Understand duties and taxes', cat:'Billing', n:219, cost:1067, fcr:94, why:'<b>Duties surprise at delivery</b> · 66%', tag:['t-auto','Digitize'], worth:'$40k / yr', ds:0, dsr:0},
+ {nm:'Get a delivery update', cat:'Shipping', n:2034, cost:9906, fcr:58, why:'<b>Delivery delayed</b> · 55%', tag:['t-auto','Digitize'], worth:'$340K / yr', owner:'RM', ownerT:'R. Mehta · CX automation', detail:'update', ds:2972, dsr:0.3, pre:1},
+ {nm:'Get a refund', cat:'Payments', n:732, cost:3565, fcr:79, why:'<b>Damaged item received</b> · 31%', tag:['t-elim','Eliminate'], worth:'$63K / yr', owner:'AS', ownerT:'A. Shah · Payments', detail:'refund', ds:3565, dsr:1, pre:1},
+ {nm:'Cancel my order', cat:'Orders', n:680, cost:3312, fcr:71, why:'<b>Delivery delayed</b> · 38% — save opportunity', tag:['t-lev','Leverage'], worth:'$115K / yr', detail:'cancel', ds:0, dsr:0},
+ {nm:'Find my order', cat:'Shipping', n:651, cost:3170, fcr:65, why:'<b>Marked delivered, not received</b> · 44%', tag:['t-simp','Simplify'], worth:'$86K / yr', owner:'RM', ownerT:'R. Mehta · CX automation', detail:'findorder', ds:7925, dsr:2.5},
+ {nm:'Check product availability', cat:'Catalogue', n:467, cost:2274, fcr:88, why:'<b>Stockout after listing</b> · 47%', tag:['t-auto','Digitize'], worth:'$46K / yr', owner:'KI', ownerT:'K. Iyer · Procurement', ds:1137, dsr:0.5},
+ {nm:'Get product information', cat:'Catalogue', n:421, cost:2050, fcr:90, why:'<b>Listing detail gaps</b> · 39%', tag:['t-auto','Digitize'], worth:'$40K / yr', ds:1025, dsr:0.5},
+ {nm:'Get a reshipment', cat:'Shipping', n:398, cost:1938, fcr:68, why:'<b>Marked delivered, not received</b> · 52%', tag:['t-lev','Leverage'], worth:'$46K / yr', ds:1938, dsr:1},
+ {nm:'Start a return', cat:'Returns', n:357, cost:1739, fcr:85, why:'<b>Size or fit issue</b> · 33%', tag:['t-auto','Digitize'], worth:'$35K / yr', ds:0, dsr:0},
+ {nm:'Substitute a product', cat:'Orders', n:305, cost:1485, fcr:56, why:'<b>Seller stockout</b> · 57%', tag:['t-auto','Digitize'], worth:'$58K / yr', owner:'KI', ownerT:'K. Iyer · Procurement', ds:743, dsr:0.5},
+ {nm:'Change my shipping address', cat:'Shipping', n:248, cost:1208, fcr:60, why:'<b>Address window too short</b> · 61%', tag:['t-auto','Digitize'], worth:'$35K / yr', ds:0, dsr:0},
+ {nm:'Apply a discount', cat:'Loyalty', n:236, cost:1149, fcr:90, why:'<b>Code failed at checkout</b> · 48%', tag:['t-auto','Digitize'], worth:'$23K / yr', ds:1149, dsr:1},
+ {nm:'Understand duties and taxes', cat:'Billing', n:219, cost:1067, fcr:94, why:'<b>Duties surprise at delivery</b> · 66%', tag:['t-auto','Digitize'], worth:'$40K / yr', ds:0, dsr:0},
  {nm:'Get shipping information', cat:'Pre-purchase', n:196, cost:955, fcr:94, why:'<b>Direct intent — nothing happened</b> · 41%', tag:['t-auto','Digitize'], worth:'+ revenue', ds:0, dsr:0},
- {nm:'Speed up my delivery', cat:'Shipping', n:179, cost:872, fcr:49, why:'<b>Delivery delayed</b> · 72%', tag:['t-lev','Leverage'], worth:'$17k / yr', ds:610, dsr:0.7},
- {nm:'Update my payment method', cat:'Payments', n:161, cost:784, fcr:84, why:'<b>Card verification loop</b> · 44%', tag:['t-auto','Digitize'], worth:'$17k / yr', ds:0, dsr:0}
+ {nm:'Speed up my delivery', cat:'Shipping', n:179, cost:872, fcr:49, why:'<b>Delivery delayed</b> · 72%', tag:['t-lev','Leverage'], worth:'$17K / yr', ds:610, dsr:0.7},
+ {nm:'Update my payment method', cat:'Payments', n:161, cost:784, fcr:84, why:'<b>Card verification loop</b> · 44%', tag:['t-auto','Digitize'], worth:'$17K / yr', ds:0, dsr:0}
 ];
 const ASKS_TAIL = [
- {nm:'Cancel my subscription', cat:'Accounts', n:179, cost:872, fcr:71, why:'<b>Unexpected charge</b> · 95%', tag:['t-lev','Leverage'], worth:'$40k / yr', ds:262, dsr:0.3},
- {nm:'Waive my charges', cat:'Billing', n:144, cost:701, fcr:61, why:'<b>Duties surprise at delivery</b> · 71%', tag:['t-auto','Digitize'], worth:'$23k / yr', ds:0, dsr:0},
- {nm:'Report a damaged item', cat:'Returns', n:127, cost:618, fcr:76, why:'<b>Carrier handling</b> · 45%', tag:['t-simp','Simplify'], worth:'$17k / yr', ds:1236, dsr:2},
+ {nm:'Cancel my subscription', cat:'Accounts', n:179, cost:872, fcr:71, why:'<b>Unexpected charge</b> · 95%', tag:['t-lev','Leverage'], worth:'$40K / yr', ds:262, dsr:0.3},
+ {nm:'Waive my charges', cat:'Billing', n:144, cost:701, fcr:61, why:'<b>Duties surprise at delivery</b> · 71%', tag:['t-auto','Digitize'], worth:'$23K / yr', ds:0, dsr:0},
+ {nm:'Report a damaged item', cat:'Returns', n:127, cost:618, fcr:76, why:'<b>Carrier handling</b> · 45%', tag:['t-simp','Simplify'], worth:'$17K / yr', ds:1236, dsr:2},
  {nm:'Place my order', cat:'Pre-purchase', n:121, cost:589, fcr:94, why:'<b>Direct intent — nothing happened</b> · 62%', tag:['t-lev','Leverage'], worth:'+ revenue', ds:0, dsr:0},
- {nm:'Check order status', cat:'Orders', n:115, cost:560, fcr:89, why:'<b>Dispatch delay</b> · 37%', tag:['t-auto','Digitize'], worth:'$6k / yr', ds:0, dsr:0, pre:1},
- {nm:'Investigate a delivery issue', cat:'Shipping', n:105, cost:511, fcr:41, why:'<b>Shipment stuck in transit</b> · 63%', tag:['t-elim','Eliminate'], worth:'$27k / yr', owner:'AR', ownerT:'A. Rao · Carrier program', detail:'generic', ds:1533, dsr:3},
- {nm:'Track a return', cat:'Returns', n:98, cost:477, fcr:78, why:'<b>Pickup not scheduled</b> · 43%', tag:['t-auto','Digitize'], worth:'$6k / yr', ds:0, dsr:0, pre:1},
- {nm:'Get an invoice', cat:'Billing', n:75, cost:365, fcr:95, why:'<b>Direct intent — nothing happened</b> · 78%', tag:['t-auto','Digitize'], worth:'$6k / yr', ds:0, dsr:0},
- {nm:'Update my details', cat:'Accounts', n:63, cost:307, fcr:91, why:'<b>Direct intent — nothing happened</b> · 81%', tag:['t-auto','Digitize'], worth:'$6k / yr', ds:0, dsr:0},
- {nm:'Escalate an issue', cat:'Service', n:58, cost:282, fcr:35, why:'<b>Unresolved prior contact</b> · 71%', tag:['t-elim','Eliminate'], worth:'$15k / yr', owner:'NG', ownerT:'N. Gupta · CX ops', detail:'generic', ds:705, dsr:2.5},
- {nm:'Resolve a login issue', cat:'Accounts', n:35, cost:170, fcr:55, why:'<b>Password reset loop</b> · 58%', tag:['t-elim','Eliminate'], worth:'$9k / yr', owner:'SM', ownerT:'S. Menon · Platform engineering', detail:'generic', ds:425, dsr:2.5},
- {nm:'Report a website issue', cat:'Digital touchpoint', n:22, cost:107, fcr:60, why:'<b>Checkout error</b> · 45%', tag:['t-elim','Eliminate'], worth:'$6k / yr', owner:'SM', ownerT:'S. Menon · Platform engineering', detail:'generic', ds:428, dsr:4}
+ {nm:'Check order status', cat:'Orders', n:115, cost:560, fcr:89, why:'<b>Dispatch delay</b> · 37%', tag:['t-auto','Digitize'], worth:'$6K / yr', ds:0, dsr:0, pre:1},
+ {nm:'Investigate a delivery issue', cat:'Shipping', n:105, cost:511, fcr:41, why:'<b>Shipment stuck in transit</b> · 63%', tag:['t-elim','Eliminate'], worth:'$27K / yr', owner:'AR', ownerT:'A. Rao · Carrier program', detail:'generic', ds:1533, dsr:3},
+ {nm:'Track a return', cat:'Returns', n:98, cost:477, fcr:78, why:'<b>Pickup not scheduled</b> · 43%', tag:['t-auto','Digitize'], worth:'$6K / yr', ds:0, dsr:0, pre:1},
+ {nm:'Get an invoice', cat:'Billing', n:75, cost:365, fcr:95, why:'<b>Direct intent — nothing happened</b> · 78%', tag:['t-auto','Digitize'], worth:'$6K / yr', ds:0, dsr:0},
+ {nm:'Update my details', cat:'Accounts', n:63, cost:307, fcr:91, why:'<b>Direct intent — nothing happened</b> · 81%', tag:['t-auto','Digitize'], worth:'$6K / yr', ds:0, dsr:0},
+ {nm:'Escalate an issue', cat:'Service', n:58, cost:282, fcr:35, why:'<b>Unresolved prior contact</b> · 71%', tag:['t-elim','Eliminate'], worth:'$15K / yr', owner:'NG', ownerT:'N. Gupta · CX ops', detail:'generic', ds:705, dsr:2.5},
+ {nm:'Resolve a login issue', cat:'Accounts', n:35, cost:170, fcr:55, why:'<b>Password reset loop</b> · 58%', tag:['t-elim','Eliminate'], worth:'$9K / yr', owner:'SM', ownerT:'S. Menon · Platform engineering', detail:'generic', ds:425, dsr:2.5},
+ {nm:'Report a website issue', cat:'Digital touchpoint', n:22, cost:107, fcr:60, why:'<b>Checkout error</b> · 45%', tag:['t-elim','Eliminate'], worth:'$6K / yr', owner:'SM', ownerT:'S. Menon · Platform engineering', detail:'generic', ds:428, dsr:4}
 ];
 const REASONS = [
- {nm:'Delivery delayed', cat:'Shipping and delivery', n:1815, cost:8839, fcr:54, why:'<b>Get a delivery update</b> · 67%', tag:['t-elim','Eliminate'], worth:'$305k / yr', owner:'AR', ownerT:'A. Rao · Carrier program', detail:'delayed'},
- {nm:'Tracking not updating or unclear', cat:'Shipping and delivery', n:1216, cost:5922, fcr:58, why:'<b>Get a delivery update</b> · 78%', tag:['t-elim','Eliminate'], worth:'$202k / yr', owner:'AR', ownerT:'A. Rao · Carrier program'},
- {nm:'Order not received', cat:'Order management', n:1031, cost:5021, fcr:56, why:'<b>Find my order</b> · 41%', tag:['t-elim','Eliminate'], worth:'$144k / yr'},
- {nm:'Package marked delivered, not received', cat:'Shipping and delivery', n:789, cost:3842, fcr:62, why:'<b>Find my order</b> · 52%', tag:['t-auto','Digitize'], worth:'$86k / yr'},
- {nm:'Unexpected subscription charge', cat:'Billing and payment', n:219, cost:1067, fcr:68, why:'<b>Cancel my subscription</b> · 78%', tag:['t-elim','Eliminate'], worth:'$40k / yr', owner:'SK', ownerT:'S. Kumar · Billing'},
+ {nm:'Delivery delayed', cat:'Shipping and delivery', n:1815, cost:8839, fcr:54, why:'<b>Get a delivery update</b> · 67%', tag:['t-elim','Eliminate'], worth:'$305K / yr', owner:'AR', ownerT:'A. Rao · Carrier program', detail:'delayed'},
+ {nm:'Tracking not updating or unclear', cat:'Shipping and delivery', n:1216, cost:5922, fcr:58, why:'<b>Get a delivery update</b> · 78%', tag:['t-elim','Eliminate'], worth:'$202K / yr', owner:'AR', ownerT:'A. Rao · Carrier program'},
+ {nm:'Order not received', cat:'Order management', n:1031, cost:5021, fcr:56, why:'<b>Find my order</b> · 41%', tag:['t-elim','Eliminate'], worth:'$144K / yr'},
+ {nm:'Package marked delivered, not received', cat:'Shipping and delivery', n:789, cost:3842, fcr:62, why:'<b>Find my order</b> · 52%', tag:['t-auto','Digitize'], worth:'$86K / yr'},
+ {nm:'Unexpected subscription charge', cat:'Billing and payment', n:219, cost:1067, fcr:68, why:'<b>Cancel my subscription</b> · 78%', tag:['t-elim','Eliminate'], worth:'$40K / yr', owner:'SK', ownerT:'S. Kumar · Billing'},
  {nm:'Direct intents — nothing “happened”', cat:'no precipitating event · pre-purchase help, place an order', n:680, cost:3312, fcr:94, why:'<b>Help me buy</b> · 46%', tag:['t-lev','Leverage'], worth:'+ revenue', dim:true}
 ];
 const REASONS_TAIL = [
- {nm:'Damaged item received', cat:'Product and packaging', n:271, cost:1320, fcr:74, why:'<b>Get a refund</b> · 58%', tag:['t-simp','Simplify'], worth:'$35k / yr'},
- {nm:'Address change window too short', cat:'Policy', n:236, cost:1149, fcr:60, why:'<b>Change my address</b> · 84%', tag:['t-simp','Simplify'], worth:'$35k / yr'},
- {nm:'Discount code failed at checkout', cat:'Digital touchpoint', n:219, cost:1067, fcr:87, why:'<b>Apply a discount</b> · 74%', tag:['t-elim','Eliminate'], worth:'$23k / yr'},
- {nm:'Stockout after listing', cat:'Catalogue', n:207, cost:1008, fcr:82, why:'<b>Check availability</b> · 66%', tag:['t-elim','Eliminate'], worth:'$23k / yr'},
- {nm:'Duties surprise at delivery', cat:'External · customs', n:202, cost:984, fcr:79, why:'<b>Understand duties</b> · 61%', tag:['t-elim','Eliminate'], worth:'$40k / yr'},
- {nm:'Card verification loop', cat:'Digital touchpoint', n:167, cost:813, fcr:76, why:'<b>Update payment method</b> · 52%', tag:['t-simp','Simplify'], worth:'$17k / yr'},
- {nm:'Size or fit issue', cat:'Product', n:156, cost:760, fcr:88, why:'<b>Start a return</b> · 71%', tag:['t-simp','Simplify'], worth:'$17k / yr'},
- {nm:'Listing detail gaps', cat:'Catalogue', n:138, cost:672, fcr:90, why:'<b>Get product information</b> · 69%', tag:['t-auto','Digitize'], worth:'$17k / yr'}
+ {nm:'Damaged item received', cat:'Product and packaging', n:271, cost:1320, fcr:74, why:'<b>Get a refund</b> · 58%', tag:['t-simp','Simplify'], worth:'$35K / yr'},
+ {nm:'Address change window too short', cat:'Policy', n:236, cost:1149, fcr:60, why:'<b>Change my address</b> · 84%', tag:['t-simp','Simplify'], worth:'$35K / yr'},
+ {nm:'Discount code failed at checkout', cat:'Digital touchpoint', n:219, cost:1067, fcr:87, why:'<b>Apply a discount</b> · 74%', tag:['t-elim','Eliminate'], worth:'$23K / yr'},
+ {nm:'Stockout after listing', cat:'Catalogue', n:207, cost:1008, fcr:82, why:'<b>Check availability</b> · 66%', tag:['t-elim','Eliminate'], worth:'$23K / yr'},
+ {nm:'Duties surprise at delivery', cat:'External · customs', n:202, cost:984, fcr:79, why:'<b>Understand duties</b> · 61%', tag:['t-elim','Eliminate'], worth:'$40K / yr'},
+ {nm:'Card verification loop', cat:'Digital touchpoint', n:167, cost:813, fcr:76, why:'<b>Update payment method</b> · 52%', tag:['t-simp','Simplify'], worth:'$17K / yr'},
+ {nm:'Size or fit issue', cat:'Product', n:156, cost:760, fcr:88, why:'<b>Start a return</b> · 71%', tag:['t-simp','Simplify'], worth:'$17K / yr'},
+ {nm:'Listing detail gaps', cat:'Catalogue', n:138, cost:672, fcr:90, why:'<b>Get product information</b> · 69%', tag:['t-auto','Digitize'], worth:'$17K / yr'}
 ];
 const NAMED = [
  {nm:'AeroShip', cat:'Carrier · vendor', cat2:'vendors', n:490, negp:83, why:'<b>Get a delivery update</b> · 62%', tag:['t-elim','Vendor'], worth:'▲'},
@@ -3393,7 +3393,7 @@ const DETAILS = {
  update: {
   kicker:'Intent · Shipping', title:'Get a delivery update',
   meta:'2,034 contacts · $9,906 to serve · $4.87 per contact · 24% of weekly cost',
-  action:{lab:'Digitize at the source', opp:'$340k / yr', plays:[
+  action:{lab:'Digitize at the source', opp:'$340K / yr', plays:[
     '<b>Play 1:</b> proactive delay notices — kills the 67% who only want an update',
     '<b>Play 2:</b> order-status flow on chat and WhatsApp — already resolving 79% there',
     '<b>Watch:</b> 38% of Cancel-my-order volume starts as this intent unanswered']},
@@ -3421,7 +3421,7 @@ const DETAILS = {
  delayed: {
   kicker:'Reason · Shipping and delivery', title:'Delivery delayed',
   meta:'1,815 contacts · $8,839 to serve · 668 feedback mentions corroborate',
-  action:{lab:'Eliminate at the source', opp:'$305k / yr', plays:[
+  action:{lab:'Eliminate at the source', opp:'$305K / yr', plays:[
     '<b>Play 1:</b> carrier SLA enforcement — 44% of delays trace to one carrier',
     '<b>Play 2:</b> proactive delay notices for the 67% who only want an update',
     '<b>Bonus:</b> 38% of cancel-my-order volume starts here — save, not just cost']},
@@ -3449,10 +3449,10 @@ const DETAILS = {
  refund: {
   kicker:'Intent · Payments', title:'Get a refund',
   meta:'732 contacts · $3,565 to serve · $4.87 per contact · 9% of weekly cost',
-  action:{lab:'Eliminate — Issue Refund', opp:'$63k / yr', plays:[
+  action:{lab:'Eliminate — Issue Refund', opp:'$63K / yr', plays:[
     '<b>Play 1:</b> proactive refund-status notices — the pre-empt model prices 40% of these contacts as preventable',
     '<b>Play 2:</b> kill the drivers upstream — damaged items and late deliveries feed 53% of refund demand',
-    '<b>On the table:</b> $63k/yr handling + $185k/yr downstream']},
+    '<b>On the table:</b> $63K/yr handling + $185K/yr downstream']},
   vols:{ daily:[97,101,99,104,102,98,103,100,106,103,108,105,102,104], weekly:[598,612,604,633,641,662,650,671,690,704,698,715,724,732], monthly:[2210,2340,2455,2600,2810,2955] },
   hot:{daily:10, weekly:13, monthly:5},
   stages:[
@@ -3476,7 +3476,7 @@ const DETAILS = {
  findorder: {
   kicker:'Intent · Shipping', title:'Find my order',
   meta:'651 contacts · $3,170 to serve · $4.87 per contact · 8% of weekly cost',
-  action:{lab:'Simplify — Locate Missing Shipment', opp:'$86k / yr', plays:[
+  action:{lab:'Simplify — Locate Missing Shipment', opp:'$86K / yr', plays:[
     '<b>Play 1:</b> Locate Missing Shipment flow — delivery photo and geo-stamp at first touch',
     '<b>Play 2:</b> close carrier scan gaps — the tracking feed goes quiet before 4 in 10 of these contacts',
     '<b>Watch:</b> downstream runs ×2.5 of handling — reshipment goods and concession credits']},
@@ -3503,7 +3503,7 @@ const DETAILS = {
  cancel: {
   kicker:'Intent · Orders', title:'Cancel my order',
   meta:'680 contacts · $3,312 to serve · $4.87 per contact · 8% of weekly cost',
-  action:{lab:'Leverage — save-offer play', opp:'$115k / yr', plays:[
+  action:{lab:'Leverage — save-offer play', opp:'$115K / yr', plays:[
     '<b>Play 1:</b> save-offer script at cancel intent — expedite or credit before the cancel confirms',
     '<b>Play 2:</b> proactive delay notices upstream — 38% of cancel demand starts as a late delivery',
     '<b>Today:</b> saved 35% of save-eligible contacts — 24% with an offer, 11% with an expedite']},
@@ -3536,7 +3536,7 @@ var PWK=(window.__P&&window.__P.monthly)?'/mo':'/wk';
 var V=window.__V||{all:true,scope:'',contacts:8470,cost:41249,cpc:4.87,fatals:7,lowN:false};
 function totCS(r){ return (r.cost||0)+(r.ds||0); }
 
-function fmtMoney(v){return '$'+(v>=1000?(v/1000).toFixed(1)+'k':Math.round(v));}
+function fmtMoney(v){return '$'+(v>=1000?(v/1000).toFixed(1)+'K':Math.round(v));}
 
 /* ---------- period adapt (window.__P) — scale rows in place, then read program absolutes into the tiles ---------- */
 (function(){
@@ -3571,7 +3571,7 @@ function fmtMoney(v){return '$'+(v>=1000?(v/1000).toFixed(1)+'k':Math.round(v));
   if(P){
     if((t=el('tContacts'))){ t.textContent=V.contacts.toLocaleString('en-US');
       var tl=t.closest('.tile'); if(tl) tl.title=V.contacts.toLocaleString('en-US')+' service contacts ÷ '+P.orders.toLocaleString('en-US')+' orders shipped = '+Math.round(1000*V.contacts/P.orders)+' per 1,000.'; }
-    if((t=el('tPer1k'))) t.textContent=Math.round(1000*V.contacts/P.orders)+' per 1k orders shipped'+(V.all?'':' (program denominator)');
+    if((t=el('tPer1K'))) t.textContent=Math.round(1000*V.contacts/P.orders)+' per 1K orders shipped'+(V.all?'':' (program denominator)');
     if((t=el('tSignals'))){ t.textContent=P.signals.toLocaleString('en-US');
       if(!V.all){ var sg=t.closest('.tile'); var sb=sg&&sg.querySelector('.sub');
         if(sb&&!sb.querySelector('.scopechip')) sb.insertAdjacentHTML('beforeend',' <span class="scopechip">Program · all channels</span>'); } }
@@ -3732,7 +3732,7 @@ function renderOwnerCard(){
     +'<div><div style="font-size:16px;font-weight:650;color:var(--ink)">'+ownerFilter+'</div>'
     +'<div style="font-size:12px;color:var(--muted)">'+meta.role+'</div></div>'
     +'<span style="flex:1"></span>'+ini+'</div>'
-    +'<div class="num" style="font-size:12.5px;color:var(--body);margin-top:10px">Standing owner of '+mine.length+(mine.length===1?' intent':' intents')+' · '+fmtMoney(cSum)+PWK+' handling · '+fmtMoney(dSum)+PWK+' downstream · $'+wSum+'k/yr on the table</div>'
+    +'<div class="num" style="font-size:12.5px;color:var(--body);margin-top:10px">Standing owner of '+mine.length+(mine.length===1?' intent':' intents')+' · '+fmtMoney(cSum)+PWK+' handling · '+fmtMoney(dSum)+PWK+' downstream · $'+wSum+'K/yr on the table</div>'
     +'<div class="pnote">Standing owner — routes the driver; a launched fix carries its own initiative owner on Actions.</div></div>';
 }
 
@@ -4044,7 +4044,7 @@ var ENT_AERO = {
    note:'110 of 490 mentions carry feedback tone · 380 are neutral references inside service contacts.'
   },
   sentence:'AeroShip was named in 490 conversations this week — 409 negative. Delivery delays account for 62% of mentions; missed transit SLA is the probable cause in half. 32% of these conversations ended in an escalation.',
-  cta:{lab:'Top fixable cause — missed transit SLA', opp:'$225k / yr', text:'44% of delivery-delay contacts trace to this carrier. Evidence attaches to the initiative automatically.'}
+  cta:{lab:'Top fixable cause — missed transit SLA', opp:'$225K / yr', text:'44% of delivery-delay contacts trace to this carrier. Evidence attaches to the initiative automatically.'}
 };
 var entFocusKey=null;
 
@@ -4259,7 +4259,7 @@ function pathsPanel(){
    +chans.map(function(c){return '<div class="prow" style="grid-template-columns:110px 1fr 150px"><span class="pn">'+c[0]+'<span class="num">'+c[1]+' journeys</span></span>'
      +'<div class="trackwrap"><div class="track"><div class="fill" style="width:'+Math.round(parseFloat(c[2])*1.2)+'%"></div></div></div>'
      +'<span class="pv num" style="font-weight:550">'+c[2]+' in one · '+c[3]+'</span></div>'}).join('')
-   +'<div class="pnote">WhatsApp-first resolves <b>79%</b> in one contact against Email-first <b>39%</b> — within this intent. Steering the 363 email-first journeys ≈ <b class="num" title="(9.80 − 5.00) × 363 × 52">$91k / yr</b>. <a class="quiet" href="#" onclick="evPaths();return false">Evidence ↗</a></div>'
+   +'<div class="pnote">WhatsApp-first resolves <b>79%</b> in one contact against Email-first <b>39%</b> — within this intent. Steering the 363 email-first journeys ≈ <b class="num" title="(9.80 − 5.00) × 363 × 52">$91K / yr</b>. <a class="quiet" href="#" onclick="evPaths();return false">Evidence ↗</a></div>'
    +'</div></div></div>';
 }
 function evPaths(){
@@ -4289,7 +4289,7 @@ function vqRows(){
 function vqVal(x){ return pMetric==='cost'? x.cost+(x.ds||0) : x.n; }
 function vqRad(x){ var pf=(window.__P&&window.__P.factor)||1; return Math.max(5.5, Math.sqrt(vqVal(x)/pf)*(pMetric==='cost'?0.16:0.55)); }
 function vqFmt(v){ return pMetric==='cost'? fmtMoney(v) : v.toLocaleString('en-US'); }
-function vqTip(x){ return x.nm+' — '+x.n.toLocaleString('en-US')+' contacts · handling '+fmtMoney(x.cost)+PWK+' · FCR '+x.fcr+'%'+(x.worthK?' · $'+x.worthK+'k/yr if shipped':'')+(x.ds>0?' · downstream '+fmtMoney(x.ds)+' (×'+x.dsr+') · total cost to serve '+fmtMoney(x.cost+x.ds)+PWK:'')+(x.pre?' · ◤ pre-emptable':''); }
+function vqTip(x){ return x.nm+' — '+x.n.toLocaleString('en-US')+' contacts · handling '+fmtMoney(x.cost)+PWK+' · FCR '+x.fcr+'%'+(x.worthK?' · $'+x.worthK+'K/yr if shipped':'')+(x.ds>0?' · downstream '+fmtMoney(x.ds)+' (×'+x.dsr+') · total cost to serve '+fmtMoney(x.cost+x.ds)+PWK:'')+(x.pre?' · ◤ pre-emptable':''); }
 function vqSync(){
   var card=el('vquad'), wrap=el('vwSegWrap'), seg=el('vwSeg'); if(!card) return;
   /* the value–irritant quadrant is intent-based — the List/Quadrant switch only applies on the "asks" lens */
@@ -4343,7 +4343,7 @@ function renderVQLanes(R,byQ){
       +'<b style="color:'+meta.col+'">'+meta.nm+'</b>'
       +'<span class="vq-lane-n num">'+g.length+' intent'+(g.length===1?'':'s')+' · '+fmtMoney(totT)+PWK+'</span></div>'
       +'<div class="vq-lane-share num">'+volPct+'% of volume · '+costPct+'% of cost</div>'
-      +'<div class="vq-lane-sub">'+meta.sub+(totW?' · <span class="num">$'+totW+'k/yr on the table</span>':'')+'</div></div>';
+      +'<div class="vq-lane-sub">'+meta.sub+(totW?' · <span class="num">$'+totW+'K/yr on the table</span>':'')+'</div></div>';
     var body='';
     if(!g.length){ body='<div class="vq-empty">No intents in this class this period.</div>'; }
     else {
@@ -4371,10 +4371,10 @@ function renderVQLanes(R,byQ){
     var preN=R.filter(function(x){return x.pre}).length;
     var __pl=(V.all)?{n:1631,kyr:'580'}:{n:V.pool.n,kyr:String(Math.round(V.pool.usd*52/1000))};
     var per=((window.__P&&window.__P.monthly)?'/mo':'/wk');
-    preStrip='<div class="vq-prestrip" title="Pre-empt pool — modeled prevention shares on the flagged intents, which sit in Eliminate + Digitize: 1,631 contacts/wk · $11,154/wk including downstream · $580k/yr. Shares are governed in Studio.">'
+    preStrip='<div class="vq-prestrip" title="Pre-empt pool — modeled prevention shares on the flagged intents, which sit in Eliminate + Digitize: 1,631 contacts/wk · $11,154/wk including downstream · $580K/yr. Shares are governed in Studio.">'
       +'<span class="vq-prestrip-i">◤</span>Pre-empt pool — spans Eliminate + Digitize · '
       +'<b>'+preN+' intent'+(preN===1?'':'s')+' flagged</b> · '
-      +'<span class="num">'+pN(__pl.n).toLocaleString('en-US')+' contacts'+per+' · $'+__pl.kyr+'k/yr before contact</span></div>';
+      +'<span class="num">'+pN(__pl.n).toLocaleString('en-US')+' contacts'+per+' · $'+__pl.kyr+'K/yr before contact</span></div>';
   }
   var html='<div class="vq-lanes-wrap">'
     +'<div class="vq-axis-y"><span>value to the company →</span></div>'
@@ -4412,7 +4412,7 @@ function renderVQ(){
         svg+='<rect x="'+(rx0+1.5)+'" y="'+(ry0+1.5)+'" width="'+(rw-3)+'" height="'+(rh-3)+'" rx="8" fill="'+meta.col+'" opacity="0.05" pointer-events="none"/>'; }
       svg+='<text class="qtitle" x="'+bx+'" y="'+tY+'" text-anchor="'+anch+'" style="fill:'+meta.col+'" onclick="vqZoomQ(\''+q+'\')">'+meta.nm+' — '+g.length+' intents · '+fmtMoney(totT)+PWK+'<title>Total cost to serve — handling '+fmtMoney(totC)+' + downstream (modeled) '+fmtMoney(totDS)+'.</title></text>';
       svg+='<text class="qsub" x="'+bx+'" y="'+(bottom&&!vqState.zoom?tY+13:tY+14)+'" text-anchor="'+anch+'">'+meta.sub+'</text>';
-      var metaBits=[]; if(totDS)metaBits.push('handling '+fmtMoney(totC)+' + downstream '+fmtMoney(totDS)); if(totW)metaBits.push('$'+totW+'k on the table');
+      var metaBits=[]; if(totDS)metaBits.push('handling '+fmtMoney(totC)+' + downstream '+fmtMoney(totDS)); if(totW)metaBits.push('$'+totW+'K on the table');
       if(metaBits.length){var myv=vqState.zoom?tY+30:(bottom?tY-52:tY+30);
         svg+='<text class="qsub num" x="'+bx+'" y="'+myv+'" text-anchor="'+anch+'" style="fill:#6d717b">'+metaBits.join(' · ')+'</text>';}
       if(vqState.zoom){
@@ -4454,7 +4454,7 @@ function renderVQ(){
       svg+='<rect class="band" x="'+(Lm+10)+'" y="'+(CY+14)+'" width="'+(Rm-Lm-20)+'" height="'+(Bm-CY-24)+'" rx="14"/>';
       
       var __pl=(V.all)?{n:1631,kyr:'580'}:{n:V.pool.n,kyr:String(Math.round(V.pool.usd*52/1000))};
-      svg+='<text class="bandlab" x="'+((Lm+Rm)/2)+'" y="'+(CY+44)+'" text-anchor="middle">◤ PRE-EMPT ZONE — SPANS ELIMINATE + DIGITIZE · <tspan style="fill:#6d717b">'+pN(__pl.n).toLocaleString('en-US')+' CONTACTS'+((window.__P&&window.__P.monthly)?'/MO':'/WK')+' · $'+__pl.kyr+'K/YR BEFORE CONTACT</tspan><title>Pre-empt pool — modeled prevention shares on the four flagged intents: 1,631 contacts/wk · $11,154/wk including downstream · $580k/yr. Applies to the bottom row only — Eliminate and Digitize. Shares are governed in Studio.</title></text>';
+      svg+='<text class="bandlab" x="'+((Lm+Rm)/2)+'" y="'+(CY+44)+'" text-anchor="middle">◤ PRE-EMPT ZONE — SPANS ELIMINATE + DIGITIZE · <tspan style="fill:#6d717b">'+pN(__pl.n).toLocaleString('en-US')+' CONTACTS'+((window.__P&&window.__P.monthly)?'/MO':'/WK')+' · $'+__pl.kyr+'K/YR BEFORE CONTACT</tspan><title>Pre-empt pool — modeled prevention shares on the four flagged intents: 1,631 contacts/wk · $11,154/wk including downstream · $580K/yr. Applies to the bottom row only — Eliminate and Digitize. Shares are governed in Studio.</title></text>';
     }
   } else {
     var pf=(window.__P&&window.__P.factor)||1;
@@ -4498,7 +4498,7 @@ vqSync();
 /* v6 — wire Demand tiles to the global comparison baseline (shares cmpCompute/cmpSpark with Summit) */
 (function(){
   if(!window.cmpCompute) return;
-  var money=function(v){return '$'+v.toFixed(1)+'k';}, cnt=function(v){return Math.round(v).toLocaleString('en-US');};
+  var money=function(v){return '$'+v.toFixed(1)+'K';}, cnt=function(v){return Math.round(v).toLocaleString('en-US');};
   var D=[
     {id:'tContacts', spark:[6380,6660,6860,7120,6940,7270,7530,7810,7670,8060,8190,8470], unit:'pct', dir:'neutral', yoy:7300, tgt:null, fmt:cnt},
     {id:'tSignals',  spark:[1500,1520,1545,1560,1585,1605,1630,1655,1675,1700,1715,1730], unit:'pct', dir:'neutral', yoy:1450, tgt:null, fmt:cnt},
@@ -4613,7 +4613,7 @@ var CAUSES=[
 
 var cmpView='vi', curCause=null;
 
-function fmtK(n){ return n>=1000? '$'+Math.round(n/1000)+'k' : '$'+n; }
+function fmtK(n){ return n>=1000? '$'+Math.round(n/1000)+'K' : '$'+n; }
 function levTag(k){ var L=LEV[k]; return '<span class="lev-tag '+L.cls+'"><i></i>'+L.lab+'</span>'; }
 function destBadge(k){ return LEV[k].dest==='profile'
   ? '<span class="dest prof">→ Profile</span>'
@@ -5006,7 +5006,7 @@ let CH_OTHER='';
   if(V.scope!=='Voice'){
     var fs=document.querySelector('.fatals');
     if(fs) fs.innerHTML='<h3 style="display:flex;align-items:baseline;gap:12px">Fatal violations this '+(M?'month':'week')+' — 0</h3>'
-      +'<div class="frow"><span class="fn">No fatal violations on '+V.scope+' this period.</span></div>';
+      +'<div class="frow"><span class="fn">No fatal errors on '+V.scope+' this period.</span></div>';
   }
   /* page copy — header and matrix caption carry the scope */
   var wh=document.querySelector('.pagehead .when');
@@ -5362,7 +5362,7 @@ function renderTilesCh(){
    {lab:`Quartile moves — ${ch}`, big:`${up}↑ ${dn}↓`, sub:`vs last week · relative quartiles, ${AA.length} ${ch} agents`, spark:Array.from({length:12},(_,w)=>w===0?0:AA.filter(a=>a.q[w]<a.q[w-1]).length), type:'bars'},
    (CHV==='Voice'
      ? {lab:'Fatal-involved agents', big:String(fa.length), alert:true, sub:`${PFATALS} fatals across ${fa.length} agents · <a class="quiet" href="#/quality">review on Quality ↗</a>`, spark:[6,5,5,4,5,3,4,3,3,2,2,fa.length], type:'bars'}
-     : {lab:'Fatal-involved agents', big:'0', sub:`no fatal violations on ${CHV} this period — fatals sit on Voice · <a class="quiet" href="#/quality">review on Quality ↗</a>`, spark:Array.from({length:12},()=>0), type:'bars'}),
+     : {lab:'Fatal-involved agents', big:'0', sub:`no fatal errors on ${CHV} this period — fatals sit on Voice · <a class="quiet" href="#/quality">review on Quality ↗</a>`, spark:Array.from({length:12},()=>0), type:'bars'}),
    {lab:'Agent quality spread', big:`${sorted[0]}–${sorted[sorted.length-1]}`, sub:`worst to best agent score · median ${med}${CHV_LOWN?' · low n':''}`, spark:Array.from({length:12},(_,w)=>wkMed(w)), type:'line'}
   ];
   if(PADAPT&&CHV==='Voice'){
@@ -5561,7 +5561,7 @@ function openAgentByName(nm){
           <div class="pbar"><i style="width:${Math.min(100,f[1]*2.2)}%"></i><span class="tk" style="left:${Math.min(100,f[2]*2.2)}%" title="team ${f[2]}%"></span><span class="tk pg" style="left:${Math.min(100,f[3]*2.2)}%" title="program ${f[3]}%"></span></div>
           <span class="pv num">${f[1]}% <span>t${f[2]} · p${f[3]}</span></span></div>`).join('')
         :`<div class="prow"><span class="pl" style="color:var(--faint)">No parameter above the team's rate this week</span></div>`}
-       ${a.fat&&t.fat?`<div class="fatline">${a.fat} fatal violation${a.fat>1?'s':''} — ${(FATAL_CALLS[a.nm]||[]).map(f=>f[3]).filter((v,i,s)=>s.indexOf(v)===i).join(', ')} · auto-zero</div>`:''}
+       ${a.fat&&t.fat?`<div class="fatline">${a.fat} fatal error${a.fat>1?'s':''} — ${(FATAL_CALLS[a.nm]||[]).map(f=>f[3]).filter((v,i,s)=>s.indexOf(v)===i).join(', ')} · auto-zero</div>`:''}
      </div>
      <div class="panelc" style="margin:0"><div class="phead"><h4 title="Parameters with zero failed checks across the trailing 12 weeks.">Consistently clean</h4></div>
        ${goods.map((g,i)=>`<div class="good"><span>${g}</span><span class="gv num">${i===0?'12':'11'} of 12 weeks · 0 fails</span></div>`).join('')}
@@ -5583,7 +5583,7 @@ function openAgentByName(nm){
      </div>
    </div>
 
-   <div class="sentence">${a.nm} scored ${a.cq} on ${a.n} contacts this ${(window.__P&&window.__P.monthly)?'month':'week'} — ${qok?`quartile ${a.q[11]} of ${COHORTS[a.cohort].length} ${a.cohort.toLowerCase()} agents, ${a.q[11]===a.q[10]?'unchanged from last week':a.q[11]<a.q[10]?'up from Q'+a.q[10]:'down from Q'+a.q[10]}`:`rank ${rank} of ${COHORTS[a.cohort].length} in the ${a.cohort.toLowerCase()} cohort`}.${a.fat?` ${a.fat} of the week's ${PFATALS} fatal violations sit on this scorecard.`:''}</div>`;
+   <div class="sentence">${a.nm} scored ${a.cq} on ${a.n} contacts this ${(window.__P&&window.__P.monthly)?'month':'week'} — ${qok?`quartile ${a.q[11]} of ${COHORTS[a.cohort].length} ${a.cohort.toLowerCase()} agents, ${a.q[11]===a.q[10]?'unchanged from last week':a.q[11]<a.q[10]?'up from Q'+a.q[10]:'down from Q'+a.q[10]}`:`rank ${rank} of ${COHORTS[a.cohort].length} in the ${a.cohort.toLowerCase()} cohort`}.${a.fat?` ${a.fat} of the week's ${PFATALS} fatal errors sit on this scorecard.`:''}</div>`;
   el('agentview').style.display='block';
   window.scrollTo(0,0);
 }
@@ -6310,11 +6310,11 @@ const SHELF=[
   adopted:null, risk:true, link:'Evidence in Conversations ↗', evk:1}
 ];
 const COVER=[
- {mv:'Delivery-delayed cost', dir:'rising', state:'persisting · 4 wks', sub:'1,815 contacts · $8,839 this week · FCR 54%', ex:'$305k', exs:'annualized if fixed',
+ {mv:'Delivery-delayed cost', dir:'rising', state:'persisting · 4 wks', sub:'1,815 contacts · $8,839 this week · FCR 54%', ex:'$305K', exs:'annualized if fixed',
   st:'covered', chips:[['INIT-07 · notices'],['INIT-08 · carrier SLA']], link:'Demand ↗', lhref:'#/demand?lens=reasons'},
- {mv:'Email resolution', dir:'falling', state:'drift · 3 wks', sub:'resolution 85% · FCR 55% · comprehension fail 34% and rising', ex:'$144k', exs:'coaching action on the shelf',
+ {mv:'Email resolution', dir:'falling', state:'drift · 3 wks', sub:'resolution 85% · FCR 55% · comprehension fail 34% and rising', ex:'$144K', exs:'coaching action on the shelf',
   st:'uncovered', link:'Quality ↗', lhref:'#/quality', adoptIdx:2},
- {mv:'Delay-driven cancellations', dir:'rising', state:'new this week', sub:'259 of 680 weekly cancel contacts cite delivery delay', ex:'$115k', exs:'save-offer action on the shelf',
+ {mv:'Delay-driven cancellations', dir:'rising', state:'new this week', sub:'259 of 680 weekly cancel contacts cite delivery delay', ex:'$115K', exs:'save-offer action on the shelf',
   st:'uncovered', link:'Demand ↗', lhref:'#/demand?ask=Cancel%20my%20order', adoptIdx:1},
  {mv:'Churn signals after the price change', dir:'3.1× baseline', state:'emergence · wk 2 of 4', sub:CHN+' conversations flagged by the signals engine', ex:'—', exs:'advisory · no dollar claim',
   st:'watch', link:'Conversations ↗', evk:1}
@@ -6323,14 +6323,14 @@ const INITS=[
  {id:'INIT-07', t:'Proactive delivery-status notices', status:'On track', warn:false,
   born:'Get a delivery update · Delivery delayed — Demand ↗', bhref:'#/demand?ask=Get%20a%20delivery%20update', owner:'N. Gupta — CX ops', standing:'R. Mehta — CX automation', sponsor:'V. Malhotra — VP CX',
   adoptedOn:'Jun 30', expected:340000, realized:0,
-  metric:'Delivery-update contacts per 1k orders', baseline:41, target:14, targetWk:'week 8', expTip:'1,343 avoided contacts a week × $4.87 × 52 ≈ $340k — frozen at adoption.',
+  metric:'Delivery-update contacts per 1K orders', baseline:41, target:14, targetWk:'week 8', expTip:'1,343 avoided contacts a week × $4.87 × 52 ≈ $340K — frozen at adoption.',
   act:[40,41,42,41,40,41,42,41], exp:[41,36,30,25,19,14], startAt:7,
   note:'Carrier webhook integration in UAT — go-live Jul 20.',
-  digest:'Adopted Jun 30 against 2,034 delivery-update contacts a week ($9,906). Expected path reaches 14 per 1k orders by week 8. Realized to date: $0 — measurement begins the first full week after go-live on Jul 20.'},
+  digest:'Adopted Jun 30 against 2,034 delivery-update contacts a week ($9,906). Expected path reaches 14 per 1K orders by week 8. Realized to date: $0 — measurement begins the first full week after go-live on Jul 20.'},
  {id:'INIT-08', t:'Enforce carrier transit SLA', status:'Support needed', warn:true,
   born:'Delivery delayed · Missed transit SLA (carrier) — Demand ↗', bhref:'#/demand?ask=Delivery%20delayed', owner:'D. Kapoor — Logistics PMO', standing:'A. Rao — Carrier program', sponsor:'V. Malhotra — VP CX',
   adoptedOn:'Jul 7', expected:225000, realized:null,
-  metric:'Delivery-delayed contacts per week', baseline:1815, target:726, targetWk:'week 10', expTip:'888 avoided contacts a week × $4.87 × 52 ≈ $225k — frozen at adoption.',
+  metric:'Delivery-delayed contacts per week', baseline:1815, target:726, targetWk:'week 10', expTip:'888 avoided contacts a week × $4.87 × 52 ≈ $225K — frozen at adoption.',
   act:[1694,1757,1815,1780,1838,1873,1815,1815], exp:[1815,1550,1273,1003,726], startAt:7,
   note:'Carrier contract addendum awaits executive sign-off — blocked 4 days.',
   digest:'Adopted Jul 7 against 1,815 delivery-delayed contacts a week ($8,839). Expected path reaches 726 a week by week 10. Measurement has not started; the contract addendum is with the executive team.'}
@@ -6343,7 +6343,7 @@ const SHIPPED={id:'INIT-03', t:'Extend the address-change window', shippedOn:'Ma
 
 /* ---------- render ---------- */
 const el=id=>document.getElementById(id);
-function money(v){return v>=1000?'$'+(v/1000).toFixed(v%1000?1:0)+'k':'$'+v}
+function money(v){return v>=1000?'$'+(v/1000).toFixed(v%1000?1:0)+'K':'$'+v}
 function renderTiles(){
   const open=SHELF.filter(s=>!s.adopted&&!s.risk).reduce((a,s)=>a+s.worth,0);
   const unc=COVER.filter(c=>c.st==='uncovered').length;
@@ -6395,7 +6395,7 @@ const ADOPTS={
  1:{t:'Save-offer opt-in for delay cancellations', born:'Cancel my order · Delivery delayed 38% — Demand', cls:'Cost',
     metric:'Delay-driven cancellations per week · 259 → 98 by week 8', exp:'$115,000 annualized', owner:'', sponsor:'',
     clsTip:'Cost class — realized in dollars: avoided contacts × $4.87 per contact × 52 weeks.',
-    expTip:'Driver math, frozen at adoption: 454 avoided contacts a week × $4.87 × 52 ≈ $115k.',
+    expTip:'Driver math, frozen at adoption: 454 avoided contacts a week × $4.87 × 52 ≈ $115K.',
     seeds:'Delivery delayed · no save offer at the cancel step'},
  2:{t:'Email comprehension coaching at MK', born:'Addresses every question — MK Email 41% vs program 34% · Quality', cls:'Quality',
     metric:'Fail rate, MK — Email team · 41% → 30% by week 8', exp:'$144,000 annualized', owner:'R. Colaco — MK Email team lead', sponsor:'V. Rao — QA manager, Partner MK',
@@ -6575,15 +6575,15 @@ const CHS=(window.__CH&&window.__CH.share)||1;
 const fcrV=Vv.all? Math.max(2,Math.min(96,68+D.fcr)) : Vv.fcr, fcrAdj=Math.max(2,Math.min(96,(Vv.all?65:Vv.fcr-3)+ (Vv.all?D.fcr:0)));
 const cesV=Vv.all? Math.round((3.9+D.ces)*10)/10 : Vv.ces, cesS=Math.round((3.8+D.ces)*10)/10;
 const nemV=Vv.all? -11+D.nem : Vv.nem, cqV=Vv.all? 87+D.cq : Vv.cq;
-const per1k=Math.round(Vv.contacts/P.orders*1000);
+const per1K=Math.round(Vv.contacts/P.orders*1000);
 const shiftS=(a,d,lo,hi)=>Vv.all?a:a.map(v=>Math.max(lo,Math.min(hi,+(v+d).toFixed(2))));
 const scaleS=a=>Vv.all?a:a.map(v=>Math.round(v*CHS));
 const fmtSec=v=>Math.floor(v/60)+'m '+String(Math.round(v%60)).padStart(2,'0')+'s';
 const fmtNem=v=>(v<0?'−':'+')+Math.abs(v);
 
 const ROOMS=[
- {lab:'Volume', big:Vv.contacts.toLocaleString(), side:`contacts · ${per1k} per 1k orders${Vv.all?'':' (program denominator)'}`, spark:scaleS(V14), fmt:v=>(v/1000).toFixed(1)+'k', note:`${P.signals.toLocaleString()} feedback signals — counted separately, no handle cost${Vv.all?'':' <span class="scopechip">Program · all channels</span>'}`, door:'Open Demand ↗', dhref:'#/demand'},
- {lab:'Cost — total to serve', big:'$'+Vv.tcs.toLocaleString(), side:'handling $'+Vv.cost.toLocaleString()+' · $'+(Vv.all?'4.87':Vv.cpc.toFixed(2))+' per contact', spark:C14.map(v=>Math.round(v*Vv.tcs/41249)), fmt:v=>'$'+Math.round(v/1000)+'k', note:'downstream (modeled) $'+Vv.ds.toLocaleString()+' · avoidable 62% of handling', door:'Open the deep dive ↗', dhref:'#/room-cost'},
+ {lab:'Volume', big:Vv.contacts.toLocaleString(), side:`contacts · ${per1K} per 1K orders${Vv.all?'':' (program denominator)'}`, spark:scaleS(V14), fmt:v=>(v/1000).toFixed(1)+'K', note:`${P.signals.toLocaleString()} feedback signals — counted separately, no handle cost${Vv.all?'':' <span class="scopechip">Program · all channels</span>'}`, door:'Open Demand ↗', dhref:'#/demand'},
+ {lab:'Cost — total to serve', big:'$'+Vv.tcs.toLocaleString(), side:'handling $'+Vv.cost.toLocaleString()+' · $'+(Vv.all?'4.87':Vv.cpc.toFixed(2))+' per contact', spark:C14.map(v=>Math.round(v*Vv.tcs/41249)), fmt:v=>'$'+Math.round(v/1000)+'K', note:'downstream (modeled) $'+Vv.ds.toLocaleString()+' · avoidable 62% of handling', door:'Open the deep dive ↗', dhref:'#/room-cost'},
  {lab:'Resolution — FCR', big:String(fcrV), alert:fcrV<80, side:`target 80 · repeat-adjusted ${fcrAdj}`, spark:shiftS(F14,CHD.fcr,2,96), target:80, tLab:'target 80', note:'', door:'Open the deep dive ↗', dhref:'#/room-fcr'},
  {lab:'Effort — CES', big:cesV.toFixed(1), side:`higher is easier · survey CES ${cesS.toFixed(1)}`, spark:shiftS(E14,CHD.ces,1,5), fmt:v=>v.toFixed(1), note:'', door:'Open the deep dive ↗', dhref:'#/room-ces'},
  {lab:'Sentiment — NEM', big:fmtNem(nemV), side:'negative emotion margin', spark:shiftS(N14,CHD.nem,-60,40), fmt:fmtNem, note:'', door:null},
@@ -6702,14 +6702,14 @@ const WK = P.key==='w27' ? 'w27' : 'w28';
 const SIXSETS={
  w28:[
   ['Contacts','8,470','+3%','', '#/demand','Service contacts analysed. Opens Demand.'],
-  ['Total cost to serve','$66.9k','+3%','', '#/room-cost','Handling $41.2k + downstream $25.7k (modeled) · $4.87 per contact. Opens the cost deep dive.'],
+  ['Total cost to serve','$66.9K','+3%','', '#/room-cost','Handling $41.2K + downstream $25.7K (modeled) · $4.87 per contact. Opens the cost deep dive.'],
   ['Resolution — FCR','68%','+1pp','alert','#/room-fcr','Target 80 · repeat-adjusted 65. Opens the FCR deep dive.'],
   ['Customer effort — CES','3.9','0.0','', '#/room-ces','Inferred · survey CES 3.8 · higher is easier. Opens the Effort deep dive.'],
   ['Experience — NEM','−11','0','', '#/metrics','% ending positive − % ending negative. Opens the registry.'],
   ['Quality','87','0','', '#/quality','Target 85 · 7 fatal. Opens Quality.']],
  w27:[
   ['Contacts','8,190','+2%','', '#/demand','Service contacts analysed. Opens Demand.'],
-  ['Total cost to serve','$64.7k','+2%','', '#/room-cost','Handling $39.9k + downstream $24.8k (modeled) · $4.87 per contact. Opens the cost deep dive.'],
+  ['Total cost to serve','$64.7K','+2%','', '#/room-cost','Handling $39.9K + downstream $24.8K (modeled) · $4.87 per contact. Opens the cost deep dive.'],
   ['Resolution — FCR','67%','+1pp','alert','#/room-fcr','Target 80. Opens the FCR deep dive.'],
   ['Customer effort — CES','3.9','0.0','', '#/room-ces','Inferred · survey CES 3.8 · higher is easier. Opens the Effort deep dive.'],
   ['Experience — NEM','−11','+1','', '#/metrics','% ending positive − % ending negative. Opens the registry.'],
@@ -6730,14 +6730,14 @@ el('six').innerHTML=SIXSETS[WK].map(s=>`<div class="st" onclick="go('${s[4]}')" 
     return;
   }
   if(P.key!=='w27') return;
-  Q('.lede').innerHTML='8,190 service contacts carried $64,690 in total cost to serve this week — $39,885 handling + $24,805 downstream (modeled). First contact resolution rose a point to 67 against a target of 80; quality held at 87 with 6 fatal violations; experience improved a point to −11. Volume grew 2% on the prior week and cost rose $633. Two initiatives are live worth $565k expected; two breaching movers remain uncovered.'+GEN;
+  Q('.lede').innerHTML='8,190 service contacts carried $64,690 in total cost to serve this week — $39,885 handling + $24,805 downstream (modeled). First contact resolution rose a point to 67 against a target of 80; quality held at 87 with 6 fatal errors; experience improved a point to −11. Volume grew 2% on the prior week and cost rose $633. Two initiatives are live worth $565K expected; two breaching movers remain uncovered.'+GEN;
   const wh=Q('.pagehead .when'); if(wh) wh.innerHTML=wh.innerHTML.split('prepared Mon Jul 13').join('prepared Mon Jul 6');
   setLi(0,0,'<b>First contact resolution rose a point</b> — 66 to 67 against target 80');
   setLi(0,1,'<b>Volume grew 2% week over week</b> — 8,190 contacts vs 8,060 · handling rose $633');
   setLi(1,0,'Orders held for verification at <b>19× baseline</b> — 305 contacts this week');
   setLi(1,1,'Churn language at <b>3.1× baseline</b> — 484 conversations, watch week 1 of 4');
   setLi(1,2,'Field keeps recovering deliveries — <b>96% resolution</b> on 97 visits');
-  setLi(2,0,'<b>6 fatal violations</b> — fatal contacts are listed in Conversations');
+  setLi(2,0,'<b>6 fatal errors</b> — fatal contacts are listed in Conversations');
   setLi(2,1,'<b>Addresses every question</b> failing at 34% · MK — Email team at 41%');
 })();
 
@@ -6762,9 +6762,9 @@ el('mtable').innerHTML=`<table class="mt"><tr><th>Outcome</th><th>June</th><th>M
  ROWS.map(r=>`<tr><td>${r[0]}</td><td class="num${r[0].includes('FCR')?' bad':''}">${r[1]}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td><td style="text-align:left;padding-left:14px">${spk(r[5])}</td></tr>`).join('')+`</table>
  <div class="footnote" style="margin-top:6px">June contacts = 22 working days ≈ 4.4 weeks of the weekly run-rate · the July week of the 6-month trends is partial.</div>`;
 const INITS=[
- ['INIT-03','Extend the address-change window','Shipped May 22','$32k','$38k /yr realized'],
- ['INIT-07','Proactive delivery-status notices','On track · adopted Jun 30','$340k','$0 — pre-launch'],
- ['INIT-08','Enforce carrier transit SLA','Support needed · adopted Jul 7','$225k','measurement not started']
+ ['INIT-03','Extend the address-change window','Shipped May 22','$32K','$38K /yr realized'],
+ ['INIT-07','Proactive delivery-status notices','On track · adopted Jun 30','$340K','$0 — pre-launch'],
+ ['INIT-08','Enforce carrier transit SLA','Support needed · adopted Jul 7','$225K','measurement not started']
 ];
 el('itable').innerHTML=`<table class="mt"><tr><th style="text-align:left">ID</th><th style="text-align:left">Initiative</th><th style="text-align:left">Status</th><th>Expected</th><th>Realized</th></tr>`+
  INITS.map(r=>`<tr><td class="num" style="font-family:var(--mono);font-size:10.5px;font-weight:400">${r[0]}</td><td style="text-align:left">${r[1]}</td><td style="text-align:left;font-weight:400">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td></tr>`).join('')+`</table>`;
@@ -7123,7 +7123,7 @@ el('avassoc').innerHTML=`Of the <b>$${AV.toLocaleString()} avoidable</b>, delive
 })();
 
 el('crecn').innerHTML=`$${AV.toLocaleString()} <small>of ${PERL}'s handling cost sits in eliminate-rated reasons — 62%</small>`;
-el('sent').innerHTML=`Total cost to serve is $${COD.toLocaleString()} across ${V.contacts.toLocaleString()} contacts, ${DELTA<0?'down':'up'} $${Math.abs(DELTA).toLocaleString()} vs ${P.prevLabel} — all of it volume. Handling is $${V.cost.toLocaleString()} ($${V.cpc.toFixed(2)} per contact, held ± $0.03); downstream (modeled) adds $${DST.toLocaleString()} and re-ranks the intents: Find my order is fourth by handling, second by total cost to serve. 62% of the ${PMON?'month':'week'}'s handling cost — $${AV.toLocaleString()} — sits in eliminate-rated reasons, and the two carrier reasons alone hold $${CAR.toLocaleString()}. Shipped initiative INIT-03 is realizing $38k a year against $32k expected.`;
+el('sent').innerHTML=`Total cost to serve is $${COD.toLocaleString()} across ${V.contacts.toLocaleString()} contacts, ${DELTA<0?'down':'up'} $${Math.abs(DELTA).toLocaleString()} vs ${P.prevLabel} — all of it volume. Handling is $${V.cost.toLocaleString()} ($${V.cpc.toFixed(2)} per contact, held ± $0.03); downstream (modeled) adds $${DST.toLocaleString()} and re-ranks the intents: Find my order is fourth by handling, second by total cost to serve. 62% of the ${PMON?'month':'week'}'s handling cost — $${AV.toLocaleString()} — sits in eliminate-rated reasons, and the two carrier reasons alone hold $${CAR.toLocaleString()}. Shipped initiative INIT-03 is realizing $38K a year against $32K expected.`;
 
 renderMove();
 
@@ -7334,7 +7334,7 @@ const FRSH=Math.round(100*FRTOT/HTOT);
 
 el('an').textContent=`${AN.toLocaleString()} conversational contacts · no target set`;
 el('aprev').textContent='vs '+P.prevLabel;
-el('acost').textContent=`rolls into handling — $${(V.cost/1000).toFixed(1)}k of $${((V.tcs||V.cost)/1000).toFixed(1)}k total to serve ${PERL} ↗`;
+el('acost').textContent=`rolls into handling — $${(V.cost/1000).toFixed(1)}K of $${((V.tcs||V.cost)/1000).toFixed(1)}K total to serve ${PERL} ↗`;
 el('acap').textContent=`events observed on every recording and thread · ${Math.round(FRTOT).toLocaleString()} minutes · ${FRSH}% of the ${PMON?'month':'week'}'s ${HTOT.toLocaleString()} handle minutes`;
 el('lown').textContent=V.all?`Social muted at ${pN(60).toLocaleString()} contacts (low n)`:`partner mix within ${V.scope}`;
 el('adecomp').innerHTML=`${PMON?'month over month':'week over week'} <b>−8s</b> = rate effect <b>−5s</b> · mix effect <b>−3s</b>`;
@@ -7818,11 +7818,11 @@ var VOL14=[6250,6460,6380,6660,6860,7120,6940,7270,7530,7810,7670,8060,8190,8470
 var COST14=VOL14.map(function(v){return Math.round(v*4.87)});
 var EX={
  pareto:{q:'Show me a pareto of intents by cost',
-  a:function(){return {lede:'Handling cost concentrates hard: the top five intents hold <b>$22.2k of the week’s $41.2k</b> — 54%. <b>Get a delivery update</b> alone is $9.9k; with its ×0.3 downstream ratio it carries another $3.0k in modeled downstream cost.',
-   viz:barsH([['Get a delivery update',9906,'$9.9k'],['Get a refund',3565,'$3.6k'],['Cancel my order',3312,'$3.3k'],['Find my order',3170,'$3.2k'],['Check product availability',2274,'$2.3k'],['Get product information',2050,'$2.1k'],['Get a reshipment',1938,'$1.9k'],['All other intents',16034,'$16.0k']]),
+  a:function(){return {lede:'Handling cost concentrates hard: the top five intents hold <b>$22.2K of the week’s $41.2K</b> — 54%. <b>Get a delivery update</b> alone is $9.9K; with its ×0.3 downstream ratio it carries another $3.0K in modeled downstream cost.',
+   viz:barsH([['Get a delivery update',9906,'$9.9K'],['Get a refund',3565,'$3.6K'],['Cancel my order',3312,'$3.3K'],['Find my order',3170,'$3.2K'],['Check product availability',2274,'$2.3K'],['Get product information',2050,'$2.1K'],['Get a reshipment',1938,'$1.9K'],['All other intents',16034,'$16.0K']]),
    doors:[['Open Demand ↗','#/demand'],['Quadrant view ↗','#/demand?view=quad'],['Cost deep dive ↗','#/room-cost']]}}},
  trend:{q:'Show me the weekly cost and volume trend in a single chart',
-  a:function(){return {lede:'Volume and handling cost move together — one denominator, two aligned panels. Contacts grew <b>6,250 → 8,470</b> over fourteen weeks; cost followed to <b>$41.2k</b> at a blended $4.87 per contact, held within ±$0.03 all quarter.',
+  a:function(){return {lede:'Volume and handling cost move together — one denominator, two aligned panels. Contacts grew <b>6,250 → 8,470</b> over fourteen weeks; cost followed to <b>$41.2K</b> at a blended $4.87 per contact, held within ±$0.03 all quarter.',
    viz:twoLines(VOL14,COST14,'CONTACTS / WK — 14 WK','HANDLING COST $ / WK'),
    doors:[['Cost deep dive ↗','#/room-cost'],['Volume on Metrics ↗','#/metrics']]}}},
  agents:{q:'Who are my top performing agents in terms of FCR',
@@ -7835,20 +7835,20 @@ var EX={
    note:'Undetermined rates ride each intent’s detail — open a row for the full chain.',
    doors:[['Get a delivery update ↗','#/demand?ask='+enc('Get a delivery update')],['Get a refund ↗','#/demand?ask='+enc('Get a refund')],['All intents ↗','#/demand']]}}},
  fix:{q:'What single fix moves resolution most this quarter?',
-  a:function(){return {lede:'<b>Proactive delivery-status notices (INIT-07).</b> Get a delivery update holds <b>5.3 points of the 12-point resolution gap</b> — the largest single driver. The initiative pre-empts the contact before it arrives; at its 60% modeled prevention share it returns ≈ <b>+3.2 points of program resolution</b> and $340k/yr, measurement starting the first full week after go-live (Jul 20).',
+  a:function(){return {lede:'<b>Proactive delivery-status notices (INIT-07).</b> Get a delivery update holds <b>5.3 points of the 12-point resolution gap</b> — the largest single driver. The initiative pre-empts the contact before it arrives; at its 60% modeled prevention share it returns ≈ <b>+3.2 points of program resolution</b> and $340K/yr, measurement starting the first full week after go-live (Jul 20).',
    viz:barsH([['Get a delivery update',5.3,'5.3 pts'],['Find my order',1.2,'1.2'],['Substitute a product',0.9,'0.9'],['Cancel my order',0.7,'0.7'],['Speed up my delivery',0.7,'0.7'],['Everything else',3.2,'3.2']]),
    doors:[['FCR deep dive — drivers ↗','#/room-fcr'],['INIT-07 on Actions ↗','#/actions'],['Journeys — steering ↗','#/room-journeys']]}}},
  team:{q:'Which team moves program resolution fastest?',
-  a:function(){return {lede:'<b>MK — Email team.</b> 1,000 contacts a week at 52% resolution — 16 points under program. Raising them to the program mean is worth ≈ <b>+1.9 points of program resolution</b>, the single largest team-level lever; the comprehension coaching play on the shelf carries it at $144k/yr.',
+  a:function(){return {lede:'<b>MK — Email team.</b> 1,000 contacts a week at 52% resolution — 16 points under program. Raising them to the program mean is worth ≈ <b>+1.9 points of program resolution</b>, the single largest team-level lever; the comprehension coaching play on the shelf carries it at $144K/yr.',
    table:[['Team','Contacts / wk','FCR','Program gap'],[ ['MK — Email team','1,000','52%','−16 pts'],['MK — Voice 1','660','49%','−19 pts'],['In-house email pod','1,380','66%','−2 pts']]],
    doors:[['People — MK ↗','#/people'],['Coaching play on Actions ↗','#/actions'],['Quality — MK Email ↗','#/quality']]}}},
  preempt:{q:'What would pre-empt this intent?',
   a:function(ctx){var nm=ctx&&ctx.intent?ctx.intent:'Get a delivery update';
-   return {lede:'<b>'+nm+'</b> is pre-empt eligible. Across the four flagged intents the pool is <b>1,631 contacts a week — $11.2k/wk including downstream, $580k a year</b> — prevented before the contact exists: proactive status notices, refund-status pushes, and return-tracking alerts. INIT-07 carries the delivery-update slice.',
+   return {lede:'<b>'+nm+'</b> is pre-empt eligible. Across the four flagged intents the pool is <b>1,631 contacts a week — $11.2K/wk including downstream, $580K a year</b> — prevented before the contact exists: proactive status notices, refund-status pushes, and return-tracking alerts. INIT-07 carries the delivery-update slice.',
    viz:barsH([['Get a delivery update · 60%',1220,'1,220 /wk'],['Get a refund · 40%',293,'293'],['Check order status · 60%',69,'69'],['Track a return · 50%',49,'49']]),
    doors:[['Pre-empt on the quadrant ↗','#/demand?view=quad'],['INIT-07 ↗','#/actions'],['Journeys — steering ↗','#/room-journeys']]}}},
  whatsapp:{q:'Where should WhatsApp take over from email?',
-  a:function(){return {lede:'<b>Get a delivery update, email-first journeys.</b> WhatsApp-first resolves 79% in one contact against email-first’s 39%. Steering 25% of the 363 email-first journeys moves 91 a week: ≈ <b>+36 resolved-in-one journeys</b>, repeat handling avoided ≈ <b>$9.2k a year</b>, intent CES 2.18 → 2.15. Within one intent only — channels are not randomly assigned.',
+  a:function(){return {lede:'<b>Get a delivery update, email-first journeys.</b> WhatsApp-first resolves 79% in one contact against email-first’s 39%. Steering 25% of the 363 email-first journeys moves 91 a week: ≈ <b>+36 resolved-in-one journeys</b>, repeat handling avoided ≈ <b>$9.2K a year</b>, intent CES 2.18 → 2.15. Within one intent only — channels are not randomly assigned.',
    doors:[['Run it in the simulator ↗','#/room-journeys'],['Create initiative ↗','#/actions?new=1']]}}}
 };
 /* context → suggested order */
@@ -8856,13 +8856,14 @@ window.applyCmpPicker=function(){
 })();
 const NAV_TOP=[["ask","Ask Intendra","Ask anything about your conversations"],["summit","Summit","How the week went"]],
       NAV_PULSE=[["demand","Demand","Why customers reached out"],["metrics","Metrics","Every number and its deep dive"]],
-      NAV2=[["quality","Quality","How we served"],["people","People","Who served"],["fit","Fit","Who fits what — intent & customer to associate"]],
+      NAV_PROFILE=[["quality","Quality","How we served"],["people","People","Who served"]],
+      NAV_FIT=[["fit","Fit","Who fits what — intent & customer to associate"]],
       NAV3=[["actions","Actions","What to do — and did it work?"],["reports","Reports","The week and the month, ready to send"],["conversations","Conversations","The evidence"],["studio","Studio","Where the numbers are governed"]];
 const COMPASS_SUB=[
   {href:'#/compass?view=vi', view:'vi', label:'Value–Irritant Matrix', t:'Classify demand into the four action lanes'},
   {href:'#/compass?view=rc', view:'rc', label:'Root causes', t:'Causes aggregated across intents — fix the cause'}
 ];
-var pulseOpen=false, compassOpen=false, navActive='summit';
+var pulseOpen=false, compassOpen=false, profileOpen=false, navActive='summit';
 const ROOMS=new Set(['room-fcr','room-cost','room-ces','room-aht','room-journeys']);
 const stage=document.getElementById('stage'), nav=document.getElementById('nav');
 window.go=function(h){ if(!h) return; if(h[0]==='#') h=h.slice(1); if(location.hash.slice(1)===h){ route(); } else location.hash=h; };
@@ -8886,8 +8887,9 @@ function renderNav(active){
   const grp=arr=>arr.map(link).join('');
   const pulseActive=NAV_PULSE.some(([k])=>on(k));
   const compassActive=(active==='compass');
+  const profileActive=NAV_PROFILE.some(([k])=>on(k));
   /* auto-open only when navigating INTO the group, so a manual collapse sticks */
-  if(changed){ if(pulseActive) pulseOpen=true; if(compassActive) compassOpen=true; }
+  if(changed){ if(pulseActive) pulseOpen=true; if(compassActive) compassOpen=true; if(profileActive) profileOpen=true; }
   navActive=active;
   const pulseGrp=navDrop('Pulse',pulseOpen,pulseActive,'togglePulse()','Pulse — analysis: demand and metrics',NAV_PULSE.map(link).join(''));
   const csub=COMPASS_SUB.map(function(s){
@@ -8895,10 +8897,12 @@ function renderNav(active){
     return '<a href="'+s.href+'" title="'+s.t+'" class="'+(a?'on':'')+'">'+s.label+'</a>';
   }).join('');
   const compassGrp=navDrop('Compass',compassOpen,compassActive,'toggleCompass()','Compass — value-irritant & root cause',csub);
-  nav.innerHTML = grp(NAV_TOP)+pulseGrp+compassGrp+'<span class="div"></span>'+grp(NAV2)+'<span class="div"></span>'+grp(NAV3);
+  const profileGrp=navDrop('Profile',profileOpen,profileActive,'toggleProfile()','Profile — the agent, team & manager scorecard',NAV_PROFILE.map(link).join(''));
+  nav.innerHTML = grp(NAV_TOP)+pulseGrp+compassGrp+'<span class="div"></span>'+profileGrp+grp(NAV_FIT)+'<span class="div"></span>'+grp(NAV3);
 }
 window.togglePulse=function(){ pulseOpen=!pulseOpen; renderNav(navActive); };
 window.toggleCompass=function(){ compassOpen=!compassOpen; renderNav(navActive); };
+window.toggleProfile=function(){ profileOpen=!profileOpen; renderNav(navActive); };
 window.watchFormHTML=function(id, what, conditions){
   return '<div class="watchform" id="'+id+'">'
    +'<h6>Watch — '+what+'</h6>'
